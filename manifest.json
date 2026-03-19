@@ -1,0 +1,48 @@
+{
+  "name": "PediCode — Urgências Pediátricas",
+  "short_name": "PediCode",
+  "id": "/",
+  "description": "Referência pediátrica de emergência: medicação, protocolos, scores e IA clínica para profissionais de saúde",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#060B18",
+  "theme_color": "#0EA5E9",
+  "orientation": "portrait-primary",
+  "lang": "pt",
+  "dir": "ltr",
+  "categories": [
+    "medical",
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "icons/pedicode_icon_192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/pedicode_icon_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/screenshot_mobile.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "PediCode - Calculadora de doses"
+    },
+    {
+      "src": "screenshots/screenshot_desktop.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "PediCode - Vista desktop"
+    }
+  ]
+}
