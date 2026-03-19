@@ -75,6 +75,23 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.2', date: 'Marzo 2026', type: 'patch',
+    items: {
+      es: [
+        'Auditoría i18n completa: 480 claves ES/PT/EN verificadas — 0 faltantes',
+        'Correcciones PT: comfortb_m4, pews_urgent · EN: inf_grp_sedo → "Sedation & Analgesia"',
+      ],
+      pt: [
+        'Auditoria i18n completa: 480 chaves ES/PT/EN verificadas — 0 em falta',
+        'Correções PT: comfortb_m4, pews_urgent · EN: inf_grp_sedo → "Sedation & Analgesia"',
+      ],
+      en: [
+        'Full i18n audit: 480 keys ES/PT/EN verified — 0 missing',
+        'PT fixes: comfortb_m4, pews_urgent · EN fix: inf_grp_sedo → "Sedation & Analgesia"',
+      ],
+    }
+  },
+  {
     ver: 'v4.1', date: 'Marzo 2026', type: 'patch',
     items: {
       es: [
