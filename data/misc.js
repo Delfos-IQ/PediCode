@@ -75,6 +75,29 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.1', date: 'Marzo 2026', type: 'patch',
+    items: {
+      es: [
+        'IA: respuestas en el idioma seleccionado en la app (ES/PT/EN)',
+        'IA: fuentes basadas en DGS, SPP, SPN, INEM, AHA/SEUP/ERC por orden de prioridad',
+        'IA: consultas por medicamento referenciadas en Pediamécum (AEP) o Neofax/Lexicomp si caso neonatal',
+        'Favicon: icono del oso PediCode embebido directamente — visible en todos los navegadores',
+      ],
+      pt: [
+        'IA: respostas no idioma selecionado na app (ES/PT/EN)',
+        'IA: fontes baseadas em DGS, SPP, SPN, INEM, AHA/SEUP/ERC por ordem de prioridade',
+        'IA: consultas por medicamento referenciadas em Pediamécum (AEP) ou Neofax/Lexicomp se caso neonatal',
+        'Favicon: ícone do urso PediCode incorporado diretamente — visível em todos os navegadores',
+      ],
+      en: [
+        'AI: responses in the language selected in the app (ES/PT/EN)',
+        'AI: sources based on DGS, SPP, SPN, INEM, AHA/SEUP/ERC in priority order',
+        'AI: drug queries referenced in Pediamécum (AEP) or Neofax/Lexicomp for neonatal cases',
+        'Favicon: PediCode bear icon embedded directly — visible in all browsers',
+      ],
+    }
+  },
+  {
     ver: 'v4.0', date: 'Marzo 2026', type: 'major',
     items: {
       es: [
