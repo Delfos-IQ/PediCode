@@ -208,6 +208,7 @@ function fmtRange(n) {
 // ═══ I18N ═══
 
 let currentLang = 'pt';
+window._currentLang = currentLang;
 
 // Helper: get translated string
 function t(key) {
@@ -240,6 +241,7 @@ function applyI18nToDOM(lang) {
 function setLang(btn, lang) {
   try {
   currentLang = lang;
+  window._currentLang = lang;
   document.querySelectorAll('.lang-group .hbtn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.documentElement.lang = lang;
@@ -1015,6 +1017,9 @@ function onGlobalWeightChange() {
   updateAdultBadge();
   // Recalculate dose verifier if a drug is selected
   if (typeof dvSelectedDrug !== 'undefined' && dvSelectedDrug) dvCalculate();
+  // Update AI weight display if tab is open
+  const aiW = document.getElementById('ai-weight-display');
+  if (aiW) { const w = getGlobalWeight(); aiW.textContent = w ? w + ' kg' : '—'; }
 }
 
 function getGlobalWeight() {
