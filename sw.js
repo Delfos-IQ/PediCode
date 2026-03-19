@@ -1,6 +1,6 @@
-/* PediCode Service Worker — v4.2 · modular build · auto-update */
+/* PediCode Service Worker — v4.3 · modular build · auto-update */
 
-const CACHE = 'pedicode-v4.2';
+const CACHE = 'pedicode-v4.3';
 
 const HTML_FILES = [
   './index.html',
@@ -9,10 +9,10 @@ const HTML_FILES = [
 
 const STATIC_ASSETS = [
   './manifest.json',
-  './pedicode_icon_192.png',
-  './pedicode_icon_512.png',
-  './pedicode_icon_180.png',
-  './pedicode_icon_1024.png',
+  './icons/pedicode_icon_180.png',
+  './icons/pedicode_icon_192.png',
+  './icons/pedicode_icon_512.png',
+  './icons/pedicode_icon_1024.png',
 ];
 
 const JS_MODULES = [
