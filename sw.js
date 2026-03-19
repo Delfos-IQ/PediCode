@@ -30,9 +30,17 @@ const JS_MODULES = [
 /* ── INSTALL: pre-cache all files ───────────────────────────────────── */
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE).then(cache =>
-      cache.addAll([...HTML_FILES, ...STATIC_ASSETS, ...JS_MODULES])
-    )
+    caches.open(CACHE).then(cache => {
+      // Cacheo tolerante: un archivo que falle no bloquea la instalación
+      const allFiles = [...HTML_FILES, ...STATIC_ASSETS, ...JS_MODULES];
+      return Promise.allSettled(
+        allFiles.map(url =>
+          cache.add(url).catch(err => {
+            console.warn('[SW] No se pudo cachear:', url, err.message);
+          })
+        )
+      );
+    })
   );
   /* Activa inmediatamente sin esperar a que cierren las pestañas */
   self.skipWaiting();
