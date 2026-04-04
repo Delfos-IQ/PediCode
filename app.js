@@ -2426,8 +2426,42 @@ function filterScoreTag(btn, tag) { /* legacy no-op */ }
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('PediCode SW registered, scope:', reg.scope))
+      .then(reg => {
+        console.log('PediCode SW registered, scope:', reg.scope);
+
+        // Verificar actualizaciones cada vez que se abre la app
+        reg.update();
+
+        // Si hay un SW nuevo esperando activarse → forzar activación
+        const applyUpdate = (worker) => {
+          worker.postMessage({ type: 'SKIP_WAITING' });
+        };
+
+        if (reg.waiting) {
+          // Ya hay uno esperando (caso más común en mobile)
+          applyUpdate(reg.waiting);
+        }
+
+        // Detectar cuando llega un SW nuevo durante la sesión
+        reg.addEventListener('updatefound', () => {
+          const newWorker = reg.installing;
+          if (!newWorker) return;
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              applyUpdate(newWorker);
+            }
+          });
+        });
+      })
       .catch(e => console.warn('SW registration failed:', e));
+
+    // Cuando el SW activo cambia → recargar la página para aplicar la nueva caché
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshing) return;
+      refreshing = true;
+      window.location.reload();
+    });
   });
 }
 
@@ -2517,6 +2551,39 @@ function openAbout(){
   });
   renderChangelog(lang);
   if (document.getElementById('meds-categories')?.style.display !== 'none') buildMedCatGrid();
+  // Render SW update button
+  renderUpdateBtn(lang);
+}
+
+function renderUpdateBtn(lang) {
+  const el = document.getElementById('about-update-btn');
+  if (!el) return;
+  const labels = {
+    es: { check: 'Verificar actualización', upToDate: '✅ App actualizada', updating: '⏳ Actualizando...' },
+    pt: { check: 'Verificar atualização',   upToDate: '✅ App atualizada',   updating: '⏳ A atualizar...' },
+    en: { check: 'Check for update',        upToDate: '✅ App up to date',   updating: '⏳ Updating...' },
+  };
+  const L = labels[lang] || labels.es;
+  el.textContent = L.check;
+  el.onclick = async () => {
+    if (!('serviceWorker' in navigator)) return;
+    el.textContent = L.updating;
+    el.disabled = true;
+    try {
+      const reg = await navigator.serviceWorker.getRegistration();
+      if (!reg) { el.textContent = L.upToDate; return; }
+      await reg.update();
+      if (reg.waiting) {
+        reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+      } else {
+        el.textContent = L.upToDate;
+        el.disabled = false;
+      }
+    } catch(e) {
+      el.textContent = L.check;
+      el.disabled = false;
+    }
+  };
 }
 function closeAbout(){
   document.getElementById('about-overlay').style.display = 'none';
