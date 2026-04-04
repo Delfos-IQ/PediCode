@@ -929,3 +929,221 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:8
   line-height: 1.6;
 }
 .ai-error small { color: var(--text3); }
+/* ── PediCode AI v2.0 — CSS additions ─────────────────────────────────
+   Adicionar a style.css (ou ao bloco <style> em pedicode.html)
+   junto com os estilos ai-* já existentes
+   ─────────────────────────────────────────────────────────────────── */
+
+/* Contexto clínico pre-analizado */
+.ai-context-preview {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(99, 179, 237, 0.08);
+  border: 1px solid rgba(99, 179, 237, 0.25);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: var(--text-secondary, #94a3b8);
+  margin-bottom: 10px;
+}
+.ai-ctx-label {
+  font-weight: 600;
+  color: var(--text-primary, #e2e8f0);
+}
+
+/* Botón estadísticas */
+.ai-btn-stats {
+  min-width: 40px !important;
+  padding: 0 12px !important;
+  font-size: 1rem;
+  background: rgba(99, 179, 237, 0.1) !important;
+}
+
+/* Panel estadísticas */
+.ai-stats-panel {
+  margin-top: 14px;
+}
+.ai-stats-card {
+  padding: 16px !important;
+}
+.ai-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+.ai-stat-item {
+  text-align: center;
+}
+.ai-stat-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary, #e2e8f0);
+}
+.ai-stat-lbl {
+  font-size: 0.68rem;
+  color: var(--text-secondary, #94a3b8);
+  margin-top: 2px;
+}
+.ai-stats-bar {
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 8px 0 6px;
+}
+.ai-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+.ai-stats-langs {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #94a3b8);
+  text-align: center;
+}
+.ai-stat-empty {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #94a3b8);
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Confianza */
+.ai-confidence {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+.ai-conf-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #94a3b8);
+  white-space: nowrap;
+}
+.ai-conf-bar {
+  flex: 1;
+  height: 5px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.ai-conf-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+  opacity: 0.7;
+}
+.ai-conf-pct {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #94a3b8);
+  min-width: 32px;
+  text-align: right;
+}
+
+/* Razonamiento clínico */
+.ai-reasoning-wrap {
+  margin: 12px 0;
+}
+.ai-reasoning-toggle {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text-secondary, #94a3b8);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.ai-reasoning-toggle:hover {
+  border-color: rgba(255,255,255,0.25);
+  color: var(--text-primary, #e2e8f0);
+}
+.ai-reasoning-body {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.04);
+  border-left: 2px solid rgba(99, 179, 237, 0.4);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.82rem;
+  color: var(--text-secondary, #94a3b8);
+  line-height: 1.5;
+}
+
+/* OpenEvidence button */
+.ai-oe-wrap {
+  margin: 14px 0 6px;
+}
+.ai-oe-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(79, 172, 254, 0.08);
+  border: 1px solid rgba(79, 172, 254, 0.3);
+  border-radius: 8px;
+  color: #63b3ed;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.ai-oe-btn:hover {
+  background: rgba(79, 172, 254, 0.15);
+  border-color: rgba(79, 172, 254, 0.5);
+  color: #90cdf4;
+}
+.ai-oe-badge {
+  background: rgba(79, 172, 254, 0.2);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Feedback */
+.ai-feedback-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.ai-feedback-label {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #94a3b8);
+  flex: 1;
+  min-width: 120px;
+}
+.ai-fb-btn {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.ai-fb-yes {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.3);
+  color: #34d399;
+}
+.ai-fb-yes:hover {
+  background: rgba(52, 211, 153, 0.2);
+}
+.ai-fb-no {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: #f87171;
+}
+.ai-fb-no:hover {
+  background: rgba(248, 113, 113, 0.2);
+}
+.ai-feedback-thanks {
+  font-size: 0.8rem;
+  color: #34d399;
+}
