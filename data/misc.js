@@ -75,6 +75,35 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.4', date: 'Abril 2026', type: 'major',
+    items: {
+      es: [
+        'IA v2.0: extracción automática de contexto clínico (edad, SpO₂, FC, FR, temperatura, signos de alarma)',
+        'IA v2.0: razonamiento clínico expandible — paso a paso TEP → ABCDE → diagnóstico diferencial',
+        'IA v2.0: barra de confianza diagnóstica (0–100%) y cálculo de dosis por peso en fármacos',
+        'IA v2.0: feedback clínico 👍/👎 con aprendizaje local por IndexedDB — estadísticas de uso',
+        'IA v2.0: integración OpenEvidence — botón de búsqueda de evidencia con query refinada automáticamente',
+        'SW actualizado a v4.4 — caché renovada con auto-actualización en segundo plano',
+      ],
+      pt: [
+        'IA v2.0: extração automática de contexto clínico (idade, SpO₂, FC, FR, temperatura, sinais de alarme)',
+        'IA v2.0: raciocínio clínico expansível — passo a passo TEP → ABCDE → diagnóstico diferencial',
+        'IA v2.0: barra de confiança diagnóstica (0–100%) e cálculo de doses por peso nos fármacos',
+        'IA v2.0: feedback clínico 👍/👎 com aprendizagem local por IndexedDB — estatísticas de uso',
+        'IA v2.0: integração OpenEvidence — botão de busca de evidência com query refinada automaticamente',
+        'SW atualizado para v4.4 — cache renovada com auto-atualização em segundo plano',
+      ],
+      en: [
+        'AI v2.0: automatic clinical context extraction (age, SpO₂, HR, RR, temperature, alarm signs)',
+        'AI v2.0: expandable clinical reasoning — step-by-step PAT → ABCDE → differential diagnosis',
+        'AI v2.0: diagnostic confidence bar (0–100%) and weight-based drug dose calculation',
+        'AI v2.0: clinical feedback 👍/👎 with local learning via IndexedDB — usage statistics',
+        'AI v2.0: OpenEvidence integration — evidence search button with auto-refined query',
+        'SW updated to v4.4 — cache renewed with background auto-update',
+      ],
+    }
+  },
+  {
     ver: 'v4.2', date: 'Marzo 2026', type: 'patch',
     items: {
       es: [
