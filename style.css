@@ -1147,3 +1147,97 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:8
   font-size: 0.8rem;
   color: #34d399;
 }
+
+/* ── AI Feedback follow-up form ──────────────────────────────────────── */
+.ai-follow-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  background: rgba(248, 113, 113, 0.05);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.ai-follow-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary, #e2e8f0);
+}
+.ai-follow-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ai-follow-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.ai-follow-option:hover {
+  background: rgba(255,255,255,0.05);
+}
+.ai-follow-option input[type="checkbox"] {
+  accent-color: #f87171;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.ai-follow-option span {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #94a3b8);
+}
+.ai-follow-textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: var(--text-primary, #e2e8f0);
+  font-size: 0.8rem;
+  padding: 8px 10px;
+  resize: vertical;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.ai-follow-textarea:focus {
+  outline: none;
+  border-color: rgba(248, 113, 113, 0.4);
+}
+.ai-follow-textarea::placeholder {
+  color: var(--text-secondary, #64748b);
+  font-style: italic;
+}
+.ai-follow-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ai-follow-send {
+  font-size: 0.78rem !important;
+  padding: 6px 14px !important;
+  background: rgba(248, 113, 113, 0.12) !important;
+  border: 1px solid rgba(248, 113, 113, 0.35) !important;
+  color: #f87171 !important;
+}
+.ai-follow-send:hover {
+  background: rgba(248, 113, 113, 0.22) !important;
+}
+.ai-follow-skip {
+  background: none;
+  border: none;
+  color: var(--text-secondary, #64748b);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+.ai-follow-skip:hover {
+  color: var(--text-primary, #e2e8f0);
+}
