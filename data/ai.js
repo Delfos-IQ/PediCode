@@ -182,6 +182,20 @@ const LABELS = {
     feedbackYes: 'Sí, útil',
     feedbackNo: 'Mejorable',
     feedbackThanks: '¡Gracias por tu feedback!',
+    feedbackFollowTitle: '¿Qué falló? (ayúdanos a mejorar)',
+    feedbackFollowOptions: [
+      { key: 'farmacos',   label: '💊 Fármacos incorrectos o innecesarios' },
+      { key: 'riesgo_bajo', label: '⬇️ Riesgo subestimado' },
+      { key: 'riesgo_alto', label: '⬆️ Riesgo sobreestimado' },
+      { key: 'sugerencias', label: '💡 Sugerencias clínicas inadecuadas' },
+      { key: 'tep',         label: '🔺 TEP incorrecto' },
+      { key: 'idioma',      label: '🌐 Respuesta en idioma incorrecto' },
+      { key: 'otro',        label: '📝 Otro' },
+    ],
+    feedbackFollowPlaceholder: '¿Qué ocurrió realmente? ¿Cuál fue tu decisión clínica? (opcional)',
+    feedbackFollowSend: 'Enviar',
+    feedbackFollowSkip: 'Omitir',
+    feedbackFollowSent: '✅ Gracias — tu experiencia nos ayuda a mejorar.',
     openEvidence: 'Buscar evidencia',
     statsTitle: 'Estadísticas de uso',
     statsCases: 'Casos analizados',
@@ -217,6 +231,20 @@ const LABELS = {
     feedbackYes: 'Sim, útil',
     feedbackNo: 'A melhorar',
     feedbackThanks: 'Obrigado pelo teu feedback!',
+    feedbackFollowTitle: 'O que falhou? (ajuda-nos a melhorar)',
+    feedbackFollowOptions: [
+      { key: 'farmacos',    label: '💊 Fármacos incorretos ou desnecessários' },
+      { key: 'riesgo_bajo', label: '⬇️ Risco subestimado' },
+      { key: 'riesgo_alto', label: '⬆️ Risco sobreestimado' },
+      { key: 'sugerencias', label: '💡 Sugestões clínicas inadequadas' },
+      { key: 'tep',         label: '🔺 TAP incorreto' },
+      { key: 'idioma',      label: '🌐 Resposta no idioma errado' },
+      { key: 'otro',        label: '📝 Outro' },
+    ],
+    feedbackFollowPlaceholder: 'O que aconteceu na realidade? Qual foi a tua decisão clínica? (opcional)',
+    feedbackFollowSend: 'Enviar',
+    feedbackFollowSkip: 'Ignorar',
+    feedbackFollowSent: '✅ Obrigado — a tua experiência ajuda-nos a melhorar.',
     openEvidence: 'Buscar evidência',
     statsTitle: 'Estatísticas de uso',
     statsCases: 'Casos analisados',
@@ -252,6 +280,20 @@ const LABELS = {
     feedbackYes: 'Yes, helpful',
     feedbackNo: 'Needs improvement',
     feedbackThanks: 'Thank you for your feedback!',
+    feedbackFollowTitle: 'What went wrong? (help us improve)',
+    feedbackFollowOptions: [
+      { key: 'farmacos',    label: '💊 Incorrect or unnecessary drugs' },
+      { key: 'riesgo_bajo', label: '⬇️ Risk underestimated' },
+      { key: 'riesgo_alto', label: '⬆️ Risk overestimated' },
+      { key: 'sugerencias', label: '💡 Inadequate clinical suggestions' },
+      { key: 'tep',         label: '🔺 Incorrect PAT' },
+      { key: 'idioma',      label: '🌐 Wrong language in response' },
+      { key: 'otro',        label: '📝 Other' },
+    ],
+    feedbackFollowPlaceholder: 'What actually happened? What was your clinical decision? (optional)',
+    feedbackFollowSend: 'Send',
+    feedbackFollowSkip: 'Skip',
+    feedbackFollowSent: '✅ Thank you — your experience helps us improve.',
     openEvidence: 'Search evidence',
     statsTitle: 'Usage statistics',
     statsCases: 'Cases analysed',
@@ -423,11 +465,90 @@ export async function aiShowStats() {
 }
 
 // ── FEEDBACK ────────────────────────────────────────────────────────────
-window.aiFeedback = async function(caseId, rating, btnYes, btnNo) {
+
+// Guarda o follow-up no IndexedDB junto ao registo do caso
+async function saveFeedbackDetail(caseId, categories, freeText) {
+  if (!caseId) return;
+  try {
+    const db = await openDB();
+    const tx = db.transaction('cases', 'readwrite');
+    const store = tx.objectStore('cases');
+    const req = store.get(caseId);
+    req.onsuccess = () => {
+      const record = req.result;
+      if (record) {
+        record.feedbackCategories = categories;  // array de keys seleccionadas
+        record.feedbackText = freeText || '';    // texto libre del clínico
+        store.put(record);
+      }
+    };
+  } catch (e) {
+    console.warn('[PediCode AI] saveFeedbackDetail error:', e);
+  }
+}
+
+window.aiFeedback = async function(caseId, rating) {
   const lang = window._currentLang || 'es';
   const L = LABELS[lang] || LABELS.es;
   await updateRating(caseId, rating);
 
+  const wrap = document.getElementById('ai-feedback-wrap');
+  if (!wrap) return;
+
+  if (rating === 1) {
+    // Feedback positivo — agradecimento simple
+    wrap.innerHTML = `<span class="ai-feedback-thanks">✅ ${L.feedbackThanks}</span>`;
+    return;
+  }
+
+  // Feedback negativo — mostrar formulário de follow-up
+  const optionsHTML = (L.feedbackFollowOptions || []).map(opt => `
+    <label class="ai-follow-option">
+      <input type="checkbox" name="fb-cat" value="${opt.key}">
+      <span>${opt.label}</span>
+    </label>`).join('');
+
+  wrap.innerHTML = `
+<div class="ai-follow-wrap">
+  <div class="ai-follow-title">${L.feedbackFollowTitle}</div>
+  <div class="ai-follow-options" id="ai-follow-cats">
+    ${optionsHTML}
+  </div>
+  <textarea
+    id="ai-follow-text"
+    class="ai-follow-textarea"
+    placeholder="${L.feedbackFollowPlaceholder}"
+    maxlength="400"
+    rows="3"
+  ></textarea>
+  <div class="ai-follow-actions">
+    <button class="hbtn ai-follow-send" onclick="aiFeedbackSubmit(${caseId})">
+      📤 ${L.feedbackFollowSend}
+    </button>
+    <button class="ai-follow-skip" onclick="aiFeedbackSkip()">
+      ${L.feedbackFollowSkip}
+    </button>
+  </div>
+</div>`;
+};
+
+window.aiFeedbackSubmit = async function(caseId) {
+  const lang = window._currentLang || 'es';
+  const L = LABELS[lang] || LABELS.es;
+
+  const checked = [...document.querySelectorAll('#ai-follow-cats input:checked')]
+    .map(el => el.value);
+  const freeText = document.getElementById('ai-follow-text')?.value?.trim() || '';
+
+  await saveFeedbackDetail(caseId, checked, freeText);
+
+  const wrap = document.getElementById('ai-feedback-wrap');
+  if (wrap) wrap.innerHTML = `<span class="ai-feedback-thanks">${L.feedbackFollowSent}</span>`;
+};
+
+window.aiFeedbackSkip = function() {
+  const lang = window._currentLang || 'es';
+  const L = LABELS[lang] || LABELS.es;
   const wrap = document.getElementById('ai-feedback-wrap');
   if (wrap) wrap.innerHTML = `<span class="ai-feedback-thanks">✅ ${L.feedbackThanks}</span>`;
 };
