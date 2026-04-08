@@ -1,10 +1,10 @@
 {
   "name": "PediCode — Urgências Pediátricas",
   "short_name": "PediCode",
-  "id": "/",
+  "id": "/PediCode/",
   "description": "Referência pediátrica de emergência: medicação, protocolos, scores e IA clínica para profissionais de saúde",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/PediCode/",
+  "scope": "/PediCode/",
   "display": "standalone",
   "background_color": "#060B18",
   "theme_color": "#0EA5E9",
@@ -26,13 +26,25 @@
       "src": "icons/pedicode_icon_192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icons/pedicode_icon_192_maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "icons/pedicode_icon_512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icons/pedicode_icon_512_maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "icons/pedicode_icon_1024.png",
