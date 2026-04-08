@@ -11,43 +11,34 @@
   "orientation": "portrait-primary",
   "lang": "pt",
   "dir": "ltr",
-  "categories": [
-    "medical",
-    "education"
-  ],
+  "categories": ["medical", "education"],
   "icons": [
     {
-      "src": "icons/pedicode_icon_180.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/pedicode_icon_192.png",
+      "src": "/PediCode/icons/pedicode_icon_192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/pedicode_icon_192_maskable.png",
+      "src": "/PediCode/icons/pedicode_icon_192_maskable.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "icons/pedicode_icon_512.png",
+      "src": "/PediCode/icons/pedicode_icon_512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/pedicode_icon_512_maskable.png",
+      "src": "/PediCode/icons/pedicode_icon_512_maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "icons/pedicode_icon_1024.png",
+      "src": "/PediCode/icons/pedicode_icon_1024.png",
       "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "any"
@@ -55,15 +46,15 @@
   ],
   "screenshots": [
     {
-      "src": "screenshots/screenshot_mobile.png",
-      "sizes": "540x720",
+      "src": "/PediCode/screenshots/screenshot_mobile.png",
+      "sizes": "1068x2048",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "PediCode - Calculadora de doses"
     },
     {
-      "src": "screenshots/screenshot_desktop.png",
-      "sizes": "1280x800",
+      "src": "/PediCode/screenshots/screenshot_desktop.png",
+      "sizes": "1906x827",
       "type": "image/png",
       "form_factor": "wide",
       "label": "PediCode - Vista desktop"
