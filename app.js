@@ -239,43 +239,62 @@ function applyI18nToDOM(lang) {
 }
 
 function setLang(btn, lang) {
-  try {
   currentLang = lang;
   window._currentLang = lang;
   document.querySelectorAll('.lang-group .hbtn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.documentElement.lang = lang;
   const langData = T[lang] || T['es'];
-  applyI18nToDOM(lang);
-  renderEvalUI();
-  renderCalcUI();
-  renderScoresUI();
-  renderVitalsUI();
-  renderDoses();
-  calcInfusion();
-  // Force proto UI rebuild on lang change
-  const ptH = document.getElementById('pt-cards-hidden'); if(ptH) ptH.dataset.lang='';
-  renderProtoUI();
-  dvRenderRights();
-  renderRcpTab();
-  compatRenderChips();
-  compatRenderResults();
-  // Restore chrono/metro button states after lang change
-  const chronoBtn = document.getElementById('rcp-chrono-btn');
-  if (chronoBtn) {
-    if (rcpChronoRunning) chronoBtn.textContent = langData['rcp_chrono_pause'] || t('rcp_chrono_pause');
-    else if (rcpChronoElapsed > 0) chronoBtn.textContent = langData['rcp_chrono_resume'] || t('rcp_chrono_resume');
-    else chronoBtn.textContent = langData['rcp_chrono_start'] || t('rcp_chrono_start');
-  }
-  const metroBtn = document.getElementById('rcp-metro-btn');
-  if (metroBtn) {
-    metroBtn.textContent = rcpMetroRunning
-      ? (langData['rcp_metro_stop'] || t('rcp_metro_stop'))
-      : (langData['rcp_metro_activate'] || t('rcp_metro_activate'));
-  }
-  } catch(_e) {
-    console.error('[PediCode] Error en setLang:', _e);
-  }
+
+  // 1. Apply i18n to static DOM immediately
+  try { applyI18nToDOM(lang); } catch(e) { console.warn('[setLang] applyI18nToDOM:', e); }
+
+  // 2. Re-render RCP tab first (visible tab, highest priority)
+  try { renderRcpTab(); } catch(e) { console.warn('[setLang] renderRcpTab:', e); }
+
+  // 3. Chrono/metro button labels (RCP state)
+  try {
+    const chronoBtn = document.getElementById('rcp-chrono-btn');
+    if (chronoBtn) {
+      if (rcpChronoRunning) chronoBtn.textContent = langData['rcp_chrono_pause'] || t('rcp_chrono_pause');
+      else if (rcpChronoElapsed > 0) chronoBtn.textContent = langData['rcp_chrono_resume'] || t('rcp_chrono_resume');
+      else chronoBtn.textContent = langData['rcp_chrono_start'] || t('rcp_chrono_start');
+    }
+    const metroBtn = document.getElementById('rcp-metro-btn');
+    if (metroBtn) {
+      metroBtn.textContent = rcpMetroRunning
+        ? (langData['rcp_metro_stop'] || t('rcp_metro_stop'))
+        : (langData['rcp_metro_activate'] || t('rcp_metro_activate'));
+    }
+  } catch(e) { console.warn('[setLang] rcp-buttons:', e); }
+
+  // 4. Defer heavy renders to next frame — don't block the active tab
+  requestAnimationFrame(() => {
+    try { renderEvalUI(); } catch(e) { console.warn('[setLang] renderEvalUI:', e); }
+    try { renderDoses(); } catch(e) { console.warn('[setLang] renderDoses:', e); }
+    try { dvRenderRights(); } catch(e) { console.warn('[setLang] dvRenderRights:', e); }
+    try { compatRenderChips(); } catch(e) { console.warn('[setLang] compatChips:', e); }
+    try { compatRenderResults(); } catch(e) { console.warn('[setLang] compatResults:', e); }
+    // Mark inactive tabs as stale so they rebuild on next visit
+    try {
+      const ptH = document.getElementById('pt-cards-hidden'); if(ptH) ptH.dataset.lang='';
+    } catch(e) {}
+    // Rebuild inactive tabs only if they're currently visible
+    const activeTab = document.querySelector('.tab-content.active');
+    const activeId = activeTab ? activeTab.id : '';
+    if (activeId === 'tab-calc') {
+      try { renderCalcUI(); calcInfusion(); } catch(e) {}
+    }
+    if (activeId === 'tab-scores') {
+      try { renderScoresUI(); } catch(e) {}
+    }
+    if (activeId === 'tab-vitals') {
+      try { renderVitalsUI(); } catch(e) {}
+    }
+    if (activeId === 'tab-protos') {
+      try { renderProtoUI(); } catch(e) {}
+    }
+  });
 }
 
 
@@ -1356,13 +1375,13 @@ function showTab(btn, id) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   btn.classList.add('active');
-  if(id === 'protos') { if(typeof renderProtoUI==='function') renderProtoUI(); else showProtoCategories(); }
-  if(id === 'meds') { showMedCategories(); }
-  if(id === 'calc') { buildDoseCatGrid(); buildInfDrugGrid(); buildDvCatGrid(); }
-  if(id === 'scores') { buildScoreCatGrid(); showScoreCategories(); }
-  if(id === 'vitals') { buildVitalsCatGrid(); showVitalsCategories(); }
-  if(id === 'rcp') { renderRcpTab(); }
-  if(id === 'ai') { renderAITab(currentLang, getGlobalWeight()); }
+  if(id === 'protos') { try { if(typeof renderProtoUI==='function') renderProtoUI(); else showProtoCategories(); } catch(e){} }
+  if(id === 'meds')   { try { showMedCategories(); } catch(e){} }
+  if(id === 'calc')   { try { renderCalcUI(); buildDoseCatGrid(); buildInfDrugGrid(); buildDvCatGrid(); calcInfusion(); } catch(e){} }
+  if(id === 'scores') { try { renderScoresUI(); buildScoreCatGrid(); showScoreCategories(); } catch(e){} }
+  if(id === 'vitals') { try { renderVitalsUI(); buildVitalsCatGrid(); showVitalsCategories(); } catch(e){} }
+  if(id === 'rcp')    { try { renderRcpTab(); } catch(e){} }
+  if(id === 'ai')     { try { renderAITab(currentLang, getGlobalWeight()); } catch(e){} }
   } catch(_e) {
     console.error('[PediCode] Error en showTab:', _e);
   }

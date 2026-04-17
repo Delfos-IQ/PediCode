@@ -2517,6 +2517,32 @@ if ('serviceWorker' in navigator) {
 <!-- ══════════ TAB IA ══════════ -->
 <div id="tab-ai" class="tab-content"></div>
 
+<script>
+// Safe area inset fallback for Android TWA / older PWA contexts
+(function() {
+  function applySafeArea() {
+    var sat = parseInt(getComputedStyle(document.documentElement)
+      .getPropertyValue('--sat') || '0') || 0;
+    // Try CSS env() value via a test element
+    var el = document.createElement('div');
+    el.style.cssText = 'position:fixed;top:env(safe-area-inset-top,0px);width:0;height:0;visibility:hidden';
+    document.body && document.body.appendChild(el);
+    var top = parseInt(getComputedStyle(el).top) || 0;
+    document.body && document.body.removeChild(el);
+    // If env() returned 0 on Android standalone, use a sane minimum
+    if (top === 0 && window.navigator.standalone || 
+        top === 0 && window.matchMedia('(display-mode: standalone)').matches) {
+      // Android: status bar ~24px; iOS with notch: handled by env()
+      var ua = navigator.userAgent;
+      var isAndroid = /Android/.test(ua);
+      if (isAndroid) top = 24;
+    }
+    document.documentElement.style.setProperty('--safe-top', top + 'px');
+  }
+  if (document.body) applySafeArea();
+  else document.addEventListener('DOMContentLoaded', applySafeArea);
+})();
+</script>
 <script type="module" src="app.js"></script>
 </body>
 </html>
