@@ -2952,13 +2952,14 @@ const COMPAT_MAX = 5;
 function compatInit() {
   compatSelected = [];
   const inp = document.getElementById('compat-search-input');
-  if (inp) inp.value = '';
+  if (inp) { inp.value = ''; inp.disabled = false; }
   const dd = document.getElementById('compat-dropdown');
   if (dd) { dd.style.display = 'none'; dd.innerHTML = ''; }
   const clr = document.getElementById('compat-search-clear');
   if (clr) clr.style.display = 'none';
+  const results = document.getElementById('compat-results');
+  if (results) results.innerHTML = '';
   compatRenderChips();
-  compatRenderResults();
 }
 
 function compatFilterSearch(q) {
@@ -3018,15 +3019,17 @@ function compatRemoveDrug(id) {
 function compatRenderChips() {
   const wrap = document.getElementById('compat-chips');
   const btn = document.getElementById('compat-verify-btn');
+  const hint = document.getElementById('compat-hint');
   const inp = document.getElementById('compat-search-input');
+  const counter = document.getElementById('compat-count');
   if (!wrap) return;
   const lang = typeof currentLang !== 'undefined' ? currentLang : 'es';
-  if (!compatSelected.length) {
-    wrap.innerHTML = '';
-    if (btn) btn.style.display = 'none';
-    if (inp) inp.disabled = false;
-    return;
-  }
+  const n = compatSelected.length;
+
+  // Counter
+  if (counter) counter.textContent = n;
+
+  // Chips
   wrap.innerHTML = compatSelected.map(id => {
     const drug = COMPAT_DRUGS.find(d => d.id === id);
     if (!drug) return '';
@@ -3037,12 +3040,20 @@ function compatRenderChips() {
       '<button class="compat-chip-remove" onclick="compatRemoveDrug('' + id + '')" title="Quitar">✕</button>' +
       '</div>';
   }).join('');
-  if (btn) btn.style.display = compatSelected.length >= 2 ? '' : 'none';
-  if (inp) inp.disabled = compatSelected.length >= COMPAT_MAX;
-  if (inp && compatSelected.length >= COMPAT_MAX) {
-    inp.placeholder = t('compat_max_reached');
-  } else if (inp) {
-    inp.placeholder = t('compat_search_ph');
+
+  // Button — always visible, enabled only with ≥2 drugs
+  if (btn) {
+    btn.disabled = n < 2;
+    btn.classList.toggle('compat-verify-disabled', n < 2);
+  }
+
+  // Hint — show "add at least 2" when <2, hide when ≥2
+  if (hint) hint.style.display = n >= 2 ? 'none' : '';
+
+  // Search input
+  if (inp) {
+    inp.disabled = n >= COMPAT_MAX;
+    inp.placeholder = n >= COMPAT_MAX ? t('compat_max_reached') : t('compat_search_ph');
   }
 }
 

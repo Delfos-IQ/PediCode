@@ -1821,22 +1821,42 @@ if ('serviceWorker' in navigator) {
 
   <!-- ─── PANEL D: COMPATIBILIDAD EN Y ─── -->
   <div id="panel-compat" class="calc-panel">
-    <div class="compat-intro" data-i18n="compat_intro">Añade hasta 5 fármacos para verificar su compatibilidad en Y</div>
+
+    <!-- Instrucción + contador -->
+    <div class="compat-header">
+      <div class="compat-intro" data-i18n="compat_intro">Busca y añade fármacos IV para verificar su compatibilidad en Y</div>
+      <div class="compat-counter"><span id="compat-count">0</span>/5</div>
+    </div>
+
+    <!-- Buscador -->
     <div style="position:relative">
       <div class="calc-search-wrap">
         <span class="search-icon">🔍</span>
         <input class="calc-search-input" type="text" id="compat-search-input"
-          placeholder="Buscar fármaco…" data-i18n-placeholder="compat_search_ph"
-          oninput="compatFilterSearch(this.value)" autocomplete="off">
+          placeholder="Escribe para buscar un fármaco…"
+          data-i18n-placeholder="compat_search_ph"
+          oninput="compatFilterSearch(this.value)"
+          autocomplete="off">
         <button class="calc-search-clear" id="compat-search-clear"
           onclick="compatClearSearch()" style="display:none" title="Limpiar">✕</button>
       </div>
       <div id="compat-dropdown" class="compat-dropdown" style="display:none"></div>
     </div>
+
+    <!-- Chips de fármacos seleccionados -->
     <div id="compat-chips" class="compat-chips"></div>
-    <button id="compat-verify-btn" class="compat-verify-btn" style="display:none"
-      onclick="checkCompat()" data-i18n="compat_verify_btn">Verificar compatibilidad</button>
+
+    <!-- Botón SIEMPRE VISIBLE — deshabilitado hasta ≥2 fármacos -->
+    <button id="compat-verify-btn" class="compat-verify-btn compat-verify-disabled"
+      onclick="checkCompat()" data-i18n="compat_verify_btn" disabled>
+      🔗 Verificar compatibilidad
+    </button>
+    <div id="compat-hint" class="compat-hint" data-i18n="compat_hint_add">Añade al menos 2 fármacos para verificar</div>
+
+    <!-- Resultados -->
     <div id="compat-results"></div>
+
+    <!-- Disclaimer -->
     <div class="compat-disclaimer" data-i18n="compat_disclaimer">
       ⚠ Herramienta de apoyo. Verificar siempre con farmacéutico clínico o fuente primaria (Stabilis, Trissel's).
     </div>
