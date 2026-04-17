@@ -8,6 +8,7 @@ import { RCP_CARDS } from './data/rcp.js';
 import { PROTO, PROTO_CATS } from './data/protocols.js';
 import { BROW, SCORE_CATS, VITALS_CATS, CALC_CATS, MEDS_CATS, BROW_ITEM_KEYS, CHANGELOG } from './data/misc.js';
 import { renderAITab, aiAnalyze, aiClear, aiUpdateCount } from './data/ai.js';
+import { COMPAT_DRUGS, COMPAT_GROUPS, getCompat, getAllPairs } from './data/compatibilities.js';
 
 const INF_GROUP_ICONS  = {'Vasoactivos':'🚨', 'Sedoanalgesia':'😴', 'Otros':'💊'};
 
@@ -1533,6 +1534,7 @@ function showCalcPanel(btn, id) {
   document.getElementById(id).classList.add('active');
   if (id === 'panel-inf') { buildInfDrugGrid(); calcInfusion(); }
   else if (id === 'panel-verify') { showDvCategories(); dvInit(); }
+  else if (id === 'panel-compat') { compatInit(); }
   else { buildDoseCatGrid(); renderDoses(); }
 }
 
@@ -2939,6 +2941,174 @@ function goToCalc() {
   setTimeout(() => { const wi = document.getElementById('calc-weight'); if (wi) wi.focus(); }, 100);
 }
 
+// ═══════════════════════════════════════════════════════════════════
+// MÓDULO COMPATIBILIDAD EN Y (panel-compat)
+// ═══════════════════════════════════════════════════════════════════
+let compatSelected = []; // array de drug ids seleccionados (max 5)
+const COMPAT_MAX = 5;
+
+function compatInit() {
+  compatSelected = [];
+  const inp = document.getElementById('compat-search-input');
+  if (inp) inp.value = '';
+  const dd = document.getElementById('compat-dropdown');
+  if (dd) { dd.style.display = 'none'; dd.innerHTML = ''; }
+  const clr = document.getElementById('compat-search-clear');
+  if (clr) clr.style.display = 'none';
+  compatRenderChips();
+  compatRenderResults();
+}
+
+function compatFilterSearch(q) {
+  const dd = document.getElementById('compat-dropdown');
+  const clr = document.getElementById('compat-search-clear');
+  if (!dd) return;
+  q = (q || '').trim().toLowerCase();
+  if (clr) clr.style.display = q ? '' : 'none';
+  if (!q) { dd.style.display = 'none'; dd.innerHTML = ''; return; }
+  const lang = (window._lang || 'es');
+  const hits = COMPAT_DRUGS.filter(d => {
+    if (compatSelected.includes(d.id)) return false;
+    const lbl = (d.label[lang] || d.label.es || '').toLowerCase();
+    return lbl.includes(q) || d.id.includes(q);
+  }).slice(0, 8);
+  if (!hits.length) {
+    dd.innerHTML = '<div class="compat-dd-empty">' + t('compat_no_results') + '</div>';
+    dd.style.display = '';
+    return;
+  }
+  dd.innerHTML = hits.map(d => {
+    const lbl = d.label[lang] || d.label.es;
+    return '<div class="compat-dd-item" onclick="compatSelectDrug('' + d.id + '')">' +
+      '<span class="compat-dd-icon">' + d.icon + '</span>' +
+      '<span class="compat-dd-label">' + lbl + '</span>' +
+      '</div>';
+  }).join('');
+  dd.style.display = '';
+}
+
+function compatClearSearch() {
+  const inp = document.getElementById('compat-search-input');
+  const dd = document.getElementById('compat-dropdown');
+  const clr = document.getElementById('compat-search-clear');
+  if (inp) inp.value = '';
+  if (dd) { dd.style.display = 'none'; dd.innerHTML = ''; }
+  if (clr) clr.style.display = 'none';
+}
+
+function compatSelectDrug(id) {
+  if (compatSelected.includes(id)) return;
+  if (compatSelected.length >= COMPAT_MAX) return;
+  compatSelected.push(id);
+  compatClearSearch();
+  const inp = document.getElementById('compat-search-input');
+  if (inp) inp.focus();
+  compatRenderChips();
+  compatRenderResults();
+}
+
+function compatRemoveDrug(id) {
+  compatSelected = compatSelected.filter(x => x !== id);
+  compatRenderChips();
+  compatRenderResults();
+}
+
+function compatRenderChips() {
+  const wrap = document.getElementById('compat-chips');
+  const btn = document.getElementById('compat-verify-btn');
+  const inp = document.getElementById('compat-search-input');
+  if (!wrap) return;
+  const lang = (window._lang || 'es');
+  if (!compatSelected.length) {
+    wrap.innerHTML = '';
+    if (btn) btn.style.display = 'none';
+    if (inp) inp.disabled = false;
+    return;
+  }
+  wrap.innerHTML = compatSelected.map(id => {
+    const drug = COMPAT_DRUGS.find(d => d.id === id);
+    if (!drug) return '';
+    const lbl = drug.label[lang] || drug.label.es;
+    return '<div class="compat-chip">' +
+      '<span class="compat-chip-icon">' + drug.icon + '</span>' +
+      '<span class="compat-chip-label">' + lbl + '</span>' +
+      '<button class="compat-chip-remove" onclick="compatRemoveDrug('' + id + '')" title="Quitar">✕</button>' +
+      '</div>';
+  }).join('');
+  if (btn) btn.style.display = compatSelected.length >= 2 ? '' : 'none';
+  if (inp) inp.disabled = compatSelected.length >= COMPAT_MAX;
+  if (inp && compatSelected.length >= COMPAT_MAX) {
+    inp.placeholder = t('compat_max_reached');
+  } else if (inp) {
+    inp.placeholder = t('compat_search_ph');
+  }
+}
+
+function checkCompat() {
+  compatRenderResults();
+}
+
+function compatRenderResults() {
+  const wrap = document.getElementById('compat-results');
+  if (!wrap) return;
+  if (compatSelected.length < 2) { wrap.innerHTML = ''; return; }
+
+  const lang = (window._lang || 'es');
+  const pairs = getAllPairs(compatSelected);
+
+  // Contar por status
+  const counts = { C: 0, I: 0, IC: 0, '?': 0 };
+  pairs.forEach(p => { if (counts[p.status] !== undefined) counts[p.status]++; });
+
+  // Resumen
+  let summaryClass = 'compat-summary-ok';
+  if (counts.I > 0) summaryClass = 'compat-summary-bad';
+  else if (counts.IC > 0 || counts['?'] > 0) summaryClass = 'compat-summary-warn';
+
+  let summaryHtml = '<div class="compat-summary ' + summaryClass + '">';
+  if (counts.I > 0) summaryHtml += '<span class="compat-sum-badge compat-badge-I">❌ ' + counts.I + ' ' + t('compat_incompatible') + '</span>';
+  if (counts.IC > 0) summaryHtml += '<span class="compat-sum-badge compat-badge-IC">⚠️ ' + counts.IC + ' ' + t('compat_conditional') + '</span>';
+  if (counts['?'] > 0) summaryHtml += '<span class="compat-sum-badge compat-badge-unk">❓ ' + counts['?'] + ' ' + t('compat_unknown') + '</span>';
+  if (counts.C > 0) summaryHtml += '<span class="compat-sum-badge compat-badge-C">✅ ' + counts.C + ' ' + t('compat_compatible') + '</span>';
+  summaryHtml += '</div>';
+
+  // Filas de pares — ordenadas: I primero, luego IC, ?, C
+  const order = { I: 0, IC: 1, '?': 2, C: 3 };
+  pairs.sort((a, b) => (order[a.status] || 0) - (order[b.status] || 0));
+
+  const STATUS_META = {
+    C:  { icon: '✅', cls: 'compat-row-C',  label: t('compat_compatible') },
+    I:  { icon: '❌', cls: 'compat-row-I',  label: t('compat_incompatible') },
+    IC: { icon: '⚠️', cls: 'compat-row-IC', label: t('compat_conditional') },
+    '?':{ icon: '❓', cls: 'compat-row-unk',label: t('compat_unknown') },
+  };
+
+  let rowsHtml = pairs.map(p => {
+    const drugA = COMPAT_DRUGS.find(d => d.id === p.a);
+    const drugB = COMPAT_DRUGS.find(d => d.id === p.b);
+    const lblA = drugA ? (drugA.label[lang] || drugA.label.es) : p.a;
+    const lblB = drugB ? (drugB.label[lang] || drugB.label.es) : p.b;
+    const meta = STATUS_META[p.status] || STATUS_META['?'];
+    const noteHtml = p.note ? '<div class="compat-row-note">' + p.note + '</div>' : '';
+    const stabLink = p.status === '?' ?
+      '<a class="compat-stabilis-link" href="https://www.stabilis.org/" target="_blank" rel="noopener">Consultar Stabilis ↗</a>' : '';
+    return '<div class="compat-row ' + meta.cls + '">' +
+      '<div class="compat-row-drugs">' +
+        '<span class="compat-row-icon">' + (drugA ? drugA.icon : '') + '</span>' +
+        '<span class="compat-row-name">' + lblA + '</span>' +
+        '<span class="compat-row-sep">+</span>' +
+        '<span class="compat-row-icon">' + (drugB ? drugB.icon : '') + '</span>' +
+        '<span class="compat-row-name">' + lblB + '</span>' +
+        '<span class="compat-row-status-icon">' + meta.icon + '</span>' +
+      '</div>' +
+      '<div class="compat-row-status-label">' + meta.label + '</div>' +
+      noteHtml + stabLink +
+    '</div>';
+  }).join('');
+
+  wrap.innerHTML = summaryHtml + '<div class="compat-pairs-list">' + rowsHtml + '</div>';
+}
+
 // Hook into onWeightChange so chips update when weight changes
 const _origOnWeightChange = onWeightChange;
 
@@ -3013,3 +3183,8 @@ window.reportError = typeof reportError !== 'undefined' ? reportError : undefine
 window.aiAnalyze = aiAnalyze;
 window.aiClear = aiClear;
 window.aiUpdateCount = aiUpdateCount;
+window.compatFilterSearch = typeof compatFilterSearch !== 'undefined' ? compatFilterSearch : undefined;
+window.compatClearSearch = typeof compatClearSearch !== 'undefined' ? compatClearSearch : undefined;
+window.compatSelectDrug = typeof compatSelectDrug !== 'undefined' ? compatSelectDrug : undefined;
+window.compatRemoveDrug = typeof compatRemoveDrug !== 'undefined' ? compatRemoveDrug : undefined;
+window.checkCompat = typeof checkCompat !== 'undefined' ? checkCompat : undefined;

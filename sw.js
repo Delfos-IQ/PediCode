@@ -1,6 +1,6 @@
-/* PediCode Service Worker — v4.4 · modular build · auto-update */
+/* PediCode Service Worker — v4.5 · modular build · auto-update */
 
-const CACHE = 'pedicode-v4.4';
+const CACHE = 'pedicode-v4.5';
 
 const HTML_FILES = [
   './index.html',
@@ -25,6 +25,7 @@ const JS_MODULES = [
   './data/protocols.js',
   './data/misc.js',
   './data/ai.js',
+  './data/compatibilities.js',
 ];
 
 /* ── INSTALL: pre-cache all files ───────────────────────────────────── */
