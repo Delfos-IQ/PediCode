@@ -2982,7 +2982,7 @@ function compatFilterSearch(q) {
   }
   dd.innerHTML = hits.map(d => {
     const lbl = d.label[lang] || d.label.es;
-    return '<div class="compat-dd-item" onclick="compatSelectDrug('' + d.id + '')">' +
+    return '<div class="compat-dd-item" onclick="compatSelectDrug(\'' + d.id + '\')">' +
       '<span class="compat-dd-icon">' + d.icon + '</span>' +
       '<span class="compat-dd-label">' + lbl + '</span>' +
       '</div>';
@@ -3037,7 +3037,7 @@ function compatRenderChips() {
     return '<div class="compat-chip">' +
       '<span class="compat-chip-icon">' + drug.icon + '</span>' +
       '<span class="compat-chip-label">' + lbl + '</span>' +
-      '<button class="compat-chip-remove" onclick="compatRemoveDrug('' + id + '')" title="Quitar">✕</button>' +
+      '<button class="compat-chip-remove" onclick="compatRemoveDrug(\'' + id + '\')" title="Quitar">✕</button>' +
       '</div>';
   }).join('');
 
