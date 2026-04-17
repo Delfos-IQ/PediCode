@@ -259,6 +259,8 @@ function setLang(btn, lang) {
   renderProtoUI();
   dvRenderRights();
   renderRcpTab();
+  compatRenderChips();
+  compatRenderResults();
   // Restore chrono/metro button states after lang change
   const chronoBtn = document.getElementById('rcp-chrono-btn');
   if (chronoBtn) {
@@ -2966,7 +2968,7 @@ function compatFilterSearch(q) {
   q = (q || '').trim().toLowerCase();
   if (clr) clr.style.display = q ? '' : 'none';
   if (!q) { dd.style.display = 'none'; dd.innerHTML = ''; return; }
-  const lang = (window._lang || 'es');
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'es';
   const hits = COMPAT_DRUGS.filter(d => {
     if (compatSelected.includes(d.id)) return false;
     const lbl = (d.label[lang] || d.label.es || '').toLowerCase();
@@ -3018,7 +3020,7 @@ function compatRenderChips() {
   const btn = document.getElementById('compat-verify-btn');
   const inp = document.getElementById('compat-search-input');
   if (!wrap) return;
-  const lang = (window._lang || 'es');
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'es';
   if (!compatSelected.length) {
     wrap.innerHTML = '';
     if (btn) btn.style.display = 'none';
@@ -3053,7 +3055,7 @@ function compatRenderResults() {
   if (!wrap) return;
   if (compatSelected.length < 2) { wrap.innerHTML = ''; return; }
 
-  const lang = (window._lang || 'es');
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'es';
   const pairs = getAllPairs(compatSelected);
 
   // Contar por status
