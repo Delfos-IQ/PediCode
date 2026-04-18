@@ -3810,6 +3810,31 @@ function compatRenderResults() {
     '?':{ icon: '❓', cls: 'compat-row-unk',label: t('compat_unknown') },
   };
 
+  // Mapa de fuentes → etiqueta + URL
+  const SRC_META = {
+    'CL2020': { label: 'Castells Lao · Med Intensiva 2020', url: 'https://doi.org/10.1016/j.medin.2018.08.004' },
+    'LPaz':   { label: 'H. La Paz · Servicio Farmacia 2020', url: null },
+    'Tri':    { label: "Trissel's Handbook on Injectable Drugs", url: 'https://www.ashp.org/pharmacy-practice/policy-positions-and-guidelines/browse-by-document-type/books/trissel' },
+    'Sta':    { label: 'Stabilis 4.0', url: 'https://www.stabilis.org/' },
+    'Fl17':   { label: 'Flamein et al. · NICU PHTP 2017', url: 'https://doi.org/10.1515/pthp-2017-0009' },
+    'KEMH':   { label: 'KEMH NICU Y-Site Guideline v5.1 · 2024', url: 'https://www.kemh.health.wa.gov.au' },
+    'ATM':    { label: 'Soc. Chilena Infectología · Antimicrobianos Neonatología 2021', url: 'https://doi.org/10.4067/S0716-10182021000400471' },
+  };
+
+  function renderSrcBadges(srcStr) {
+    if (!srcStr) return '';
+    const codes = srcStr.split(',').map(s => s.trim()).filter(Boolean);
+    const badges = codes.map(code => {
+      const meta = SRC_META[code];
+      if (!meta) return '';
+      if (meta.url) {
+        return '<a class="compat-src-badge" href="' + meta.url + '" target="_blank" rel="noopener" title="' + meta.label + '">' + code + ' ↗</a>';
+      }
+      return '<span class="compat-src-badge compat-src-badge-nolink" title="' + meta.label + '">' + code + '</span>';
+    });
+    return '<div class="compat-src-row">' + badges.join('') + '</div>';
+  }
+
   let rowsHtml = pairs.map(p => {
     const drugA = COMPAT_DRUGS.find(d => d.id === p.a);
     const drugB = COMPAT_DRUGS.find(d => d.id === p.b);
@@ -3817,8 +3842,10 @@ function compatRenderResults() {
     const lblB = drugB ? (drugB.label[lang] || drugB.label.es) : p.b;
     const meta = STATUS_META[p.status] || STATUS_META['?'];
     const noteHtml = p.note ? '<div class="compat-row-note">' + p.note + '</div>' : '';
-    const stabLink = p.status === '?' ?
-      '<a class="compat-stabilis-link" href="https://www.stabilis.org/" target="_blank" rel="noopener">Consultar Stabilis ↗</a>' : '';
+    const srcHtml = renderSrcBadges(p.src || '');
+    // Para pares sin datos, añadir siempre enlace a Stabilis
+    const noDataLink = p.status === '?' ?
+      '<a class="compat-stabilis-link" href="https://www.stabilis.org/" target="_blank" rel="noopener">🔍 Consultar Stabilis ↗</a>' : '';
     return '<div class="compat-row ' + meta.cls + '">' +
       '<div class="compat-row-drugs">' +
         '<span class="compat-row-icon">' + (drugA ? drugA.icon : '') + '</span>' +
@@ -3829,7 +3856,9 @@ function compatRenderResults() {
         '<span class="compat-row-status-icon">' + meta.icon + '</span>' +
       '</div>' +
       '<div class="compat-row-status-label">' + meta.label + '</div>' +
-      noteHtml + stabLink +
+      noteHtml +
+      srcHtml +
+      noDataLink +
     '</div>';
   }).join('');
 
