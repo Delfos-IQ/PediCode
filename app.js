@@ -2445,39 +2445,128 @@ function filterScores() {
 }
 function filterScoreTag(btn, tag) { /* legacy no-op */ }
 // ═══ PWA SERVICE WORKER ═══
+// ── SERVICE WORKER — gestión de versiones ─────────────────────────
+let _swReg = null;
+let _swUpdateAvailable = false;
+
+function _swShowUpdateAvailable() {
+  _swUpdateAvailable = true;
+  // Mostrar badge rojo en el botón ℹ️
+  const badge = document.getElementById('update-badge');
+  if (badge) badge.style.display = 'block';
+  // Actualizar el botón si el modal está abierto
+  _swRefreshUpdateUI();
+}
+
+function _swRefreshUpdateUI() {
+  const btn = document.getElementById('about-update-btn');
+  const status = document.getElementById('about-update-status');
+  const verEl = document.getElementById('about-sw-version');
+  const L = {
+    es: { ready: '🟠 Actualización disponible', current: '✅ App actualizada',
+          apply: '⬇ Instalar actualización', check: 'Buscar actualización' },
+    pt: { ready: '🟠 Atualização disponível',  current: '✅ App atualizada',
+          apply: '⬇ Instalar atualização',    check: 'Verificar atualização' },
+    en: { ready: '🟠 Update available',        current: '✅ App up to date',
+          apply: '⬇ Install update',          check: 'Check for update' },
+  };
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'es';
+  const lbl = L[lang] || L.es;
+  // Versión SW actual
+  if (verEl) {
+    const cache = typeof CHANGELOG !== 'undefined' && CHANGELOG[0] ? CHANGELOG[0].ver : '—';
+    verEl.textContent = cache;
+  }
+  if (_swUpdateAvailable) {
+    if (status) status.innerHTML = '<span style="color:#fb923c;font-weight:600">' + lbl.ready + '</span>';
+    if (btn) {
+      btn.textContent = lbl.apply;
+      btn.style.background = 'rgba(251,146,60,0.15)';
+      btn.style.borderColor = 'rgba(251,146,60,0.4)';
+      btn.style.color = '#fb923c';
+    }
+  } else {
+    if (status) status.textContent = lbl.current;
+    if (btn) {
+      btn.textContent = lbl.check;
+      btn.style.background = '';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+    }
+  }
+}
+
+async function doManualUpdate() {
+  const btn = document.getElementById('about-update-btn');
+  const status = document.getElementById('about-update-status');
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'es';
+  const L = {
+    es: { checking: '⏳ Comprobando...', found: '🟠 Actualización encontrada — instalando...', uptodate: '✅ Ya tienes la versión más reciente', error: '⚠ Sin conexión — inténtalo más tarde' },
+    pt: { checking: '⏳ A verificar...', found: '🟠 Atualização encontrada — a instalar...', uptodate: '✅ Tens a versão mais recente', error: '⚠ Sem ligação — tenta mais tarde' },
+    en: { checking: '⏳ Checking...', found: '🟠 Update found — installing...', uptodate: '✅ You have the latest version', error: '⚠ No connection — try again later' },
+  };
+  const lbl = L[lang] || L.es;
+  if (!('serviceWorker' in navigator)) return;
+
+  if (_swUpdateAvailable && _swReg && _swReg.waiting) {
+    // Hay uno esperando → instalar ahora
+    if (btn) { btn.textContent = lbl.found; btn.disabled = true; }
+    _swReg.waiting.postMessage({ type: 'SKIP_WAITING' });
+    return;
+  }
+
+  // Buscar actualización en red
+  if (btn) { btn.textContent = lbl.checking; btn.disabled = true; }
+  try {
+    const reg = await navigator.serviceWorker.getRegistration();
+    if (!reg) { if (btn) { btn.textContent = lbl.uptodate; btn.disabled = false; } return; }
+    _swReg = reg;
+    await reg.update();
+    if (reg.waiting) {
+      _swShowUpdateAvailable();
+      if (btn) { btn.textContent = lbl.found; btn.disabled = false; }
+      // dar un momento y aplicar
+      setTimeout(() => { reg.waiting.postMessage({ type: 'SKIP_WAITING' }); }, 800);
+    } else {
+      if (status) status.textContent = lbl.uptodate;
+      if (btn) { btn.textContent = lbl.uptodate; btn.disabled = false; }
+      setTimeout(() => { _swRefreshUpdateUI(); }, 3000);
+    }
+  } catch(e) {
+    if (btn) { btn.textContent = lbl.error; btn.disabled = false; }
+    setTimeout(() => { _swRefreshUpdateUI(); }, 4000);
+  }
+}
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js')
       .then(reg => {
-        console.log('PediCode SW registered, scope:', reg.scope);
+        _swReg = reg;
+        console.log('[PediCode] SW registrado, scope:', reg.scope);
 
-        // Verificar actualizaciones cada vez que se abre la app
-        reg.update();
+        // Verificar actualización silenciosa al abrir (sin forzar recarga)
+        reg.update().catch(() => {});
 
-        // Si hay un SW nuevo esperando activarse → forzar activación
-        const applyUpdate = (worker) => {
-          worker.postMessage({ type: 'SKIP_WAITING' });
-        };
-
+        // Si ya hay uno esperando → notificar (NO aplicar automáticamente)
         if (reg.waiting) {
-          // Ya hay uno esperando (caso más común en mobile)
-          applyUpdate(reg.waiting);
+          _swShowUpdateAvailable();
         }
 
-        // Detectar cuando llega un SW nuevo durante la sesión
+        // Detectar nuevo SW durante la sesión
         reg.addEventListener('updatefound', () => {
           const newWorker = reg.installing;
           if (!newWorker) return;
           newWorker.addEventListener('statechange', () => {
             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              applyUpdate(newWorker);
+              _swShowUpdateAvailable();
             }
           });
         });
       })
-      .catch(e => console.warn('SW registration failed:', e));
+      .catch(e => console.warn('[PediCode] SW registration failed:', e));
 
-    // Cuando el SW activo cambia → recargar la página para aplicar la nueva caché
+    // Cuando se activa el nuevo SW → recargar para aplicar caché nueva
     let refreshing = false;
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       if (refreshing) return;
@@ -2573,40 +2662,11 @@ function openAbout(){
   });
   renderChangelog(lang);
   if (document.getElementById('meds-categories')?.style.display !== 'none') buildMedCatGrid();
-  // Render SW update button
-  renderUpdateBtn(lang);
+  // Refresh update UI state
+  _swRefreshUpdateUI();
 }
 
-function renderUpdateBtn(lang) {
-  const el = document.getElementById('about-update-btn');
-  if (!el) return;
-  const labels = {
-    es: { check: 'Verificar actualización', upToDate: '✅ App actualizada', updating: '⏳ Actualizando...' },
-    pt: { check: 'Verificar atualização',   upToDate: '✅ App atualizada',   updating: '⏳ A atualizar...' },
-    en: { check: 'Check for update',        upToDate: '✅ App up to date',   updating: '⏳ Updating...' },
-  };
-  const L = labels[lang] || labels.es;
-  el.textContent = L.check;
-  el.onclick = async () => {
-    if (!('serviceWorker' in navigator)) return;
-    el.textContent = L.updating;
-    el.disabled = true;
-    try {
-      const reg = await navigator.serviceWorker.getRegistration();
-      if (!reg) { el.textContent = L.upToDate; return; }
-      await reg.update();
-      if (reg.waiting) {
-        reg.waiting.postMessage({ type: 'SKIP_WAITING' });
-      } else {
-        el.textContent = L.upToDate;
-        el.disabled = false;
-      }
-    } catch(e) {
-      el.textContent = L.check;
-      el.disabled = false;
-    }
-  };
-}
+// renderUpdateBtn replaced by _swRefreshUpdateUI + doManualUpdate
 function closeAbout(){
   document.getElementById('about-overlay').style.display = 'none';
 }
@@ -3850,6 +3910,7 @@ window.reportError = typeof reportError !== 'undefined' ? reportError : undefine
 window.aiAnalyze = aiAnalyze;
 window.aiClear = aiClear;
 window.aiUpdateCount = aiUpdateCount;
+window.doManualUpdate = typeof doManualUpdate !== 'undefined' ? doManualUpdate : undefined;
 window.compatFilterSearch = typeof compatFilterSearch !== 'undefined' ? compatFilterSearch : undefined;
 window.compatClearSearch = typeof compatClearSearch !== 'undefined' ? compatClearSearch : undefined;
 window.compatSelectDrug = typeof compatSelectDrug !== 'undefined' ? compatSelectDrug : undefined;
