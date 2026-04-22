@@ -2451,11 +2451,72 @@ let _swUpdateAvailable = false;
 
 function _swShowUpdateAvailable() {
   _swUpdateAvailable = true;
-  // Mostrar badge rojo en el botón ℹ️
+  // 1. Badge rojo en el botón ℹ️
   const badge = document.getElementById('update-badge');
   if (badge) badge.style.display = 'block';
-  // Actualizar el botón si el modal está abierto
+  // 2. Actualizar el panel del About si está abierto
   _swRefreshUpdateUI();
+  // 3. Banner visible en la parte inferior de la pantalla
+  _showUpdateBanner();
+}
+
+function _showUpdateBanner() {
+  if (document.getElementById('pedi-update-banner')) return;
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'es';
+  const L = {
+    es: { title: '🚀 Nueva versión disponible', sub: 'Pulsa para instalar la actualización', btn: 'Actualizar' },
+    pt: { title: '🚀 Nova versão disponível',   sub: 'Toca para instalar a atualização',    btn: 'Atualizar' },
+    en: { title: '🚀 New version available',    sub: 'Tap to install the update',           btn: 'Update' },
+  };
+  const lbl = L[lang] || L.es;
+  const b = document.createElement('div');
+  b.id = 'pedi-update-banner';
+  b.style.cssText = [
+    'position:fixed',
+    'bottom:calc(70px + env(safe-area-inset-bottom, 0px))',
+    'left:50%',
+    'transform:translateX(-50%)',
+    'width:calc(100% - 32px)',
+    'max-width:420px',
+    'background:#0D9488',
+    'color:#fff',
+    'padding:13px 16px',
+    'border-radius:14px',
+    'z-index:9999',
+    'display:flex',
+    'justify-content:space-between',
+    'align-items:center',
+    'box-shadow:0 4px 24px rgba(0,0,0,.4)',
+    'font-family:inherit',
+    'animation:pediSlideUp .35s cubic-bezier(.16,1,.3,1)',
+    'gap:12px',
+  ].join(';');
+  b.innerHTML =
+    '<div style="min-width:0">' +
+      '<div style="font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + lbl.title + '</div>' +
+      '<div style="font-size:12px;opacity:.85;margin-top:2px">' + lbl.sub + '</div>' +
+    '</div>' +
+    '<button id="pedi-update-banner-btn" style="background:#fff;color:#0D9488;border:none;cursor:pointer;padding:8px 16px;border-radius:10px;font-weight:800;font-size:13px;flex-shrink:0;font-family:inherit">' +
+      lbl.btn +
+    '</button>';
+  // Añadir animación CSS si no existe ya
+  if (!document.getElementById('pedi-update-css')) {
+    const s = document.createElement('style');
+    s.id = 'pedi-update-css';
+    s.textContent = '@keyframes pediSlideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}';
+    document.head.appendChild(s);
+  }
+  document.body.appendChild(b);
+  // Botón actualizar: aplicar SW esperando y recargar
+  document.getElementById('pedi-update-banner-btn').addEventListener('click', () => {
+    const btn = document.getElementById('pedi-update-banner-btn');
+    if (btn) { btn.textContent = '⏳'; btn.disabled = true; }
+    if (_swReg && _swReg.waiting) {
+      _swReg.waiting.postMessage({ type: 'SKIP_WAITING' });
+    } else {
+      window.location.reload();
+    }
+  });
 }
 
 function _swRefreshUpdateUI() {
