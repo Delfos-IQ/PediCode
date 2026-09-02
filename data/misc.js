@@ -75,6 +75,26 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.8', date: 'Septiembre 2026', type: 'minor',
+    items: {
+      es: [
+        '⚠️ Corrección: la matriz de compatibilidad IV (data/compatibilities.js) estaba duplicada y desincronizada — app.js usaba desde siempre una copia interna propia (60 fármacos, 456 pares, fuentes 2020-2024) que nunca se había sincronizado con el módulo, mientras el fichero data/ (el que la auditoría inicial evaluó como "33% de cobertura") era código muerto sin usar. Se ha unificado en un único fichero fuente de verdad',
+        'Añadidos Nicardipino, Sufentanilo y Fentolamina a la matriz de compatibilidades (Aminofilina ya estaba en la copia interna) — cobertura real: 456/1770 pares posibles (25,8%), con 7 pares marcados explícitamente "sin dato"',
+        'Se revisaron BNFc 2020-21 y BNF 84 en busca de datos de compatibilidad en Y para completar los pares pendientes ("?"); ninguno de los 5 libros disponibles contiene una tabla de compatibilidad por pares (solo indicaciones generales de dilución), así que esos pares permanecen marcados "sin dato" — se recomienda verificar con Stabilis/Trissel\'s/Micromedex antes de mezclar en Y',
+      ],
+      pt: [
+        '⚠️ Correção: a matriz de compatibilidade IV (data/compatibilities.js) estava duplicada e dessincronizada — o app.js usava desde sempre uma cópia interna própria (60 fármacos, 456 pares, fontes 2020-2024) que nunca tinha sido sincronizada com o módulo, enquanto o ficheiro data/ (o que a auditoria inicial avaliou como "33% de cobertura") era código morto sem uso. Unificado num único ficheiro fonte de verdade',
+        'Adicionados Nicardipina, Sufentanil e Fentolamina à matriz de compatibilidades (Aminofilina já estava na cópia interna) — cobertura real: 456/1770 pares possíveis (25,8%), com 7 pares marcados explicitamente "sem dado"',
+        'Foram revistos o BNFc 2020-21 e o BNF 84 à procura de dados de compatibilidade em Y para completar os pares pendentes ("?"); nenhum dos 5 livros disponíveis contém uma tabela de compatibilidade por pares (apenas indicações gerais de diluição), pelo que esses pares permanecem marcados "sem dado" — recomenda-se verificar com Stabilis/Trissel\'s/Micromedex antes de misturar em Y',
+      ],
+      en: [
+        '⚠️ Fix: the IV compatibility matrix (data/compatibilities.js) was duplicated and out of sync — app.js had always used its own internal copy (60 drugs, 456 pairs, 2020-2024 sources) that was never synced back to the module, while the data/ file (the one the initial audit scored at "33% coverage") was unused dead code. Unified into a single source of truth',
+        'Added Nicardipine, Sufentanil and Phentolamine to the compatibility matrix (Aminophylline was already in the internal copy) — real coverage: 456/1770 possible pairs (25.8%), with 7 pairs explicitly marked "no data"',
+        'Reviewed BNFc 2020-21 and BNF 84 for Y-site compatibility data to fill the pending ("?") pairs; none of the 5 available books contain a paired compatibility table (only general dilution guidance), so those pairs remain marked "no data" — verify with Stabilis/Trissel\'s/Micromedex before Y-site mixing',
+      ],
+    }
+  },
+  {
     ver: 'v4.7', date: 'Septiembre 2026', type: 'major',
     items: {
       es: [
