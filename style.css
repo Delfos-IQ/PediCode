@@ -659,6 +659,8 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:8
 /* ── Source note */
 .source-note{margin:6px 15px 0;padding:7px 10px;background:rgba(56,189,248,0.06);border-left:2px solid var(--accent);border-radius:0 6px 6px 0;font-size:11px;color:var(--text3)}
 .source-note a{color:var(--accent);text-decoration:none}
+.rcp-cross-link{margin:6px 15px 0;padding:7px 10px;background:rgba(248,113,113,0.08);border-left:2px solid #f87171;border-radius:0 6px 6px 0;font-size:11px;font-weight:600;color:var(--text2);cursor:pointer}
+.rcp-cross-link:hover{background:rgba(248,113,113,0.15)}
 
 /* ── Color schemes per protocol */
 .p-hypothermia .proto-color-bar{background:var(--accent)}

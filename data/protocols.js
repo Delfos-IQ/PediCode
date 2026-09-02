@@ -63,9 +63,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-convulsivo', cls:'p-convulsivo', progKey:'convulsivo',
+        id:'pc-convulsivo', cls:'p-convulsivo', progKey:'convulsivo', linkedRcp:'rcp-conv',
         name:'Mal Convulsivo / Estatus Epiléptico', src:'proto_src_seup', badge:'proto_badge_urgencia',
-        sourceNote:'📄 Guía SEUP 2022 (Sociedad Española de Urgencias Pediátricas) + ERC Paediatric Life Support Guidelines 2021. Actualizado mar/2026.',
+        sourceNote:'📄 Guía SEUP 2022 (Sociedad Española de Urgencias Pediátricas) + ERC Paediatric Life Support Guidelines 2025. Actualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'0 – 5 min', title:'Estabilización & 1ª Línea — Benzodiacepinas',
            items:[
@@ -101,7 +101,7 @@ export const PROTO = {
       {
         id:'pc-htic', cls:'p-htic', progKey:'htic',
         name:'Hipertensión Intracraneal (HTIC)', src:'proto_src_pnccs', badge:'proto_badge_urgencia',
-        sourceNote:'📄 Pediatric Neurocritical Care Society Guidelines 2021 + SEUP Protocolo HTIC. Actualizado mar/2026.',
+        sourceNote:'📄 Pediatric Neurocritical Care Society Guidelines 2021 + SEUP Protocolo HTIC. Actualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Reconocer', title:'Signos & Criterios de HTIC',
            items:[
@@ -141,9 +141,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-sepsis', cls:'p-sepsis', progKey:'sepsis',
+        id:'pc-sepsis', cls:'p-sepsis', progKey:'sepsis', linkedRcp:'rcp-sep',
         name:'Sepsis Grave / Shock Séptico', src:'proto_src_ssc', badge:'proto_badge_urgencia',
-        sourceNote:'📄 Surviving Sepsis Campaign: Pediatric Guidelines 2020 (PCCM). Actualizado mar/2026.',
+        sourceNote:'📄 Surviving Sepsis Campaign: Pediatric Guidelines 2026 (Intensive Care Med / PCCM). Actualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Reconocer', title:'Identificación Precoz del Paciente de Riesgo',
            items:[
@@ -158,7 +158,7 @@ export const PROTO = {
             {cls:'critical', text:'<strong>2 accesos vasculares periféricos calibrosos</strong> (o IO tras 2–3 intentos fallidos)'},
             {cls:'nursing', text:'<strong>Cultivos ANTES de ATB si no retrasa &gt;45min:</strong> hemocultivo ×2 (periférico + si catéter central), urocultivo, LCR si indicado'},
             {cls:'critical', text:'<strong>ANTIBIÓTICO en la 1ª hora:</strong> Cefotaxima 200mg/kg/día (c/6–8h) O Ceftriaxona 100mg/kg/día (c/12–24h) · añadir Vancomicina 60mg/kg/día si sospecha S.aureus o catéter'},
-            {cls:'critical', text:'<strong>1er bolo de fluidos:</strong> SF 0,9% o Ringer Lactato <strong>10–20mL/kg en 5–10min</strong> · (SSC 2020: no superar 40–60mL/kg sin reevaluación continua)'},
+            {cls:'critical', text:'<strong>1er bolo de fluidos:</strong> SF 0,9% o Ringer Lactato <strong>10–20mL/kg en 5–10min</strong> · (SSC 2026: no superar 40–60mL/kg sin reevaluación continua)'},
             {cls:'', text:'LAB urgente: hemograma, PCR, PCT, lactato, función renal/hepática, coagulación, gases, glucemia'},
           ]},
           {tagCls:'t2', tag:'15 – 60 min', title:'Reevaluación Continua & Fluidos Adicionales',
@@ -172,10 +172,10 @@ export const PROTO = {
           {tagCls:'t3', tag:'Vasoactivos', title:'Shock Refractario a Fluidos',
            items:[
             {cls:'critical', text:'<strong>SHOCK FRÍO</strong> (vasoconstricción, TRC &gt;3s, extremidades frías, pulsos filiformes): <strong>Adrenalina</strong> 0,05–0,3mcg/kg/min IV · titular hasta perfusión adecuada'},
-            {cls:'critical', text:'<strong>SHOCK CALIENTE</strong> (vasodilatación, TRC &lt;1s, pulsos saltones, hipotensión): <strong>Noradrenalina</strong> 0,05–0,5mcg/kg/min IV (SSC 2020: 1ª línea en shock vasodilatador)'},
+            {cls:'critical', text:'<strong>SHOCK CALIENTE</strong> (vasodilatación, TRC &lt;1s, pulsos saltones, hipotensión): <strong>Noradrenalina</strong> 0,05–1mcg/kg/min IV · &gt;0,5mcg/kg/min = dosis alta/refractariedad (SSC 2026: 1ª línea en shock vasodilatador)'},
             {cls:'warn', text:'Acceso central urgente (si no disponible, vasoactivos por periférico o IO hasta canalización central)'},
-            {cls:'', text:'Considerar Dobutamina 5–15mcg/kg/min si disfunción miocárdica (SSC 2020: añadir a noradrenalina)'},
-            {cls:'warn', text:'<strong>Corticoide en shock refractario a catecolaminas:</strong> Hidrocortisona 1–2mg/kg/día perfusión continua (SSC 2020: considerar si no responde a vasoactivos)'},
+            {cls:'', text:'Considerar Dobutamina 5–15mcg/kg/min si disfunción miocárdica (SSC 2026: añadir a noradrenalina)'},
+            {cls:'warn', text:'<strong>Corticoide en shock refractario a catecolaminas:</strong> Hidrocortisona 1–2mg/kg/día perfusión continua (SSC 2026: considerar si no responde a vasoactivos)'},
             {cls:'', text:'Considerar ventilación mecánica si trabajo respiratorio excesivo o GCS ≤8'},
           ]},
           {tagCls:'t4', tag:'Monitorizar', title:'Reasessment Continuo & Objetivos',
@@ -189,9 +189,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-pcr', cls:'p-pcr', progKey:'pcr',
+        id:'pc-pcr', cls:'p-pcr', progKey:'pcr', linkedRcp:'rcp-pcr-ped',
         name:'PCR Pediátrica — RCP Avanzada', src:'proto_src_erc', badge:'proto_badge_urgencia',
-        sourceNote:'📄 ERC Paediatric Life Support Guidelines 2021 (Resuscitation 2021;161:327–387). Actualizado mar/2026.',
+        sourceNote:'📄 ERC Paediatric Life Support Guidelines 2025 (Resuscitation 2025). Actualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Identificar PCR', title:'Reconocimiento e Inicio de RCP',
            items:[
@@ -203,9 +203,10 @@ export const PROTO = {
           ]},
           {tagCls:'t1', tag:'Ritmo', title:'Análisis del Ritmo — Desfibrilable vs No Desfibrilable',
            items:[
-            {cls:'critical', text:'<strong>RITMO DESFIBRILABLE</strong> (FV/TVSP): Descarga <strong>4J/kg</strong> (máx 360J monofásico · bifásico según fabricante) · reanuda RCP 2min SIN parar a comprobar pulso'},
-            {cls:'critical', text:'Tras 3ª descarga: <strong>Adrenalina IV/IO 0,01mg/kg</strong> (máx 1mg) + <strong>Amiodarona 5mg/kg</strong> (máx 300mg) en bolo IV rápido · repetir adrenalina cada 3–5min'},
-            {cls:'critical', text:'Tras 5ª descarga: 2ª dosis <strong>Amiodarona 5mg/kg</strong> (máx 150mg) · alternativa Lidocaína 1mg/kg'},
+            {cls:'critical', text:'<strong>RITMO DESFIBRILABLE</strong> (FV/TVSP): Descarga inicial <strong>4J/kg</strong> (sin superar la energía adulto recomendada, 120–200J bifásico) · reanuda RCP 2min SIN parar a comprobar pulso'},
+            {cls:'critical', text:'<strong>FV/TV refractaria (&gt;5 descargas):</strong> escalar por pasos hasta <strong>máx 8J/kg</strong> · si RCE con re-PCR en FV/TV, mantener la misma energía (ERC 2025)'},
+            {cls:'critical', text:'Tras 5ª descarga (ERC 2025 — antes 3ª): <strong>Adrenalina IV/IO 0,01mg/kg</strong> (máx 1mg) + <strong>Amiodarona 5mg/kg</strong> (máx 300mg) en bolo IV rápido · repetir adrenalina cada 3–5min'},
+            {cls:'critical', text:'Siguiente descarga refractaria: 2ª dosis <strong>Amiodarona 5mg/kg</strong> (máx 150mg) · alternativa Lidocaína 1mg/kg'},
             {cls:'critical', text:'<strong>RITMO NO DESFIBRILABLE</strong> (Asistolia/AESP): <strong>Adrenalina IV/IO 0,01mg/kg</strong> inmediatamente (no esperar 3 ciclos) · repetir cada 3–5min'},
             {cls:'', text:'Identificar y tratar causas reversibles durante RCP'},
           ]},
@@ -214,6 +215,7 @@ export const PROTO = {
             {cls:'warn', text:'<strong>4H:</strong> Hipoxia → ventilación con O₂ 100% · Hipovolemia → bolo SF 10mL/kg rápido · Hipo/Hiperpotasemia → gasimetría urgente · Hipotermia → recalentamiento'},
             {cls:'warn', text:'<strong>4T:</strong> Neumotórax a Tensión → punción descompresiva · Taponamiento → pericardiocentesis · Tóxicos → antídoto · TEP Masivo → fibrinólisis'},
             {cls:'nursing', text:'Acceso IO si no hay IV en &lt;1min: localización preferida tibia proximal anteromedial · confirmar posición'},
+            {cls:'nursing', text:'Vía aérea avanzada: no debe retrasar RCP/desfibrilación · si se intuba, máx 4 intentos de 30–60seg cada uno, con oxigenación apneica entre intentos (ERC 2025)'},
             {cls:'', text:'Glucemia: si &lt;60mg/dL → Glucosa 10% 2mL/kg IV/IO'},
           ]},
           {tagCls:'t3', tag:'ROSC', title:'Cuidados Post-PCR — Tras Recuperación de Circulación',
@@ -228,9 +230,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-anafilaxia', cls:'p-anafilaxia', progKey:'anafilaxia',
+        id:'pc-anafilaxia', cls:'p-anafilaxia', progKey:'anafilaxia', linkedRcp:'rcp-anaf',
         name:'Anafilaxia', src:'proto_src_seup', badge:'proto_badge_urgencia',
-        sourceNote:'📄 SEUP Protocolo Anafilaxia 2021 + WAO/EAACI Guidelines 2020. Actualizado mar/2026.',
+        sourceNote:'📄 SEUP Protocolo Anafilaxia 2021 + WAO/AAAAI Anaphylaxis Update 2025. Actualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Diagnóstico', title:'Criterios Diagnósticos de Anafilaxia',
            items:[
@@ -265,9 +267,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-asma', cls:'p-asma', progKey:'asma',
+        id:'pc-asma', cls:'p-asma', progKey:'asma', linkedRcp:'rcp-asma',
         name:'Crisis Asmática', src:'proto_src_gema', badge:'proto_badge_urgencia',
-        sourceNote:'📄 GEMA 5.3 (Guía Española para el Manejo del Asma 2023) + SEUP Protocolo Asma 2022. Actualizado mar/2026.',
+        sourceNote:'📄 GEMA 5.5 (Guía Española para el Manejo del Asma 2023) + SEUP Protocolo Asma 2022. Actualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Clasificar', title:'Valoración de la Gravedad — Score de Pulmonary Index o Wood-Downes',
            items:[
@@ -302,7 +304,7 @@ export const PROTO = {
       {
         id:'pc-cad', cls:'p-cad', progKey:'cad',
         name:'Cetoacidosis Diabética (CAD)', src:'proto_src_ispad', badge:'proto_badge_urgencia',
-        sourceNote:'📄 ISPAD Clinical Practice Consensus Guidelines 2022 — Diabetic Ketoacidosis. Actualizado mar/2026.',
+        sourceNote:'📄 ISPAD Clinical Practice Consensus Guidelines 2022 — Diabetic Ketoacidosis. Actualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Diagnóstico', title:'Criterios Diagnósticos & Clasificación de Gravedad',
            items:[
@@ -338,9 +340,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-iot', cls:'p-iot', progKey:'iot',
+        id:'pc-iot', cls:'p-iot', progKey:'iot', linkedRcp:'rcp-iot-ped',
         name:'Intubación Orotraqueal — Secuencia Rápida (SRI)', src:'proto_src_secip', badge:'proto_badge_urgencia',
-        sourceNote:'📄 SECIP — Protocolo SRI 2023 (Sociedad Española de Cuidados Intensivos Pediátricos). Actualizado mar/2026.',
+        sourceNote:'📄 SECIP — Protocolo SRI 2023 (Sociedad Española de Cuidados Intensivos Pediátricos). Actualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Preparación', title:'Preparación: Mnemotécnico MSMAIDS',
            items:[
@@ -389,7 +391,7 @@ export const PROTO = {
       {
         id:'pc-mist', cls:'p-mist', progKey:'mist',
         name:'Surfactante MIST/LISA — SDR Neonatal', src:'proto_src_escrc', badge:'proto_badge_neonatal',
-        sourceNote:'📄 European Consensus Guidelines on RDS Management 2023 (Vyas Dhar et al.) · Recomendações SPN 2022. Actualizado mar/2026.',
+        sourceNote:'📄 European Consensus Guidelines on RDS Management 2023 (Vyas Dhar et al.) · Recomendações SPN 2022. Actualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Indicación', title:'Criterios de Administración de Surfactante',
            items:[
@@ -429,7 +431,7 @@ export const PROTO = {
       {
         id:'pc-bronquiolitis', cls:'p-bronquiolitis', progKey:'bronquiolitis',
         name:'Bronquiolitis Aguda', src:'proto_src_bronq', badge:'proto_badge_urgencia',
-        sourceNote:'📄 Consenso Bronquiolitis Aguda AEP/SEUP 2023 · AAP Clinical Practice Guideline 2014. Actualizado mar/2026.',
+        sourceNote:'📄 Consenso Bronquiolitis Aguda AEP/SEUP 2023 · AAP Clinical Practice Guideline 2014. Actualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Evaluación', title:'Clasificación de Gravedad',
            items:[
@@ -464,7 +466,7 @@ export const PROTO = {
       {
         id:'pc-meningitis', cls:'p-meningitis', progKey:'meningitis',
         name:'Meningitis Bacteriana Aguda', src:'proto_src_mening', badge:'proto_badge_urgencia',
-        sourceNote:'📄 SEUP 2022 · ESCMID Bacterial Meningitis Guidelines 2016 · ECDC Surveillance 2023. Actualizado mar/2026.',
+        sourceNote:'📄 SEUP 2022 · ESCMID Bacterial Meningitis Guidelines 2016 · ECDC Surveillance 2023. Actualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Sospecha', title:'Diagnóstico & Inicio Urgente',
            items:[
@@ -552,9 +554,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-convulsivo', cls:'p-convulsivo', progKey:'convulsivo',
+        id:'pc-convulsivo', cls:'p-convulsivo', progKey:'convulsivo', linkedRcp:'rcp-conv',
         name:'Estado Epiléptico', src:'proto_src_seup', badge:'proto_badge_urgencia',
-        sourceNote:'📄 Guia SEUP 2022 (Sociedad Española de Urgencias Pediátricas) + ERC Paediatric Life Support 2021. Atualizado mar/2026.',
+        sourceNote:'📄 Guia SEUP 2022 (Sociedad Española de Urgencias Pediátricas) + ERC Paediatric Life Support 2025. Atualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'0 – 5 min', title:'Estabilização & 1ª Linha — Benzodiazepinas',
            items:[
@@ -587,7 +589,7 @@ export const PROTO = {
       {
         id:'pc-htic', cls:'p-htic', progKey:'htic',
         name:'Hipertensão Intracraniana (HTIC)', src:'proto_src_pnccs', badge:'proto_badge_urgencia',
-        sourceNote:'📄 Pediatric Neurocritical Care Society Guidelines 2021 + Protocolo HTIC SEUP. Atualizado mar/2026.',
+        sourceNote:'📄 Pediatric Neurocritical Care Society Guidelines 2021 + Protocolo HTIC SEUP. Atualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Reconhecer', title:'Sinais & Critérios de HTIC',
            items:[
@@ -618,9 +620,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-sepsis', cls:'p-sepsis', progKey:'sepsis',
+        id:'pc-sepsis', cls:'p-sepsis', progKey:'sepsis', linkedRcp:'rcp-sep',
         name:'Sepsis Grave / Choque Séptico', src:'proto_src_ssc', badge:'proto_badge_urgencia',
-        sourceNote:'📄 Surviving Sepsis Campaign: Pediatric Guidelines 2020 (PCCM). Atualizado mar/2026.',
+        sourceNote:'📄 Surviving Sepsis Campaign: Pediatric Guidelines 2026 (Intensive Care Med / PCCM). Atualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Reconhecer', title:'Identificação Precoce do Doente de Risco',
            items:[
@@ -643,7 +645,7 @@ export const PROTO = {
           {tagCls:'t3', tag:'Vasopressores', title:'Choque Refratário a Fluidos',
            items:[
             {cls:'critical', text:'<strong>CHOQUE FRIO</strong> (vasoconstrição, TRC &gt;3s, extremidades frias): <strong>Adrenalina</strong> 0,05–0,3mcg/kg/min IV'},
-            {cls:'critical', text:'<strong>CHOQUE QUENTE</strong> (vasodilatação, TRC &lt;1s, pulsos saltitantes): <strong>Noradrenalina</strong> 0,05–0,5mcg/kg/min IV (SSC 2020: 1ª linha)'},
+            {cls:'critical', text:'<strong>CHOQUE QUENTE</strong> (vasodilatação, TRC &lt;1s, pulsos saltitantes): <strong>Noradrenalina</strong> 0,05–1mcg/kg/min IV · &gt;0,5mcg/kg/min = dose alta/refratariedade (SSC 2026: 1ª linha)'},
             {cls:'warn', text:'<strong>Corticoide no choque refratário:</strong> Hidrocortisona 1–2mg/kg/dia em perfusão contínua'},
           ]},
           {tagCls:'t4', tag:'Monitorizar', title:'Reavaliação Contínua & Objetivos',
@@ -655,9 +657,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-pcr', cls:'p-pcr', progKey:'pcr',
+        id:'pc-pcr', cls:'p-pcr', progKey:'pcr', linkedRcp:'rcp-pcr-ped',
         name:'PCR Pediátrica — SAV Pediátrico', src:'proto_src_erc', badge:'proto_badge_urgencia',
-        sourceNote:'📄 ERC Paediatric Life Support Guidelines 2021 (Resuscitation 2021;161:327–387). Atualizado mar/2026.',
+        sourceNote:'📄 ERC Paediatric Life Support Guidelines 2025 (Resuscitation 2025). Atualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Identificar PCR', title:'Reconhecimento e Início de RCP',
            items:[
@@ -668,9 +670,10 @@ export const PROTO = {
           ]},
           {tagCls:'t1', tag:'Ritmo', title:'Análise do Ritmo — Desfibrilhável vs Não Desfibrilhável',
            items:[
-            {cls:'critical', text:'<strong>RITMO DESFIBRILHÁVEL</strong> (FV/TVSP): Choque <strong>4J/kg</strong> (máx 360J monofásico) · retomar RCP 2min imediatamente'},
-            {cls:'critical', text:'Após 3º choque: <strong>Adrenalina IV/IO 0,01mg/kg</strong> + <strong>Amiodarona 5mg/kg</strong> (máx 300mg) · repetir adrenalina cada 3–5min'},
-            {cls:'critical', text:'Após 5º choque: 2ª dose <strong>Amiodarona 5mg/kg</strong> (máx 150mg)'},
+            {cls:'critical', text:'<strong>RITMO DESFIBRILHÁVEL</strong> (FV/TVSP): Choque inicial <strong>4J/kg</strong> (sem exceder a energia adulto recomendada, 120–200J bifásico) · retomar RCP 2min imediatamente'},
+            {cls:'critical', text:'<strong>FV/TV refratária (&gt;5 choques):</strong> escalar por etapas até <strong>máx 8J/kg</strong> · manter a mesma energia se RCE seguido de re-PCR (ERC 2025)'},
+            {cls:'critical', text:'Após o 5º choque (ERC 2025 — antes 3º): <strong>Adrenalina IV/IO 0,01mg/kg</strong> + <strong>Amiodarona 5mg/kg</strong> (máx 300mg) · repetir adrenalina cada 3–5min'},
+            {cls:'critical', text:'Próximo choque refratário: 2ª dose <strong>Amiodarona 5mg/kg</strong> (máx 150mg)'},
             {cls:'critical', text:'<strong>RITMO NÃO DESFIBRILHÁVEL</strong> (Assistolia/AESP): <strong>Adrenalina IV/IO 0,01mg/kg</strong> imediatamente · repetir cada 3–5min'},
           ]},
           {tagCls:'t2', tag:'4H 4T', title:'Causas Reversíveis — Tratar Simultaneamente',
@@ -678,6 +681,7 @@ export const PROTO = {
             {cls:'warn', text:'<strong>4H:</strong> Hipóxia → ventilação c/ O₂ 100% · Hipovolemia → bólus SF 10mL/kg · Hipo/Hipercaliemia · Hipotermia'},
             {cls:'warn', text:'<strong>4T:</strong> Pneumotórax Hipertensivo → punção descompressiva · Tamponamento · Tóxicos · TEP Maciço'},
             {cls:'nursing', text:'Acesso IO se não IV em &lt;1min: localização preferida tíbia proximal anteromedial'},
+            {cls:'nursing', text:'Via aérea avançada: não deve atrasar RCP/desfibrilhação · se intubar, máx 4 tentativas de 30–60seg cada, com oxigenação apneica entre tentativas (ERC 2025)'},
           ]},
           {tagCls:'t3', tag:'ROSC', title:'Cuidados Pós-PCR',
            items:[
@@ -688,9 +692,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-anafilaxia', cls:'p-anafilaxia', progKey:'anafilaxia',
+        id:'pc-anafilaxia', cls:'p-anafilaxia', progKey:'anafilaxia', linkedRcp:'rcp-anaf',
         name:'Anafilaxia', src:'proto_src_seup', badge:'proto_badge_urgencia',
-        sourceNote:'📄 Protocolo SEUP Anafilaxia 2021 + WAO/EAACI Guidelines 2020. Atualizado mar/2026.',
+        sourceNote:'📄 Protocolo SEUP Anafilaxia 2021 + WAO/AAAAI Anaphylaxis Update 2025. Atualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Diagnóstico', title:'Critérios Diagnósticos de Anafilaxia',
            items:[
@@ -721,9 +725,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-asma', cls:'p-asma', progKey:'asma',
+        id:'pc-asma', cls:'p-asma', progKey:'asma', linkedRcp:'rcp-asma',
         name:'Crise de Asma', src:'proto_src_gema', badge:'proto_badge_urgencia',
-        sourceNote:'📄 GEMA 5.3 2023 + Protocolo SEUP Asma 2022. Atualizado mar/2026.',
+        sourceNote:'📄 GEMA 5.5 2023 + Protocolo SEUP Asma 2022. Atualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Classificar', title:'Avaliação da Gravidade',
            items:[
@@ -756,7 +760,7 @@ export const PROTO = {
       {
         id:'pc-cad', cls:'p-cad', progKey:'cad',
         name:'Cetoacidose Diabética (CAD)', src:'proto_src_ispad', badge:'proto_badge_urgencia',
-        sourceNote:'📄 ISPAD Clinical Practice Consensus Guidelines 2022 — Cetoacidose Diabética. Atualizado mar/2026.',
+        sourceNote:'📄 ISPAD Clinical Practice Consensus Guidelines 2022 — Cetoacidose Diabética. Atualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Diagnóstico', title:'Critérios & Classificação de Gravidade',
            items:[
@@ -788,9 +792,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-iot', cls:'p-iot', progKey:'iot',
+        id:'pc-iot', cls:'p-iot', progKey:'iot', linkedRcp:'rcp-iot-ped',
         name:'Intubação Orotraqueal — Sequência Rápida (SRI)', src:'proto_src_secip', badge:'proto_badge_urgencia',
-        sourceNote:'📄 SECIP — Protocolo SRI 2023 (Sociedad Española de Cuidados Intensivos Pediátricos). Atualizado mar/2026.',
+        sourceNote:'📄 SECIP — Protocolo SRI 2023 (Sociedad Española de Cuidados Intensivos Pediátricos). Atualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Preparação', title:'Preparação: Mnemónico MSMAIDS',
            items:[
@@ -839,7 +843,7 @@ export const PROTO = {
       {
         id:'pc-mist', cls:'p-mist', progKey:'mist',
         name:'Surfactante MIST/LISA — SDR Neonatal', src:'proto_src_escrc', badge:'proto_badge_neonatal',
-        sourceNote:'📄 European Consensus Guidelines on RDS Management 2023 (Vyas Dhar et al.) · Recomendações SPN 2022. Atualizado mar/2026.',
+        sourceNote:'📄 European Consensus Guidelines on RDS Management 2023 (Vyas Dhar et al.) · Recomendações SPN 2022. Atualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Indicação', title:'Critérios de Administração de Surfactante',
            items:[
@@ -879,7 +883,7 @@ export const PROTO = {
       {
         id:'pc-bronquiolitis', cls:'p-bronquiolitis', progKey:'bronquiolitis',
         name:'Bronquiolite Aguda', src:'proto_src_bronq', badge:'proto_badge_urgencia',
-        sourceNote:'📄 Consenso Bronquiolite Aguda AEP/SEUP 2023 · AAP Clinical Practice Guideline 2014. Atualizado mar/2026.',
+        sourceNote:'📄 Consenso Bronquiolite Aguda AEP/SEUP 2023 · AAP Clinical Practice Guideline 2014. Atualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Avaliação', title:'Classificação da Gravidade',
            items:[
@@ -914,7 +918,7 @@ export const PROTO = {
       {
         id:'pc-meningitis', cls:'p-meningitis', progKey:'meningitis',
         name:'Meningite Bacteriana Aguda', src:'proto_src_mening', badge:'proto_badge_urgencia',
-        sourceNote:'📄 SEUP 2022 · ESCMID Bacterial Meningitis Guidelines 2016 · ECDC Surveillance 2023. Atualizado mar/2026.',
+        sourceNote:'📄 SEUP 2022 · ESCMID Bacterial Meningitis Guidelines 2016 · ECDC Surveillance 2023. Atualizado sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Suspeita', title:'Diagnóstico & Início Urgente',
            items:[
@@ -998,9 +1002,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-convulsivo', cls:'p-convulsivo', progKey:'convulsivo',
+        id:'pc-convulsivo', cls:'p-convulsivo', progKey:'convulsivo', linkedRcp:'rcp-conv',
         name:'Status Epilepticus', src:'proto_src_erc', badge:'proto_badge_urgencia',
-        sourceNote:'📄 ERC Paediatric Life Support Guidelines 2021 + SEUP 2022. Updated Mar/2026.',
+        sourceNote:'📄 ERC Paediatric Life Support Guidelines 2025 + SEUP 2022. Updated Sept/2026.',
         phases:[
           {tagCls:'t0', tag:'0 – 5 min', title:'Stabilisation & 1st Line — Benzodiazepines',
            items:[
@@ -1033,7 +1037,7 @@ export const PROTO = {
       {
         id:'pc-htic', cls:'p-htic', progKey:'htic',
         name:'Raised Intracranial Pressure (RICP)', src:'proto_src_pnccs', badge:'proto_badge_urgencia',
-        sourceNote:'📄 Pediatric Neurocritical Care Society Guidelines 2021. Updated Mar/2026.',
+        sourceNote:'📄 Pediatric Neurocritical Care Society Guidelines 2021. Updated Sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Recognise', title:'Signs & Criteria of RICP',
            items:[
@@ -1062,9 +1066,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-sepsis', cls:'p-sepsis', progKey:'sepsis',
+        id:'pc-sepsis', cls:'p-sepsis', progKey:'sepsis', linkedRcp:'rcp-sep',
         name:'Severe Sepsis / Septic Shock', src:'proto_src_ssc', badge:'proto_badge_urgencia',
-        sourceNote:'📄 Surviving Sepsis Campaign: International Guidelines for Management of Septic Shock in Children 2020 (PCCM). Updated Mar/2026.',
+        sourceNote:'📄 Surviving Sepsis Campaign: International Guidelines for the Management of Sepsis and Septic Shock in Children 2026 (Intensive Care Med / PCCM). Updated Sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Recognise', title:'Early Identification of High-Risk Patient',
            items:[
@@ -1086,7 +1090,7 @@ export const PROTO = {
           {tagCls:'t3', tag:'Vasopressors', title:'Fluid-Refractory Shock',
            items:[
             {cls:'critical', text:'<strong>COLD SHOCK</strong> (vasoconstriction, CRT &gt;3s, cold extremities, thready pulses): <strong>Adrenaline</strong> 0.05–0.3mcg/kg/min IV'},
-            {cls:'critical', text:'<strong>WARM SHOCK</strong> (vasodilation, CRT &lt;1s, bounding pulses, hypotension): <strong>Noradrenaline</strong> 0.05–0.5mcg/kg/min IV (SSC 2020: 1st line)'},
+            {cls:'critical', text:'<strong>WARM SHOCK</strong> (vasodilation, CRT &lt;1s, bounding pulses, hypotension): <strong>Noradrenaline</strong> 0.05–1mcg/kg/min IV · &gt;0.5mcg/kg/min = high-dose/refractory (SSC 2026: 1st line)'},
             {cls:'warn', text:'<strong>Corticosteroid in catecholamine-refractory shock:</strong> Hydrocortisone 1–2mg/kg/day continuous infusion'},
           ]},
           {tagCls:'t4', tag:'Monitor', title:'Continuous Reassessment & Targets',
@@ -1097,9 +1101,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-pcr', cls:'p-pcr', progKey:'pcr',
+        id:'pc-pcr', cls:'p-pcr', progKey:'pcr', linkedRcp:'rcp-pcr-ped',
         name:'Paediatric Cardiac Arrest — ALS', src:'proto_src_erc', badge:'proto_badge_urgencia',
-        sourceNote:'📄 ERC Paediatric Life Support Guidelines 2021 (Resuscitation 2021;161:327–387). Updated Mar/2026.',
+        sourceNote:'📄 ERC Paediatric Life Support Guidelines 2025 (Resuscitation 2025). Updated Sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Identify CA', title:'Recognition & Start of CPR',
            items:[
@@ -1109,7 +1113,8 @@ export const PROTO = {
           ]},
           {tagCls:'t1', tag:'Rhythm', title:'Rhythm Analysis — Shockable vs Non-Shockable',
            items:[
-            {cls:'critical', text:'<strong>SHOCKABLE RHYTHM</strong> (VF/pVT): Shock <strong>4J/kg</strong> (max 360J monophasic) · resume CPR 2min immediately'},
+            {cls:'critical', text:'<strong>SHOCKABLE RHYTHM</strong> (VF/pVT): Initial shock <strong>4J/kg</strong> (not exceeding recommended adult energy, 120–200J biphasic) · resume CPR 2min immediately'},
+            {cls:'critical', text:'<strong>Refractory VF/VT (&gt;5 shocks):</strong> escalate stepwise to <strong>max 8J/kg</strong> · keep same energy if ROSC then re-arrest (ERC 2025)'},
             {cls:'critical', text:'After 3rd shock: <strong>Adrenaline IV/IO 0.01mg/kg</strong> + <strong>Amiodarone 5mg/kg</strong> (max 300mg) · repeat adrenaline every 3–5min'},
             {cls:'critical', text:'After 5th shock: 2nd dose <strong>Amiodarone 5mg/kg</strong> (max 150mg) · alternative Lidocaine 1mg/kg'},
             {cls:'critical', text:'<strong>NON-SHOCKABLE</strong> (Asystole/PEA): <strong>Adrenaline IV/IO 0.01mg/kg</strong> immediately · repeat every 3–5min'},
@@ -1119,6 +1124,7 @@ export const PROTO = {
             {cls:'warn', text:'<strong>4H:</strong> Hypoxia → ventilate with 100% O₂ · Hypovolaemia → SF bolus 10mL/kg · Hypo/Hyperkalaemia · Hypothermia'},
             {cls:'warn', text:'<strong>4T:</strong> Tension Pneumothorax → needle decompression · Tamponade → pericardiocentesis · Toxins · Massive PE'},
             {cls:'nursing', text:'IO access if no IV in &lt;1min: preferred site proximal anteromedial tibia'},
+            {cls:'nursing', text:'Advanced airway: must not delay CPR/defibrillation · if intubating, max 4 attempts of 30–60sec each, with apnoeic oxygenation between attempts (ERC 2025)'},
           ]},
           {tagCls:'t3', tag:'ROSC', title:'Post-Cardiac Arrest Care',
            items:[
@@ -1129,9 +1135,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-anafilaxia', cls:'p-anafilaxia', progKey:'anafilaxia',
+        id:'pc-anafilaxia', cls:'p-anafilaxia', progKey:'anafilaxia', linkedRcp:'rcp-anaf',
         name:'Anaphylaxis', src:'proto_src_wao', badge:'proto_badge_urgencia',
-        sourceNote:'📄 WAO/EAACI Anaphylaxis Guidelines 2020 + SEUP 2021. Updated Mar/2026.',
+        sourceNote:'📄 WAO/AAAAI Anaphylaxis Guidelines Update 2025 + SEUP 2021. Updated Sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Diagnosis', title:'Diagnostic Criteria for Anaphylaxis',
            items:[
@@ -1161,9 +1167,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-asma', cls:'p-asma', progKey:'asma',
+        id:'pc-asma', cls:'p-asma', progKey:'asma', linkedRcp:'rcp-asma',
         name:'Acute Asthma Attack', src:'proto_src_gema', badge:'proto_badge_urgencia',
-        sourceNote:'📄 GEMA 5.3 2023 (Spanish Asthma Management Guide) + SEUP Asthma Protocol 2022. Updated Mar/2026.',
+        sourceNote:'📄 GEMA 5.5 2023 (Spanish Asthma Management Guide) + SEUP Asthma Protocol 2022. Updated Sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Classify', title:'Severity Assessment',
            items:[
@@ -1196,7 +1202,7 @@ export const PROTO = {
       {
         id:'pc-cad', cls:'p-cad', progKey:'cad',
         name:'Diabetic Ketoacidosis (DKA)', src:'proto_src_ispad', badge:'proto_badge_urgencia',
-        sourceNote:'📄 ISPAD Clinical Practice Consensus Guidelines 2022 — Diabetic Ketoacidosis. Updated Mar/2026.',
+        sourceNote:'📄 ISPAD Clinical Practice Consensus Guidelines 2022 — Diabetic Ketoacidosis. Updated Sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Diagnosis', title:'Diagnostic Criteria & Severity Classification',
            items:[
@@ -1227,9 +1233,9 @@ export const PROTO = {
         ]
       },
       {
-        id:'pc-iot', cls:'p-iot', progKey:'iot',
+        id:'pc-iot', cls:'p-iot', progKey:'iot', linkedRcp:'rcp-iot-ped',
         name:'Endotracheal Intubation — Rapid Sequence (RSI)', src:'proto_src_secip', badge:'proto_badge_urgencia',
-        sourceNote:'📄 SECIP — RSI Protocol 2023 (Spanish Society of Paediatric Intensive Care). Updated Mar/2026.',
+        sourceNote:'📄 SECIP — RSI Protocol 2023 (Spanish Society of Paediatric Intensive Care). Updated Sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Preparation', title:'Preparation: MSMAIDS Mnemonic',
            items:[
@@ -1278,7 +1284,7 @@ export const PROTO = {
       {
         id:'pc-mist', cls:'p-mist', progKey:'mist',
         name:'Surfactant MIST/LISA — Neonatal RDS', src:'proto_src_escrc', badge:'proto_badge_neonatal',
-        sourceNote:'📄 European Consensus Guidelines on RDS Management 2023 (Vyas Dhar et al.) · SPN Recommendations 2022. Updated Mar/2026.',
+        sourceNote:'📄 European Consensus Guidelines on RDS Management 2023 (Vyas Dhar et al.) · SPN Recommendations 2022. Updated Sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Indication', title:'Criteria for Surfactant Administration',
            items:[
@@ -1318,7 +1324,7 @@ export const PROTO = {
       {
         id:'pc-bronquiolitis', cls:'p-bronquiolitis', progKey:'bronquiolitis',
         name:'Acute Bronchiolitis', src:'proto_src_bronq', badge:'proto_badge_urgencia',
-        sourceNote:'📄 AEP/SEUP Bronchiolitis Consensus 2023 · AAP Clinical Practice Guideline 2014. Updated Mar/2026.',
+        sourceNote:'📄 AEP/SEUP Bronchiolitis Consensus 2023 · AAP Clinical Practice Guideline 2014. Updated Sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Assessment', title:'Severity Classification',
            items:[
@@ -1353,7 +1359,7 @@ export const PROTO = {
       {
         id:'pc-meningitis', cls:'p-meningitis', progKey:'meningitis',
         name:'Acute Bacterial Meningitis', src:'proto_src_mening', badge:'proto_badge_urgencia',
-        sourceNote:'📄 SEUP 2022 · ESCMID Bacterial Meningitis Guidelines 2016 · ECDC Surveillance 2023. Updated Mar/2026.',
+        sourceNote:'📄 SEUP 2022 · ESCMID Bacterial Meningitis Guidelines 2016 · ECDC Surveillance 2023. Updated Sept/2026.',
         phases:[
           {tagCls:'t0', tag:'Suspicion', title:'Diagnosis & Urgent Initiation',
            items:[

@@ -26,8 +26,8 @@ function rcpLaminaNeo(w) {
 
 export const RCP_CARDS = {
 es: [
-  { id:'rcp-pcr-ped', icon:'🫀', color:'#f87171',
-    title:'PCR Pediátrica', src:'AHA PALS 2020 · ERC PLS 2021 · HFF',
+  { id:'rcp-pcr-ped', icon:'🫀', color:'#f87171', linkedProto:'pc-pcr',
+    title:'PCR Pediátrica', src:'AHA/AAP PALS 2025 · ERC PLS 2025 · HFF',
     summary:'Ratio 15:2 · Desfibrilable vs no desfibrilable',
     chips:[
       {lbl:'ADRENALINA IV/IO', fn:(w,cw)=>cw?{val:fmt(0.01*cw,3)+' mg',sub:fmt(0.1*cw,2)+' mL (1mL+9mL SF → 1:10.000)'}:{val:'—',sub:'0,01 mg/kg · 0,1 mL/kg'}},
@@ -40,15 +40,17 @@ es: [
     steps:[
       {t:'Compresiones / ventilación',x:'Iniciar compresiones de calidad (15:2), O₂ alto flujo y monitorizar.'},
       {t:'Ritmo',x:'Identificar ritmo desfibrilable (FV/TVSP) vs no desfibrilable (AESP/asistolia).'},
-      {t:'Adrenalina IV/IO',x:'No desfibrilable: inmediata. Desfibrilable: tras 2.º choque. Cada 3–5 min.'},
+      {t:'Adrenalina IV/IO',x:'No desfibrilable: inmediata. Desfibrilable: tras 2.º choque (AHA/AAP 2025). Cada 3–5 min. ⚠️ ERC 2025 retrasa adrenalina+amiodarona a tras el 5.º choque en FV/TV refractaria — seguir el protocolo local vigente.'},
       {t:'Causas reversibles',x:'4H: hipoxia, hipovolemia, hipotermia, H⁺. 4T: taponamiento, tensión, tóxicos, trombosis.'},
     ],
     notes:[
       {lbl:'COMPRESIONES',val:'100–120/min',sub:'Profundidad adecuada, mínima interrupción'},
       {lbl:'VENTILACIÓN',val:'10/min',sub:'Si vía aérea avanzada'},
       {lbl:'REEVALUAR',val:'2 min',sub:'Ritmo y pulso'},
+      {lbl:'FV/TV REFRACTARIA',val:'Escalar a máx 8 J/kg',sub:'Tras >5 choques (ERC 2025) · misma energía si RCE y re-PCR'},
+      {lbl:'IOT',val:'Máx 4 intentos',sub:'30–60 seg/intento · oxigenación apneica (ERC 2025)'},
     ]},
-  { id:'rcp-iot-ped', icon:'🫁', color:'#38bdf8',
+  { id:'rcp-iot-ped', icon:'🫁', color:'#38bdf8', linkedProto:'pc-iot',
     title:'IOT Pediátrico / SRI', src:'SECIP 2023',
     summary:'ETT, profundidad y SRI. Verificar banda Broselow.',
     chips:[
@@ -71,7 +73,7 @@ es: [
       {lbl:'CONFIRMACIÓN',val:'ETCO₂',sub:'Preferible siempre que disponible'},
     ]},
   { id:'rcp-pcr-neo', icon:'👶', color:'#34d399',
-    title:'PCR Neonatal', src:'NRP AHA 2021',
+    title:'PCR Neonatal', src:'NRP 9.ª ed. (AAP 2025)',
     summary:'Ratio 3:1 · Sin desfibrilación · SpO₂ diana por minutos',
     chips:[
       {lbl:'ADRENALINA IV/IO',fn:(w,cw)=>cw?{val:fmt(0.02*cw,3)+' mg',sub:'0,01–0,03 mg/kg · solución 1:10.000'}:{val:'—',sub:'0,01–0,03 mg/kg'}},
@@ -88,9 +90,10 @@ es: [
       {lbl:'RATIO',        val:'3:1',         sub:'90 compresiones + 30 ventilaciones'},
       {lbl:'FiO₂ INICIO',  val:'21%',          sub:'Aumentar según SpO₂ diana'},
       {lbl:'DEFIBRILACIÓN',val:'No indicada',  sub:'En RN sin cardiopatía congénita'},
+      {lbl:'PINZAMIENTO CORDÓN',val:'≥60 seg', sub:'Diferido, si no precisa reanimación inmediata (NRP 9.ª ed.)'},
     ]},
   { id:'rcp-iot-neo', icon:'🫁', color:'#a78bfa',
-    title:'IOT Neonatal', src:'NRP / Guía Neonatal',
+    title:'IOT Neonatal', src:'NRP 9.ª ed. / Guía Neonatal',
     summary:'TET según peso en gramos · Lámina recta',
     chips:[
       {lbl:'ETT',          fn:(w,cw)=>w?{val:rcpEttNeo(w)+' mm',sub:'lámina '+rcpLaminaNeo(w)}:{val:'—',sub:'por peso en g'}},
@@ -108,8 +111,8 @@ es: [
       {lbl:'LÁMINA',         val:'Recta',       sub:'Miller 0 o 1 según peso'},
       {lbl:'CONFIRMACIÓN',   val:'ETCO₂',       sub:'Siempre que disponible'},
     ]},
-  { id:'rcp-conv', icon:'⚡', color:'#a78bfa',
-    title:'Convulsión / Mal Convulsivo', src:'SEUP 2022 · ERC PLS 2021',
+  { id:'rcp-conv', icon:'⚡', color:'#a78bfa', linkedProto:'pc-convulsivo',
+    title:'Convulsión / Mal Convulsivo', src:'SEUP 2022 · ERC PLS 2025',
     summary:'BZD 1.ª línea · Ventana terapéutica: 5 min',
     chips:[
       {lbl:'MIDAZOLAM IV',    fn:(w,cw)=>cw?{val:fmt(Math.min(10,0.1*cw),2)+' mg',sub:fmt(Math.min(10,0.1*cw),2)+' mL @ 1 mg/mL'}:{val:'—',sub:'0,1 mg/kg · máx 10 mg'}},
@@ -128,8 +131,8 @@ es: [
       {lbl:'GLUCEMIA',   val:'Siempre',     sub:'No perder causa metabólica simple'},
       {lbl:'RESPIRACIÓN',val:'Monitorizar', sub:'Depresión tras benzodiacepina'},
     ]},
-  { id:'rcp-anaf', icon:'🫁', color:'#f472b6',
-    title:'Anafilaxia', src:'WAO/EAACI 2020',
+  { id:'rcp-anaf', icon:'🫁', color:'#f472b6', linkedProto:'pc-anafilaxia',
+    title:'Anafilaxia', src:'WAO/AAAAI 2025',
     summary:'Adrenalina IM inmediata · Cara anterolateral del muslo',
     chips:[
       {lbl:'ADRENALINA IM',fn:(w,cw)=>cw?{val:fmt(Math.min(0.5,0.01*cw),3)+' mg',sub:fmt(Math.min(0.5,0.01*cw),3)+' mL @ 1 mg/mL (1:1000)'}:{val:'—',sub:'0,01 mg/kg · máx 0,5 mg'}},
@@ -147,8 +150,8 @@ es: [
       {lbl:'BRONCOESPASMO',val:'Inhalación',  sub:'Adyuvante, no sustituye adrenalina'},
       {lbl:'ALTA',          val:'Plan',        sub:'Educación + adrenalina autoinyectable'},
     ]},
-  { id:'rcp-sep', icon:'🧫', color:'#fb923c',
-    title:'Choque Séptico', src:'SSC Pediatric 2020',
+  { id:'rcp-sep', icon:'🧫', color:'#fb923c', linkedProto:'pc-sepsis',
+    title:'Choque Séptico', src:'SSC Pediatric 2026',
     summary:'Fluidos + antibiótico precoz · Vasopresor si refractario',
     chips:[
       {lbl:'BÓLUS 10 mL/kg',fn:(w,cw)=>cw?{val:Math.round(10*cw)+' mL',sub:'reevaluar perfusión tras cada bolo'}:{val:'—',sub:'10 mL/kg SF/LR'}},
@@ -167,7 +170,7 @@ es: [
       {lbl:'ESCALADA',  val:'Precoz',     sub:'Vasopresor si refractario a fluidos'},
     ]},
   { id:'rcp-hivol', icon:'💧', color:'#60a5fa',
-    title:'Choque Hipovolémico', src:'SPP / AHA PALS 2020',
+    title:'Choque Hipovolémico', src:'SPP / AHA/AAP PALS 2025',
     summary:'Expansión urgente · Tratar causa subyacente',
     chips:[
       {lbl:'BÓLUS 1.º',   fn:(w,cw)=>cw?{val:Math.round(20*cw)+' mL',sub:'SF/LR · 10–20 mL/kg en 5–10 min'}:{val:'—',sub:'10–20 mL/kg SF/LR'}},
@@ -185,9 +188,10 @@ es: [
       {lbl:'CAUSA',       val:'Tratar',        sub:'Hemostasia, deshidratación, sepsis'},
       {lbl:'HEMORRAGIA',  val:'Hemoderivados',  sub:'Sangre O Rh− precoz si disponible'},
       {lbl:'LÍMITE',      val:'40–60 mL/kg',   sub:'Reevaluar si sin respuesta'},
+      {lbl:'ADOLESCENTES',val:'Bolo hasta 500 mL',sub:'≥14 años (ERC 2025, antes 250 mL) · IMC alto: usar peso ideal'},
     ]},
-  { id:'rcp-asma', icon:'🌬️', color:'#22d3ee',
-    title:'Crisis Asmática', src:'GEMA 5.3 · SEUP 2022',
+  { id:'rcp-asma', icon:'🌬️', color:'#22d3ee', linkedProto:'pc-asma',
+    title:'Crisis Asmática', src:'GEMA 5.5 · SEUP 2022',
     summary:'Salbutamol + corticoide · VNI si grave',
     chips:[
       {lbl:'SALBUTAMOL NEB', fn:(w,cw)=>cw?{val:fmt(Math.min(5,0.15*cw),2)+' mg',sub:'0,15 mg/kg · máx 5 mg · cada 20 min'}:{val:'—',sub:'0,15 mg/kg · máx 5 mg'}},
@@ -226,7 +230,7 @@ es: [
       {lbl:'BZD',        val:'Flumazenil',     sub:'CI absoluta si epilepsia conocida'},
     ]},
   { id:'rcp-tsv', icon:'⚡', color:'#facc15',
-    title:'TSV — Taquicardia Supraventricular', src:'AHA PALS 2020 · HFF UCIEP',
+    title:'TSV — Taquicardia Supraventricular', src:'AHA/AAP PALS 2025 · HFF UCIEP',
     summary:'Adenosina 1.ª línea · Cardioversión si inestable',
     chips:[
       {lbl:'ADENOSINA 1.ª DOSIS', fn:(w,cw)=>cw?{val:fmt(Math.min(6,0.1*cw),2)+' mg',sub:'0,1 mg/kg · bolo rápido + 10mL SF'}:{val:'—',sub:'0,1 mg/kg · máx 6 mg'}},
@@ -281,7 +285,7 @@ es: [
     notes:['Choque clase I: < 15% VST · II: 15–30% · III: 30–40% · IV: > 40%','Ca²⁺ gluconato 0,1–0,2 mL/kg con cada 4 U de CH','Fibrinógeno si < 1,5 g/L: 70 mg/kg (máx 4 g) IV lento']
   },
   { id:'rcp-brad', icon:'🫀', color:'#60a5fa',
-    title:'Bradicardia Sintomática', src:'ERC PLS 2021 · AHA PALS 2020 · HFF',
+    title:'Bradicardia Sintomática', src:'ERC PLS 2025 · AHA/AAP PALS 2025 · HFF',
     summary:'Atropina 1ª línea · Adrenalina si respuesta insuficiente · MP si refractario',
     chips:[
       {lbl:'ATROPINA IV/IO',    fn:(w,cw)=>cw?{val:fmt(Math.min(0.5,0.02*cw),3)+' mg',sub:'0,02 mg/kg · máx 0,5 mg · puede repetir ×2'}:{val:'—',sub:'0,02 mg/kg · máx 0,5 mg'}},
@@ -320,8 +324,8 @@ es: [
 ],
 
 pt: [
-  { id:'rcp-pcr-ped', icon:'🫀', color:'#f87171',
-    title:'PCR Pediátrica', src:'AHA PALS 2020 · ERC PLS 2021',
+  { id:'rcp-pcr-ped', icon:'🫀', color:'#f87171', linkedProto:'pc-pcr',
+    title:'PCR Pediátrica', src:'AHA/AAP PALS 2025 · ERC PLS 2025',
     summary:'Rácio 15:2 · Desfibrilável vs não desfibrilável',
     chips:[
       {lbl:'ADRENALINA IV/IO', fn:(w,cw)=>cw?{val:fmt(0.01*cw,3)+' mg',sub:fmt(0.1*cw,2)+' mL (1mL+9mL SF → 1:10.000)'}:{val:'—',sub:'0,01 mg/kg · 0,1 mL/kg'}},
@@ -334,15 +338,17 @@ pt: [
     steps:[
       {t:'Compressões / ventilação',x:'Iniciar compressões de qualidade (15:2), O₂ alto fluxo e monitorizar.'},
       {t:'Ritmo',x:'Identificar ritmo desfibrilável (FV/TVSP) vs não desfibrilável (AESP/asistolia).'},
-      {t:'Adrenalina IV/IO',x:'Em ritmo não desfibrilável: imediata. Em desfibrilável: após 2.º choque.'},
+      {t:'Adrenalina IV/IO',x:'Em ritmo não desfibrilável: imediata. Em desfibrilável: após 2.º choque (AHA/AAP 2025). Repetir cada 3–5min. ⚠️ ERC 2025 adia adrenalina+amiodarona para após o 5.º choque em FV/TV refratária — seguir o protocolo local vigente.'},
       {t:'Causas reversíveis',x:'4H: hipóxia, hipovolemia, hipotermia, H⁺. 4T: tamponamento, tensão, tóxicos, trombose.'},
     ],
     notes:[
       {lbl:'COMPRESSÕES',val:'100–120/min', sub:'Profundidade adequada, mínima interrupção'},
       {lbl:'VENTILAÇÃO', val:'10/min',      sub:'Se via aérea avançada'},
       {lbl:'REAVALIAR',  val:'2 min',       sub:'Ritmo e pulso'},
+      {lbl:'FV/TV REFRATÁRIA',val:'Escalar até máx 8 J/kg',sub:'Após >5 choques (ERC 2025) · mesma energia se RCE e re-PCR'},
+      {lbl:'IOT',val:'Máx 4 tentativas',sub:'30–60 seg/tentativa · oxigenação apneica (ERC 2025)'},
     ]},
-  { id:'rcp-iot-ped', icon:'🫁', color:'#38bdf8',
+  { id:'rcp-iot-ped', icon:'🫁', color:'#38bdf8', linkedProto:'pc-iot',
     title:'Intubação Pediátrica / ISR', src:'SECIP 2023',
     summary:'ETT, profundidade e ISR. Verificar banda Broselow.',
     chips:[
@@ -365,7 +371,7 @@ pt: [
       {lbl:'CONFIRMAÇÃO', val:'ETCO₂',sub:'Preferível sempre que disponível'},
     ]},
   { id:'rcp-pcr-neo', icon:'👶', color:'#34d399',
-    title:'PCR Neonatal', src:'NRP AHA 2021',
+    title:'PCR Neonatal', src:'NRP 9.ª ed. (AAP 2025)',
     summary:'Rácio 3:1 · Sem desfibrilação · SpO₂ alvo por minutos',
     chips:[
       {lbl:'ADRENALINA IV/IO',fn:(w,cw)=>cw?{val:fmt(0.02*cw,3)+' mg',sub:'0,01–0,03 mg/kg · solução 1:10.000'}:{val:'—',sub:'0,01–0,03 mg/kg'}},
@@ -382,9 +388,10 @@ pt: [
       {lbl:'RÁCIO',        val:'3:1',          sub:'90 compressões + 30 ventilações'},
       {lbl:'FiO₂ INÍCIO',  val:'21%',           sub:'Aumentar conforme SpO₂ alvo'},
       {lbl:'DESFIBRILAÇÃO',val:'Não indicada',  sub:'Em RN sem cardiopatia congénita'},
+      {lbl:'CLAMPAGEM CORDÃO',val:'≥60 seg', sub:'Diferida, se não precisar de reanimação imediata (NRP 9.ª ed.)'},
     ]},
   { id:'rcp-iot-neo', icon:'🫁', color:'#a78bfa',
-    title:'Intubação Neonatal', src:'NRP / Guia Neonatal',
+    title:'Intubação Neonatal', src:'NRP 9.ª ed. / Guia Neonatal',
     summary:'TET segundo peso em gramas · Lâmina reta',
     chips:[
       {lbl:'ETT',          fn:(w,cw)=>w?{val:rcpEttNeo(w)+' mm',sub:'lâmina '+rcpLaminaNeo(w)}:{val:'—',sub:'por peso em g'}},
@@ -402,8 +409,8 @@ pt: [
       {lbl:'LÂMINA',         val:'Reta',      sub:'Miller 0 ou 1 segundo peso'},
       {lbl:'CONFIRMAÇÃO',    val:'ETCO₂',     sub:'Sempre que disponível'},
     ]},
-  { id:'rcp-conv', icon:'⚡', color:'#a78bfa',
-    title:'Convulsão / Estado Epilético', src:'SEUP 2022 · ERC PLS 2021',
+  { id:'rcp-conv', icon:'⚡', color:'#a78bfa', linkedProto:'pc-convulsivo',
+    title:'Convulsão / Estado Epilético', src:'SEUP 2022 · ERC PLS 2025',
     summary:'BZD 1.ª linha · Janela terapêutica: 5 min',
     chips:[
       {lbl:'MIDAZOLAM IV',     fn:(w,cw)=>cw?{val:fmt(Math.min(10,0.1*cw),2)+' mg',sub:fmt(Math.min(10,0.1*cw),2)+' mL @ 1 mg/mL'}:{val:'—',sub:'0,1 mg/kg · máx 10 mg'}},
@@ -422,8 +429,8 @@ pt: [
       {lbl:'GLICEMIA',   val:'Sempre',      sub:'Não falhar correção metabólica simples'},
       {lbl:'RESPIRAÇÃO', val:'Monitorizar', sub:'Depressão respiratória após benzodiazepina'},
     ]},
-  { id:'rcp-anaf', icon:'🫁', color:'#f472b6',
-    title:'Anafilaxia', src:'WAO/EAACI 2020',
+  { id:'rcp-anaf', icon:'🫁', color:'#f472b6', linkedProto:'pc-anafilaxia',
+    title:'Anafilaxia', src:'WAO/AAAAI 2025',
     summary:'Adrenalina IM imediata · Face anterolateral da coxa',
     chips:[
       {lbl:'ADRENALINA IM',fn:(w,cw)=>cw?{val:fmt(Math.min(0.5,0.01*cw),3)+' mg',sub:fmt(Math.min(0.5,0.01*cw),3)+' mL @ 1 mg/mL (1:1000)'}:{val:'—',sub:'0,01 mg/kg · máx 0,5 mg'}},
@@ -441,8 +448,8 @@ pt: [
       {lbl:'BRONCOESPASMO',val:'Inalação',   sub:'Brônquico adjuvante, não substitui adrenalina'},
       {lbl:'ALTA',          val:'Plano',      sub:'Educação e adrenalina autoinjetável'},
     ]},
-  { id:'rcp-sep', icon:'🧫', color:'#fb923c',
-    title:'Choque Séptico', src:'SSC Pediatric 2020',
+  { id:'rcp-sep', icon:'🧫', color:'#fb923c', linkedProto:'pc-sepsis',
+    title:'Choque Séptico', src:'SSC Pediatric 2026',
     summary:'Fluidos + antibiótico precoce · Vasopressor se refratário',
     chips:[
       {lbl:'BÓLUS 10 mL/kg',fn:(w,cw)=>cw?{val:Math.round(10*cw)+' mL',sub:'reavaliar perfusão após cada bolo'}:{val:'—',sub:'10 mL/kg SF/LR'}},
@@ -461,7 +468,7 @@ pt: [
       {lbl:'ESCALADA', val:'Precoce',    sub:'Vasopressor quando responsividade a fluidos é limitada'},
     ]},
   { id:'rcp-hivol', icon:'💧', color:'#60a5fa',
-    title:'Choque Hipovolémico', src:'SPP / AHA PALS 2020',
+    title:'Choque Hipovolémico', src:'SPP / AHA/AAP PALS 2025',
     summary:'Expansão urgente · Tratar causa subjacente',
     chips:[
       {lbl:'BÓLUS 1.º',    fn:(w,cw)=>cw?{val:Math.round(20*cw)+' mL',sub:'SF/LR · 10–20 mL/kg em 5–10 min'}:{val:'—',sub:'10–20 mL/kg SF/LR'}},
@@ -479,9 +486,10 @@ pt: [
       {lbl:'CAUSA',       val:'Tratar',         sub:'Hemostase, desidratação, sepsis'},
       {lbl:'HEMORRAGIA',  val:'Hemoderivados',  sub:'Sangue O Rh− precoce se disponível'},
       {lbl:'LIMITE',      val:'40–60 mL/kg',    sub:'Reavaliar se sem resposta'},
+      {lbl:'ADOLESCENTES',val:'Bólus até 500 mL',sub:'≥14 anos (ERC 2025, antes 250 mL) · IMC alto: usar peso ideal'},
     ]},
-  { id:'rcp-asma', icon:'🌬️', color:'#22d3ee',
-    title:'Crise Asmática', src:'GEMA 5.3 · SEUP 2022',
+  { id:'rcp-asma', icon:'🌬️', color:'#22d3ee', linkedProto:'pc-asma',
+    title:'Crise Asmática', src:'GEMA 5.5 · SEUP 2022',
     summary:'Salbutamol + corticoide · VNI se grave',
     chips:[
       {lbl:'SALBUTAMOL NEB', fn:(w,cw)=>cw?{val:fmt(Math.min(5,0.15*cw),2)+' mg',sub:'0,15 mg/kg · máx 5 mg · cada 20 min'}:{val:'—',sub:'0,15 mg/kg · máx 5 mg'}},
@@ -520,7 +528,7 @@ pt: [
       {lbl:'BZD',        val:'Flumazenil',     sub:'CI absoluta se epilepsia conhecida'},
     ]},
   { id:'rcp-tsv', icon:'⚡', color:'#facc15',
-    title:'TSV — Taquicardia Supraventricular', src:'AHA PALS 2020 · HFF UCIEP',
+    title:'TSV — Taquicardia Supraventricular', src:'AHA/AAP PALS 2025 · HFF UCIEP',
     summary:'Adenosina 1.ª linha · Cardioversão se instável',
     chips:[
       {lbl:'ADENOSINA 1.ª DOSE', fn:(w,cw)=>cw?{val:fmt(Math.min(6,0.1*cw),2)+' mg',sub:'0,1 mg/kg · bólus rápido + 10mL SF'}:{val:'—',sub:'0,1 mg/kg · máx 6 mg'}},
@@ -575,7 +583,7 @@ pt: [
     notes:['Choque classe I: < 15% VST · II: 15–30% · III: 30–40% · IV: > 40%','Ca²⁺ gluconato 0,1–0,2 mL/kg com cada 4 U de CE','Fibrinogénio se < 1,5 g/L: 70 mg/kg (máx 4 g) IV lento']
   },
   { id:'rcp-brad', icon:'🫀', color:'#60a5fa',
-    title:'Bradicardia Sintomática', src:'ERC PLS 2021 · AHA PALS 2020 · HFF',
+    title:'Bradicardia Sintomática', src:'ERC PLS 2025 · AHA/AAP PALS 2025 · HFF',
     summary:'Atropina 1ª linha · Adrenalina se resposta insuficiente · PM se refratário',
     chips:[
       {lbl:'ATROPINA IV/IO',    fn:(w,cw)=>cw?{val:fmt(Math.min(0.5,0.02*cw),3)+' mg',sub:'0,02 mg/kg · máx 0,5 mg · pode repetir ×2'}:{val:'—',sub:'0,02 mg/kg · máx 0,5 mg'}},
@@ -614,8 +622,8 @@ pt: [
 ],
 
 en: [
-  { id:'rcp-pcr-ped', icon:'🫀', color:'#f87171',
-    title:'Pediatric CPR', src:'AHA PALS 2020 · ERC PLS 2021',
+  { id:'rcp-pcr-ped', icon:'🫀', color:'#f87171', linkedProto:'pc-pcr',
+    title:'Pediatric CPR', src:'AHA/AAP PALS 2025 · ERC PLS 2025',
     summary:'15:2 ratio · Shockable vs non-shockable rhythm',
     chips:[
       {lbl:'EPINEPHRINE IV/IO', fn:(w,cw)=>cw?{val:fmt(0.01*cw,3)+' mg',sub:fmt(0.1*cw,2)+' mL (1mL+9mL NS → 1:10,000)'}:{val:'—',sub:'0.01 mg/kg · 0.1 mL/kg'}},
@@ -628,15 +636,17 @@ en: [
     steps:[
       {t:'Compressions / ventilation',x:'Start high-quality compressions (15:2), high-flow O₂ and monitor.'},
       {t:'Rhythm',x:'Identify shockable (VF/pVT) vs non-shockable (PEA/asystole).'},
-      {t:'Epinephrine IV/IO',x:'Non-shockable: give immediately. Shockable: after 2nd shock.'},
+      {t:'Epinephrine IV/IO',x:'Non-shockable: give immediately. Shockable: after 2nd shock (AHA/AAP 2025). Repeat every 3–5min. ⚠️ ERC 2025 delays epinephrine+amiodarone to after the 5th shock in refractory VF/VT — follow your local protocol.'},
       {t:'Reversible causes',x:'4H: hypoxia, hypovolemia, hypothermia, H⁺. 4T: tamponade, tension, toxins, thrombosis.'},
     ],
     notes:[
       {lbl:'COMPRESSIONS',val:'100–120/min', sub:'Adequate depth, minimal interruption'},
       {lbl:'VENTILATION', val:'10/min',      sub:'If advanced airway in place'},
       {lbl:'REASSESS',    val:'2 min',       sub:'Rhythm and pulse check'},
+      {lbl:'REFRACTORY VF/VT',val:'Escalate to max 8 J/kg',sub:'After >5 shocks (ERC 2025) · same energy if ROSC then re-arrest'},
+      {lbl:'INTUBATION',val:'Max 4 attempts',sub:'30–60 sec/attempt · apnoeic oxygenation (ERC 2025)'},
     ]},
-  { id:'rcp-iot-ped', icon:'🫁', color:'#38bdf8',
+  { id:'rcp-iot-ped', icon:'🫁', color:'#38bdf8', linkedProto:'pc-iot',
     title:'Pediatric Intubation / RSI', src:'SECIP 2023',
     summary:'ETT, depth and RSI. Check Broselow tape.',
     chips:[
@@ -659,7 +669,7 @@ en: [
       {lbl:'CONFIRM',val:'ETCO₂',sub:'Preferred whenever available'},
     ]},
   { id:'rcp-pcr-neo', icon:'👶', color:'#34d399',
-    title:'Neonatal CPR', src:'NRP AHA 2021',
+    title:'Neonatal CPR', src:'NRP 9.ª ed. (AAP 2025)',
     summary:'3:1 ratio · No defibrillation · SpO₂ targets by minute',
     chips:[
       {lbl:'EPINEPHRINE IV/IO',fn:(w,cw)=>cw?{val:fmt(0.02*cw,3)+' mg',sub:'0.01–0.03 mg/kg · 1:10,000 solution'}:{val:'—',sub:'0.01–0.03 mg/kg'}},
@@ -676,9 +686,10 @@ en: [
       {lbl:'RATIO',          val:'3:1',           sub:'90 compressions + 30 ventilations'},
       {lbl:'FiO₂ START',     val:'21%',            sub:'Increase per SpO₂ targets'},
       {lbl:'DEFIBRILLATION', val:'Not indicated',  sub:'In neonates without congenital heart disease'},
+      {lbl:'CORD CLAMPING',val:'≥60 sec', sub:'Delayed, if resuscitation not immediately needed (NRP 9th ed.)'},
     ]},
   { id:'rcp-iot-neo', icon:'🫁', color:'#a78bfa',
-    title:'Neonatal Intubation', src:'NRP / Neonatal Guide',
+    title:'Neonatal Intubation', src:'NRP 9th ed. / Neonatal Guide',
     summary:'ETT by weight in grams · Straight blade',
     chips:[
       {lbl:'ETT',        fn:(w,cw)=>w?{val:rcpEttNeo(w)+' mm',sub:'blade '+rcpLaminaNeo(w)}:{val:'—',sub:'by weight in g'}},
@@ -696,8 +707,8 @@ en: [
       {lbl:'BLADE',        val:'Straight',    sub:'Miller 0 or 1 by weight'},
       {lbl:'CONFIRMATION', val:'ETCO₂',      sub:'Whenever available'},
     ]},
-  { id:'rcp-conv', icon:'⚡', color:'#a78bfa',
-    title:'Seizure / Status Epilepticus', src:'SEUP 2022 · ERC PLS 2021',
+  { id:'rcp-conv', icon:'⚡', color:'#a78bfa', linkedProto:'pc-convulsivo',
+    title:'Seizure / Status Epilepticus', src:'SEUP 2022 · ERC PLS 2025',
     summary:'BZD first line · Therapeutic window: 5 min',
     chips:[
       {lbl:'MIDAZOLAM IV',    fn:(w,cw)=>cw?{val:fmt(Math.min(10,0.1*cw),2)+' mg',sub:fmt(Math.min(10,0.1*cw),2)+' mL @ 1 mg/mL'}:{val:'—',sub:'0.1 mg/kg · max 10 mg'}},
@@ -716,8 +727,8 @@ en: [
       {lbl:'GLUCOSE',   val:'Always',     sub:'Do not miss simple metabolic cause'},
       {lbl:'BREATHING', val:'Monitor',    sub:'Respiratory depression after BZD'},
     ]},
-  { id:'rcp-anaf', icon:'🫁', color:'#f472b6',
-    title:'Anaphylaxis', src:'WAO/EAACI 2020',
+  { id:'rcp-anaf', icon:'🫁', color:'#f472b6', linkedProto:'pc-anafilaxia',
+    title:'Anaphylaxis', src:'WAO/AAAAI 2025',
     summary:'Immediate IM epinephrine · Anterolateral thigh',
     chips:[
       {lbl:'EPINEPHRINE IM',fn:(w,cw)=>cw?{val:fmt(Math.min(0.5,0.01*cw),3)+' mg',sub:fmt(Math.min(0.5,0.01*cw),3)+' mL @ 1 mg/mL (1:1000)'}:{val:'—',sub:'0.01 mg/kg · max 0.5 mg'}},
@@ -735,8 +746,8 @@ en: [
       {lbl:'BRONCHOSPASM',val:'Inhaled',   sub:'Adjunct, does not replace epinephrine'},
       {lbl:'DISCHARGE',   val:'Plan',      sub:'Education and auto-injectable epinephrine'},
     ]},
-  { id:'rcp-sep', icon:'🧫', color:'#fb923c',
-    title:'Septic Shock', src:'SSC Pediatric 2020',
+  { id:'rcp-sep', icon:'🧫', color:'#fb923c', linkedProto:'pc-sepsis',
+    title:'Septic Shock', src:'SSC Pediatric 2026',
     summary:'Fluids + early antibiotics · Vasopressor if refractory',
     chips:[
       {lbl:'BOLUS 10 mL/kg',fn:(w,cw)=>cw?{val:Math.round(10*cw)+' mL',sub:'reassess perfusion after each bolus'}:{val:'—',sub:'10 mL/kg NS/LR'}},
@@ -755,7 +766,7 @@ en: [
       {lbl:'ESCALATION',val:'Early',      sub:'Vasopressor when fluid response limited'},
     ]},
   { id:'rcp-hivol', icon:'💧', color:'#60a5fa',
-    title:'Hypovolemic Shock', src:'SPP / AHA PALS 2020',
+    title:'Hypovolemic Shock', src:'SPP / AHA/AAP PALS 2025',
     summary:'Urgent volume expansion · Treat underlying cause',
     chips:[
       {lbl:'1ST BOLUS',  fn:(w,cw)=>cw?{val:Math.round(20*cw)+' mL',sub:'NS/LR · 10–20 mL/kg over 5–10 min'}:{val:'—',sub:'10–20 mL/kg NS/LR'}},
@@ -773,9 +784,10 @@ en: [
       {lbl:'CAUSE',      val:'Treat',        sub:'Hemorrhage control, dehydration, sepsis'},
       {lbl:'HEMORRHAGE', val:'Blood products',sub:'O Rh− early if available'},
       {lbl:'LIMIT',      val:'40–60 mL/kg',  sub:'Reassess if no response'},
+      {lbl:'ADOLESCENTS',val:'Bolus up to 500 mL',sub:'≥14 years (ERC 2025, previously 250 mL) · high BMI: use ideal body weight'},
     ]},
-  { id:'rcp-asma', icon:'🌬️', color:'#22d3ee',
-    title:'Asthma Crisis', src:'GEMA 5.3 · SEUP 2022',
+  { id:'rcp-asma', icon:'🌬️', color:'#22d3ee', linkedProto:'pc-asma',
+    title:'Asthma Crisis', src:'GEMA 5.5 · SEUP 2022',
     summary:'Salbutamol + corticosteroid · NIV if severe',
     chips:[
       {lbl:'SALBUTAMOL NEB', fn:(w,cw)=>cw?{val:fmt(Math.min(5,0.15*cw),2)+' mg',sub:'0.15 mg/kg · max 5 mg · every 20 min'}:{val:'—',sub:'0.15 mg/kg · max 5 mg'}},
@@ -814,7 +826,7 @@ en: [
       {lbl:'BZD',        val:'Flumazenil',    sub:'Absolute CI if known epilepsy'},
     ]},
   { id:'rcp-tsv', icon:'⚡', color:'#facc15',
-    title:'SVT — Supraventricular Tachycardia', src:'AHA PALS 2020 · HFF UCIEP',
+    title:'SVT — Supraventricular Tachycardia', src:'AHA/AAP PALS 2025 · HFF UCIEP',
     summary:'Adenosine 1st line · Cardioversion if unstable',
     chips:[
       {lbl:'ADENOSINE 1st DOSE', fn:(w,cw)=>cw?{val:fmt(Math.min(6,0.1*cw),2)+' mg',sub:'0.1 mg/kg · rapid bolus + 10mL NS'}:{val:'—',sub:'0.1 mg/kg · max 6 mg'}},
@@ -869,7 +881,7 @@ en: [
     notes:['Shock class I: < 15% TBV · II: 15–30% · III: 30–40% · IV: > 40%','Ca²⁺ gluconate 0.1–0.2 mL/kg with every 4 units of pRBC','Fibrinogen if < 1.5 g/L: 70 mg/kg (max 4 g) IV slow']
   },
   { id:'rcp-brad', icon:'🫀', color:'#60a5fa',
-    title:'Symptomatic Bradycardia', src:'ERC PLS 2021 · AHA PALS 2020 · HFF',
+    title:'Symptomatic Bradycardia', src:'ERC PLS 2025 · AHA/AAP PALS 2025 · HFF',
     summary:'Atropine first line · Adrenaline if inadequate response · Pacing if refractory',
     chips:[
       {lbl:'ATROPINE IV/IO',    fn:(w,cw)=>cw?{val:fmt(Math.min(0.5,0.02*cw),3)+' mg',sub:'0.02 mg/kg · max 0.5 mg · can repeat ×2'}:{val:'—',sub:'0.02 mg/kg · max 0.5 mg'}},

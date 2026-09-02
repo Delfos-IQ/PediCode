@@ -1295,6 +1295,7 @@ function renderRcpCards() {
       </div>
       <div class="rcp-card-body">
         <div class="rcp-card-summary">${card.summary}</div>
+        ${card.linkedProto ? `<div class="rcp-cross-link" onclick="event.stopPropagation();goToProto('${card.linkedProto}')">📜 ${lang==='en'?'See full protocol':lang==='pt'?'Ver protocolo completo':'Ver protocolo completo'} →</div>` : ''}
         <div class="rcp-chip-row">${chipsHTML}</div>
         <div class="rcp-body-cols">
           <div class="rcp-col-algo">
@@ -1335,6 +1336,26 @@ function goToProto(protoId) {
     // Scroll to top of protocolos
     const wrap = document.getElementById('pt-wrap');
     if (wrap) wrap.scrollIntoView({block:'start'});
+  }, 120);
+}
+
+function goToRcp(rcpId) {
+  // Switch to RCP tab and open the matching quick-chip card
+  const btn = document.querySelector('.tab-btn[onclick*="\'rcp\'"]') || document.querySelector('.tab-rcp');
+  if (btn) showTab(btn, 'rcp');
+  setTimeout(() => {
+    if (typeof rcpToggle === 'function') rcpToggle(rcpId);
+    const el = document.getElementById(rcpId);
+    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 120);
+}
+
+function goToScoreCard(cid) {
+  // Switch to Scores tab and open a specific score/material card (e.g. Broselow from Params tab)
+  const btn = document.querySelector('.tab-btn[onclick*="scores"]');
+  if (btn) showTab(btn, 'scores');
+  setTimeout(() => {
+    if (typeof openScoreCard === 'function') openScoreCard(cid);
   }, 120);
 }
 
@@ -2246,7 +2267,12 @@ function buildVitalsCatGrid() {
       <div class="vt-cat-name">${lbl}${badge}</div>
       <div class="vt-cat-desc">${desc}</div>
     </div>`;
-  }).join('');
+  }).join('') + `<div class="vt-cat-card" onclick="goToScoreCard('sc-brow')" style="border-color:#34d39944">
+      <div style="position:absolute;left:0;top:0;bottom:0;width:4px;background:#34d399;border-radius:14px 0 0 14px;"></div>
+      <div class="vt-cat-icon">📏</div>
+      <div class="vt-cat-name">${lang==='en'?'Equipment (Broselow)':lang==='pt'?'Material (Broselow)':'Material (Broselow)'}</div>
+      <div class="vt-cat-desc">${lang==='en'?'Cross-reference — opens in Scores tab':lang==='pt'?'Referência cruzada — abre no separador Scores':'Referencia cruzada — abre en el tab Scores'}</div>
+    </div>`;
   } catch(_e) {
     console.error('[PediCode] Error en buildVitalsCatGrid:', _e);
     /* ── fallback visual ── */
@@ -2989,6 +3015,7 @@ function renderProtoUI() {
           <span class="proto-weight-link" onclick="goToCalc()">${wLink}</span>
         </div>
         <div class="source-note">${card.sourceNote}</div>
+        ${card.linkedRcp ? `<div class="rcp-cross-link" onclick="goToRcp('${card.linkedRcp}')">🚨 ${lang==='en'?'See quick RCP chip':lang==='pt'?'Ver chip rápido RCP':'Ver chip rápido RCP'} →</div>` : ''}
         <div class="algo-steps">${stepsHTML}</div>
       </div>
     </div>`;
@@ -3360,6 +3387,8 @@ window.filterProtos = typeof filterProtos !== 'undefined' ? filterProtos : undef
 window.filterScores = typeof filterScores !== 'undefined' ? filterScores : undefined;
 window.goToCalc = typeof goToCalc !== 'undefined' ? goToCalc : undefined;
 window.goToProto = typeof goToProto !== 'undefined' ? goToProto : undefined;
+window.goToRcp = typeof goToRcp !== 'undefined' ? goToRcp : undefined;
+window.goToScoreCard = typeof goToScoreCard !== 'undefined' ? goToScoreCard : undefined;
 window.openAbout = typeof openAbout !== 'undefined' ? openAbout : undefined;
 window.closeAbout = typeof closeAbout !== 'undefined' ? closeAbout : undefined;
 window.openDrugCard = typeof openDrugCard !== 'undefined' ? openDrugCard : undefined;

@@ -75,6 +75,47 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.9', date: 'Septiembre 2026', type: 'major',
+    items: {
+      es: [
+        'Bibliografía actualizada en toda la app: AHA/AAP PALS 2025 (antes 2020), ERC PLS 2025 (antes 2021), Surviving Sepsis Campaign Pediatric 2026 (antes 2020), GEMA 5.5 (antes 5.3), NRP 9.ª ed. (antes 2021), BNFc 2025-26 (antes 2020-21)',
+        'RCP/Protocolos: añadidas las novedades confirmadas de ERC 2025 — escalada de energía hasta 8 J/kg en FV/TV refractaria (&gt;5 choques), adrenalina/amiodarona tras el 5.º choque (con aviso de la diferencia frente al esquema AHA de 2.º/3.º choque), límite de 4 intentos de intubación (30–60seg c/u) con oxigenación apneica, bolo de líquidos hasta 500 mL en ≥14 años, y pinzamiento diferido de cordón ≥60seg en RN (NRP 9.ª ed.)',
+        '⚠️ Corrección de seguridad: Ranitidina marcada como retirada del mercado (FDA/EMA 2020, contaminación NDMA) en la ficha del tab Medicamentos — ya estaba excluida del asistente de IA pero seguía apareciendo como fármaco normal en el listado',
+        '⚠️ Corrección: matriz de perfusiones (infusions.js) — Propofol limitado a 0,5–4 mg/kg/h (antes hasta 9 mg/kg/h), alineado con el límite de seguridad ya aplicado a la calculadora de dosis en v4.7',
+        'Corrección: discrepancia de dosis de Noradrenalina en shock séptico entre el protocolo (0,05–0,5) y las perfusiones (0,05–1) — unificado a 0,05–1 mcg/kg/min con &gt;0,5 marcado como dosis alta/refractariedad',
+        'Revisión de fecha y fuente de 17 fármacos de infusions.js con revisión pendiente desde 2020-2021',
+        'Nuevo: enlace cruzado entre las tarjetas RCP y Protocolos que comparten tema (PCR, IOT, anafilaxia, asma, convulsión, sepsis) — "ver protocolo completo" / "ver chip rápido"',
+        'Nuevo: acceso a la tabla de material (Broselow) también desde el tab Parámetros, además de Scores',
+        'Corrección menor: la cita de Hidralazina/Nifedipino en hipertensión pediátrica atribuida a "AHA" ahora dice correctamente "AAP" (guía de 2017)',
+        'SW actualizado a v4.9',
+      ],
+      pt: [
+        'Bibliografia atualizada em toda a app: AHA/AAP PALS 2025 (antes 2020), ERC PLS 2025 (antes 2021), Surviving Sepsis Campaign Pediatric 2026 (antes 2020), GEMA 5.5 (antes 5.3), NRP 9.ª ed. (antes 2021), BNFc 2025-26 (antes 2020-21)',
+        'RCP/Protocolos: adicionadas as novidades confirmadas do ERC 2025 — escalada de energia até 8 J/kg em FV/TV refratária (&gt;5 choques), adrenalina/amiodarona após o 5.º choque (com aviso da diferença face ao esquema AHA de 2.º/3.º choque), limite de 4 tentativas de intubação (30–60seg cada) com oxigenação apneica, bólus de líquidos até 500 mL em ≥14 anos, e clampagem diferida do cordão ≥60seg no RN (NRP 9.ª ed.)',
+        '⚠️ Correção de segurança: Ranitidina marcada como retirada do mercado (FDA/EMA 2020, contaminação NDMA) na ficha do separador Medicamentos — já estava excluída do assistente de IA mas continuava a aparecer como fármaco normal na lista',
+        '⚠️ Correção: matriz de perfusões (infusions.js) — Propofol limitado a 0,5–4 mg/kg/h (antes até 9 mg/kg/h), alinhado com o limite de segurança já aplicado à calculadora de doses na v4.7',
+        'Correção: discrepância de dose de Noradrenalina em choque séptico entre o protocolo (0,05–0,5) e as perfusões (0,05–1) — unificado para 0,05–1 mcg/kg/min com &gt;0,5 marcado como dose alta/refratariedade',
+        'Revisão de data e fonte de 17 fármacos de infusions.js com revisão pendente desde 2020-2021',
+        'Novo: ligação cruzada entre os cartões RCP e Protocolos que partilham tema (PCR, IOT, anafilaxia, asma, convulsão, sepsis) — "ver protocolo completo" / "ver chip rápido"',
+        'Novo: acesso à tabela de material (Broselow) também a partir do separador Parâmetros, além de Scores',
+        'Correção menor: a citação de Hidralazina/Nifedipino em hipertensão pediátrica atribuída a "AHA" agora diz corretamente "AAP" (guia de 2017)',
+        'SW atualizado para v4.9',
+      ],
+      en: [
+        'Bibliography updated app-wide: AHA/AAP PALS 2025 (previously 2020), ERC PLS 2025 (previously 2021), Surviving Sepsis Campaign Pediatric 2026 (previously 2020), GEMA 5.5 (previously 5.3), NRP 9th ed. (previously 2021), BNFc 2025-26 (previously 2020-21)',
+        'RCP/Protocols: added the confirmed ERC 2025 updates — energy escalation up to 8 J/kg in refractory VF/VT (&gt;5 shocks), epinephrine/amiodarone after the 5th shock (flagged against the AHA 2nd/3rd-shock scheme), 4-attempt intubation limit (30–60sec each) with apnoeic oxygenation, fluid bolus up to 500 mL in ≥14 year-olds, and delayed cord clamping ≥60sec in newborns (NRP 9th ed.)',
+        '⚠️ Safety fix: Ranitidine flagged as withdrawn from market (FDA/EMA 2020, NDMA contamination) in the Medications tab — it was already excluded from the AI assistant but still appeared as a normal drug in the list',
+        '⚠️ Fix: infusion matrix (infusions.js) — Propofol capped at 0.5–4 mg/kg/h (previously up to 9 mg/kg/h), aligned with the safety limit already applied to the dose calculator in v4.7',
+        'Fix: Norepinephrine dose discrepancy in septic shock between the protocol (0.05–0.5) and infusions (0.05–1) — unified to 0.05–1 mcg/kg/min with &gt;0.5 flagged as high-dose/refractory',
+        'Reviewed date and source for 17 infusions.js drugs pending review since 2020-2021',
+        'New: cross-link between RCP and Protocol cards sharing a topic (CPR, intubation, anaphylaxis, asthma, seizure, sepsis) — "see full protocol" / "see quick chip"',
+        'New: access to the equipment sizing table (Broselow) also from the Vitals/Params tab, in addition to Scores',
+        'Minor fix: the Hydralazine/Nifedipine citation for pediatric hypertension attributed to "AHA" now correctly reads "AAP" (2017 guideline)',
+        'SW updated to v4.9',
+      ],
+    }
+  },
+  {
     ver: 'v4.8', date: 'Septiembre 2026', type: 'minor',
     items: {
       es: [
