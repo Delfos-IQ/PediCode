@@ -75,6 +75,32 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.10', date: 'Septiembre 2026', type: 'major',
+    items: {
+      es: [
+        'Módulo Medicamentos (tab MED) ampliado: 34 fichas nuevas — Remifentanilo, Clonidina, Lorazepam, Ipratropio, Budesonida neb., Esmolol, Captopril, Cefepima, Caspofungina, Glucagón, Deferoxamina, Sufentanilo, Haloperidol, Pancuronio, Atracurio, Fosfenitoína, Lacosamida IV, Hidralazina IV, Nifedipino, Fentolamina, Terbutalina IV/SC, Carbón activado, Hidroxocobalamina, Fisostigmina, Octreotide, Voriconazol IV, Micafungina, Penicilina G sódica, Oxacilina, Insulina rápida, Gluconato de Calcio 10%, Manitol 20%, Suero Salino Hipertónico 3% y Dantroleno — de 96 a 130 fármacos, cubriendo todos los que ya existían en la calculadora de dosis pero no en este tab',
+        'Revisión cruzada de las 96 fichas existentes del tab MED frente a los datos ya verificados en Fase 2 de la calculadora de dosis (drugs.js): 6 discrepancias numéricas reales corregidas — Vancomicina y Ceftazidima (faltaba la dosis de meningitis), Cefazolina y Piperacilina/Tazobactam (rango incompleto), Cefotaxima (mezclaba dosis estándar y de meningitis) y Salbutamol IV (faltaba la perfusión continua)',
+        'Añadida cita bibliográfica que faltaba en las fichas de Bicarbonato de Sodio y Glucosa (Suero Glucosado)',
+        'Revisadas las citas de los ~26 fármacos del tab MED sin equivalente en la calculadora (antibióticos, antifúngicos, antídotos) — todas referencian una única fuente estable con página específica, sin ediciones de guía que requieran actualización',
+        'SW actualizado a v4.10',
+      ],
+      pt: [
+        'Módulo Medicamentos (aba MED) ampliado: 34 fichas novas — Remifentanil, Clonidina, Lorazepam, Ipratrópio, Budesonida neb., Esmolol, Captopril, Cefepima, Caspofungina, Glucagon, Deferoxamina, Sufentanil, Haloperidol, Pancurônio, Atracúrio, Fosfenitoína, Lacosamida IV, Hidralazina IV, Nifedipino, Fentolamina, Terbutalina IV/SC, Carvão ativado, Hidroxocobalamina, Fisostigmina, Octreotide, Voriconazol IV, Micafungina, Penicilina G sódica, Oxacilina, Insulina rápida, Gluconato de Cálcio 10%, Manitol 20%, Soro Salino Hipertônico 3% e Dantroleno — de 96 para 130 fármacos',
+        'Revisão cruzada das 96 fichas existentes da aba MED frente aos dados já verificados na Fase 2 da calculadora de doses: 6 discrepâncias numéricas reais corrigidas (Vancomicina, Ceftazidima, Cefazolina, Piperacilina/Tazobactam, Cefotaxima, Salbutamol IV)',
+        'Adicionada citação bibliográfica que faltava nas fichas de Bicarbonato de Sódio e Glicose (Soro Glicosado)',
+        'Revisadas as citações dos ~26 fármacos da aba MED sem equivalente na calculadora — todas referenciam fonte estável, sem edições de guideline pendentes de atualização',
+        'SW atualizado para v4.10',
+      ],
+      en: [
+        'Medications tab (MED) expanded: 34 new drug cards — Remifentanil, Clonidine, Lorazepam, Ipratropium, Nebulized budesonide, Esmolol, Captopril, Cefepime, Caspofungin, Glucagon, Deferoxamine, Sufentanil, Haloperidol, Pancuronium, Atracurium, Fosphenytoin, IV lacosamide, IV hydralazine, Nifedipine, Phentolamine, IV/SC terbutaline, Activated charcoal, Hydroxocobalamin, Physostigmine, Octreotide, IV voriconazole, Micafungin, Penicillin G, Oxacillin, Rapid-acting insulin, 10% calcium gluconate, 20% mannitol, 3% hypertonic saline and Dantrolene — 96 to 130 drugs, closing the gap with drugs already present in the dose calculator',
+        'Cross-checked all 96 existing MED tab cards against the already Phase-2-verified dose calculator data: fixed 6 real numeric discrepancies (Vancomycin and Ceftazidime were missing the meningitis dose, Cefazolin and Piperacillin/Tazobactam had an incomplete range, Cefotaxime mixed standard and meningitis doses, IV Salbutamol was missing the continuous infusion)',
+        'Added the missing reference citation on the Sodium Bicarbonate and Glucose (Dextrose) cards',
+        'Reviewed citations for the ~26 MED tab drugs with no dose-calculator counterpart (antibiotics, antifungals, antidotes) — all cite a single stable source with a specific page, no outdated guideline editions found',
+        'SW updated to v4.10',
+      ],
+    },
+  },
+  {
     ver: 'v4.9', date: 'Septiembre 2026', type: 'major',
     items: {
       es: [
