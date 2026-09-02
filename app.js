@@ -2037,9 +2037,10 @@ function openDrugCard(drugName) {
     const infTag = d.infusion ? '<span class="dose-tag-inf">PERF</span> ' : '';
     if (d.factor !== null && d.unit !== null && w > 0) {
       const raw = d.factor * w;
-      let val = raw < 0.001 ? raw.toFixed(4) : raw < 0.1 ? raw.toFixed(3) : raw < 1 ? raw.toFixed(2) : raw < 10 ? raw.toFixed(1) : Math.round(raw);
+      const fmtDose = n => n < 0.001 ? n.toFixed(4) : n < 0.1 ? n.toFixed(3) : n < 1 ? n.toFixed(2) : n < 10 ? n.toFixed(1) : Math.round(n);
+      let val = fmtDose(raw);
       if (d.maxDose !== undefined && raw > d.maxDose) {
-        val = `<span style="color:var(--yellow)">${val}</span> <span style="font-size:10px;color:var(--yellow)">(máx ${d.maxDose})</span>`;
+        val = `<span style="color:var(--yellow)">${fmtDose(d.maxDose)}</span> <span style="font-size:10px;color:var(--text3);text-decoration:line-through" title="Dosis calculada sin limitar al máximo">(${val})</span>`;
       }
       const noteHtml = d.note ? `<div class="dose-max">${d.note}</div>` : '';
       doseRows += `<div class="dose-row">
@@ -2089,6 +2090,25 @@ function openDrugCard(drugName) {
     } catch(_) {}
   }
 }
+
+// Abre la ficha verificada de un fármaco desde cualquier pestaña (p. ej. desde el asistente de IA),
+// cambiando primero a la pestaña de la calculadora de dosis.
+function goToDoseDrug(name) {
+  try {
+    const btn = document.querySelector(".tab-btn[onclick*=\"'calc'\"]");
+    if (btn && !btn.classList.contains('active')) showTab(btn, 'calc');
+    const catView = document.getElementById('dose-cat-view');
+    const drugView = document.getElementById('dose-drug-view');
+    const sr = document.getElementById('dose-search-results');
+    if (catView) catView.style.display = 'none';
+    if (sr) sr.style.display = 'none';
+    if (drugView) drugView.style.display = 'block';
+    openDrugCard(name);
+  } catch(_e) {
+    console.error('[PediCode] Error en goToDoseDrug:', _e);
+  }
+}
+window.goToDoseDrug = goToDoseDrug;
 
 function filterCat(btn, cat) { currentCat = cat; showDoseCat(cat); }
 
@@ -2141,10 +2161,11 @@ function renderDoses() {
       const infTag = d.infusion ? '<span class="dose-tag-inf">PERF</span>' : '';
       if (d.factor !== null && d.unit !== null) {
         const raw = d.factor * w;
-        let val = raw < 0.001 ? raw.toFixed(4) : raw < 0.1 ? raw.toFixed(3) : raw < 1 ? raw.toFixed(2) : raw < 10 ? raw.toFixed(1) : Math.round(raw);
-        // Apply maxDose cap
+        const fmtDose = n => n < 0.001 ? n.toFixed(4) : n < 0.1 ? n.toFixed(3) : n < 1 ? n.toFixed(2) : n < 10 ? n.toFixed(1) : Math.round(n);
+        let val = fmtDose(raw);
+        // Apply maxDose cap — show the safe capped dose as primary value
         if (d.maxDose !== undefined && raw > d.maxDose) {
-          val = '<span style="color:var(--accent2,#f59e0b)">' + val + '</span> <span style="font-size:10px;color:var(--accent2,#f59e0b)">(máx ' + d.maxDose + ')</span>';
+          val = '<span style="color:var(--accent2,#f59e0b)">' + fmtDose(d.maxDose) + '</span> <span style="font-size:10px;color:var(--text3);text-decoration:line-through" title="Dosis calculada sin limitar al máximo">(' + val + ')</span>';
         }
         const noteHtml = d.note ? '<div class="dose-max">' + d.note + '</div>' : '';
         out += '<div class="dose-row">'

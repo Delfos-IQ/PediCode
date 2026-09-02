@@ -89,12 +89,12 @@ export const DOSE_DRUGS = [
     {label:"Dolor/fiebre — IV (perfusión lenta)",range:"10–20 mg/kg/6h",note:"máx 1–2 g/dosis · perfusión en 15–30 min · NO bolo directo",factor:15,unit:"mg",maxDose:2000},
     {label:"Dolor/fiebre — IM",range:"10–20 mg/kg/6h",note:"máx 1 g/dosis · profundo y lento",factor:15,unit:"mg",maxDose:1000},
   ]},
-  {name:"Rocurônio",cat:"BNM",color:"#60a5fa",source:"Pediamécum AEP",rev:"2021-01",status:"verified",notes:"BNM no despolarizante de inicio rápido. Uso IV exclusivamente. ⚠️ Reversión con SUGAMADEX. En ISR: 1–1,2 mg/kg → inicio 60 seg. Inicio más lento en neonatos. Duración varía según temperatura, pH, fármacos concomitantes.",doses:[
+  {name:"Rocuronio",cat:"BNM",color:"#60a5fa",source:"Pediamécum AEP",rev:"2021-01",status:"verified",notes:"BNM no despolarizante de inicio rápido. Uso IV exclusivamente. ⚠️ Reversión con SUGAMADEX. En ISR: 1–1,2 mg/kg → inicio 60 seg. Inicio más lento en neonatos. Duración varía según temperatura, pH, fármacos concomitantes.",doses:[
     {label:"Intubación de Secuencia Rápida (ISR)",range:"1–1,2 mg/kg",note:"bolo IV 5–10 seg · inicio clínico ~60 seg · reversión: sugamadex 16 mg/kg si emergencia",factor:1.2,unit:"mg",maxDose:200},
     {label:"Intubación rutinaria",range:"0,45–0,6 mg/kg",note:"bolo IV · inicio bloqueo máximo ~60 seg en niños",factor:0.6,unit:"mg",maxDose:120},
     {label:"Perfusión mantenimiento VM",range:"7–10 mcg/kg/min",note:"= 0,42–0,6 mg/kg/h · monitorizar con TOF cuando sea posible",factor:7,unit:"mcg/min",infusion:true},
   ]},
-  {name:"Vecurônio",cat:"BNM",color:"#38bdf8",source:"Pediamécum AEP",rev:"2021-03",status:"verified",notes:"BNM no despolarizante de duración intermedia. Inicio 1–3 min · duración 35–45 min. Niños 2–10a: requieren dosis relativas mayores. Neonatos: mayor sensibilidad y duración más larga. Metabolismo hepático: ajustar en fallo hepático. ⚠️ Siempre acompañar de sedación adecuada (no altera la consciencia).",doses:[
+  {name:"Vecuronio",cat:"BNM",color:"#38bdf8",source:"Pediamécum AEP",rev:"2021-03",status:"verified",notes:"BNM no despolarizante de duración intermedia. Inicio 1–3 min · duración 35–45 min. Niños 2–10a: requieren dosis relativas mayores. Neonatos: mayor sensibilidad y duración más larga. Metabolismo hepático: ajustar en fallo hepático. ⚠️ Siempre acompañar de sedación adecuada (no altera la consciencia).",doses:[
     {label:"Intubación — IV",range:"0,1 mg/kg",note:"si previo succinilcolina: reducir a 0,04–0,06 mg/kg",factor:0.1,unit:"mg",maxDose:10},
     {label:"Mantenimiento — IV (repetición)",range:"0,02–0,03 mg/kg",note:"repetir cada 1–2h según respuesta clínica",factor:0.02,unit:"mg",maxDose:4},
     {label:"Perfusión continua",range:"1,5–2,5 mcg/kg/min",note:"= 0,09–0,15 mg/kg/h · titular con TOF",factor:2,unit:"mcg/min",infusion:true},

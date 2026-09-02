@@ -1,44 +1,44 @@
 {
-  "name": "PediCode — Urgências Pediátricas",
+  "name": "PediCode — Urgencias Pediátricas",
   "short_name": "PediCode",
-  "id": "/PediCode/",
-  "description": "Referência pediátrica de emergência: medicação, protocolos, scores e IA clínica para profissionais de saúde",
-  "start_url": "/PediCode/",
-  "scope": "/PediCode/",
+  "id": "./",
+  "description": "Evaluación pediátrica, medicación y parámetros vitales para profesionales de urgencias",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#060B18",
-  "theme_color": "#0EA5E9",
+  "background_color": "#0b0f1a",
+  "theme_color": "#0b0f1a",
   "orientation": "portrait-primary",
-  "lang": "pt",
+  "lang": "es",
   "dir": "ltr",
   "categories": ["medical", "education"],
   "icons": [
     {
-      "src": "/PediCode/icons/pedicode_icon_192.png",
+      "src": "icons/pedicode_icon_192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/PediCode/icons/pedicode_icon_192_maskable.png",
+      "src": "icons/pedicode_icon_192_maskable.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/PediCode/icons/pedicode_icon_512.png",
+      "src": "icons/pedicode_icon_512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/PediCode/icons/pedicode_icon_512_maskable.png",
+      "src": "icons/pedicode_icon_512_maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/PediCode/icons/pedicode_icon_1024.png",
+      "src": "icons/pedicode_icon_1024.png",
       "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "any"
@@ -46,18 +46,18 @@
   ],
   "screenshots": [
     {
-      "src": "/PediCode/screenshots/screenshot_mobile.png",
+      "src": "screenshots/screenshot_mobile.png",
       "sizes": "1068x2048",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "PediCode - Calculadora de doses"
+      "label": "PediCode - Calculadora de dosis"
     },
     {
-      "src": "/PediCode/screenshots/screenshot_desktop.png",
+      "src": "screenshots/screenshot_desktop.png",
       "sizes": "1906x827",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "PediCode - Vista desktop"
+      "label": "PediCode - Vista escritorio"
     }
   ]
 }

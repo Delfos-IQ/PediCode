@@ -75,6 +75,35 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.6', date: 'Septiembre 2026', type: 'patch',
+    items: {
+      es: [
+        'Corrección: Rocuronio y Vecuronio no aparecían en el buscador de fármacos por un error de codificación en el nombre — ya se encuentran correctamente',
+        'Calculadora de dosis: cuando se supera la dosis máxima, ahora se muestra en grande la dosis segura a administrar (antes se mostraba en grande el cálculo sin limitar)',
+        'i18n: corregidas 14 claves de traducción en portugués que mostraban texto en español por un duplicado accidental (criterios TEP e nivel de consciencia ABCDE)',
+        'i18n: corregidas 2 claves de "Acerca de" mal ubicadas en el bloque de inglés y añadidas al español, donde faltaban',
+        'IA: los fármacos sugeridos ahora se cruzan con la base de dosis verificada — si hay coincidencia, se puede abrir directamente la ficha verificada con un toque',
+        'SW actualizado a v4.6',
+      ],
+      pt: [
+        'Correção: Rocurônio e Vecurônio não apareciam na pesquisa de fármacos por um erro de codificação no nome — já são encontrados corretamente',
+        'Calculadora de doses: ao ultrapassar a dose máxima, agora mostra-se em destaque a dose segura a administrar (antes mostrava-se o cálculo sem limite)',
+        'i18n: corrigidas 14 chaves de tradução em português que mostravam texto em espanhol por um duplicado acidental (critérios TEP e nível de consciência ABCDE)',
+        'i18n: corrigidas 2 chaves de "Sobre" mal colocadas no bloco de inglês e adicionadas ao espanhol, onde faltavam',
+        'IA: os fármacos sugeridos agora são cruzados com a base de doses verificada — se houver correspondência, é possível abrir diretamente a ficha verificada com um toque',
+        'SW atualizado para v4.6',
+      ],
+      en: [
+        'Fix: Rocuronio and Vecuronio were missing from drug search due to a name-encoding error — now found correctly',
+        'Dose calculator: when the maximum dose is exceeded, the safe dose to administer is now shown prominently (previously the uncapped calculation was shown prominently)',
+        'i18n: fixed 14 Portuguese translation keys that showed Spanish text due to an accidental duplicate (PAT criteria and ABCDE consciousness level)',
+        'i18n: fixed 2 "About" keys misplaced in the English block and added to Spanish, where they were missing',
+        'AI: suggested drugs are now cross-checked against the verified dose database — a match can be opened directly as a verified drug card with one tap',
+        'SW updated to v4.6',
+      ],
+    }
+  },
+  {
     ver: 'v4.4', date: 'Abril 2026', type: 'major',
     items: {
       es: [

@@ -5,6 +5,28 @@
 // ── CONFIGURACIÓN ──────────────────────────────────────────────────────
 export const AI_WORKER_URL = 'https://pedicodeapp.pedicode-app.workers.dev';
 
+// ── GROUNDING: cruce con la base de fármacos verificada ────────────────
+import { DOSE_DRUGS } from './drugs.js';
+
+function _normalizeDrugText(s) {
+  return (s || '').toString().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+
+// Busca si alguna ficha verificada de DOSE_DRUGS corresponde al texto libre
+// que ha devuelto la IA (p. ej. "Adrenalina 0,01 mg/kg IV"). Devuelve el
+// fármaco verificado más largo que coincide, o null si no hay match.
+function findVerifiedDrug(freeText) {
+  const norm = _normalizeDrugText(freeText);
+  let best = null;
+  for (const d of DOSE_DRUGS) {
+    const dn = _normalizeDrugText(d.name);
+    if (dn.length >= 3 && norm.includes(dn)) {
+      if (!best || dn.length > _normalizeDrugText(best.name).length) best = d;
+    }
+  }
+  return best;
+}
+
 // ── INDEXEDDB: APRENDIZAJE CLÍNICO ─────────────────────────────────────
 const DB_NAME = 'pedicode_ai';
 const DB_VERSION = 1;
@@ -633,10 +655,20 @@ export async function aiAnalyze() {
          </div>`
       : '';
 
-    // Fármacos
+    // Fármacos — cuando el texto libre de la IA coincide con una ficha
+    // verificada en DOSE_DRUGS, la píldora enlaza a esa ficha (grounding);
+    // si no hay coincidencia, se muestra igual pero marcada como sugerencia de IA sin verificar.
     const drugsHTML = data.farmacos?.length
       ? `<div class="ai-section-title">💊 ${L.drugsLabel}</div>
-         <div class="ai-pills">${data.farmacos.map(f => `<span class="ai-pill">${f}</span>`).join('')}</div>`
+         <div class="ai-pills">${data.farmacos.map(f => {
+            const verified = findVerifiedDrug(f);
+            const safeText = String(f).replace(/</g,'&lt;');
+            if (verified) {
+              const safeName = verified.name.replace(/'/g,"\\'");
+              return `<span class="ai-pill ai-pill-verified" onclick="if(typeof goToDoseDrug==='function') goToDoseDrug('${safeName}')" title="Ver ficha verificada de ${verified.name}" style="cursor:pointer">✅ ${safeText}</span>`;
+            }
+            return `<span class="ai-pill" title="Sugerencia de IA — sin ficha verificada en la base de fármacos">${safeText}</span>`;
+          }).join('')}</div>`
       : '';
 
     // Protocolos

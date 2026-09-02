@@ -914,6 +914,13 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:8
   border-color: rgba(167,139,250,.3);
   color: #c084fc;
 }
+.ai-pill-verified {
+  background: rgba(52,211,153,.14);
+  border-color: rgba(52,211,153,.35);
+  color: #34d399;
+  transition: background .15s;
+}
+.ai-pill-verified:hover { background: rgba(52,211,153,.24); }
 
 .ai-aviso {
   font-size: 11px; color: var(--text3);
