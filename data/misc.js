@@ -75,6 +75,44 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.7', date: 'Septiembre 2026', type: 'major',
+    items: {
+      es: [
+        'Revisión clínica completa de los 41 fármacos con ficha desactualizada, contrastados contra BNFc 2020-21, BNF 84, Handbook of Drugs in ICU (7ª ed.) y Notas de Bolso de Emergência/UCIP Pediátrica (PT)',
+        '⚠️ Corrección de seguridad: Propofol en perfusión limitado a 4 mg/kg/h (antes hasta 9) por riesgo de Síndrome de Infusión de Propofol — contraindicado en sedación prolongada de UCI en <16 años',
+        '⚠️ Corrección: dosis de Glucosa (SG10%) en hipoglucemia — 2 mL/kg era la dosis neonatal; en lactante/niño la dosis estándar es 5 mL/kg',
+        'Actualización: carga de Levetiracetam en estatus epiléptico revisada a 40–60 mg/kg (antes 20–30 mg/kg), acorde a evidencia post-ensayo ESETT',
+        'Ampliados los rangos de perfusión de Fentanilo, Morfina y Midazolam tras contrastar con Handbook of Drugs in ICU y Notas de Bolso PT',
+        'Adenosina: añadida 3ª dosis de escalada (0,3 mg/kg) según protocolo portugués',
+        'Diazepam: dosis IV en crisis convulsiva ajustada a 0,2–0,5 mg/kg',
+        'Nuevos fármacos añadidos: Insulina rápida (CAD), Gluconato de Calcio (hiperpotasemia/PCR), Manitol 20% e Suero Salino Hipertónico 3% (hipertensión intracraneal), Dantroleno (hipertermia maligna)',
+        'SW actualizado a v4.7',
+      ],
+      pt: [
+        'Revisão clínica completa dos 41 fármacos com ficha desatualizada, contrastados com BNFc 2020-21, BNF 84, Handbook of Drugs in ICU (7ª ed.) e Notas de Bolso de Emergência/UCIP Pediátrica',
+        '⚠️ Correção de segurança: Propofol em perfusão limitado a 4 mg/kg/h (antes até 9) pelo risco de Síndrome de Infusão de Propofol — contraindicado em sedação prolongada de UCI em <16 anos',
+        '⚠️ Correção: dose de Glicose (SG10%) na hipoglicemia — 2 mL/kg era a dose neonatal; em lactente/criança a dose padrão é 5 mL/kg',
+        'Atualização: carga de Levetiracetam no estado de mal epiléptico revista para 40–60 mg/kg (antes 20–30 mg/kg), de acordo com evidência pós-ensaio ESETT',
+        'Ampliados os intervalos de perfusão de Fentanil, Morfina e Midazolam após contraste com Handbook of Drugs in ICU e Notas de Bolso PT',
+        'Adenosina: adicionada 3ª dose de escalada (0,3 mg/kg) segundo protocolo português',
+        'Diazepam: dose EV em crise convulsiva ajustada para 0,2–0,5 mg/kg',
+        'Novos fármacos adicionados: Insulina rápida (CAD), Gluconato de Cálcio (hipercaliemia/PCR), Manitol 20% e Soro Salino Hipertónico 3% (hipertensão intracraniana), Dantroleno (hipertermia maligna)',
+        'SW atualizado para v4.7',
+      ],
+      en: [
+        'Full clinical review of the 41 drugs with outdated entries, cross-checked against BNFc 2020-21, BNF 84, Handbook of Drugs in ICU (7th ed.) and the Portuguese Paediatric Emergency/ICU Pocket Notes',
+        '⚠️ Safety fix: Propofol infusion capped at 4 mg/kg/h (previously up to 9) due to Propofol Infusion Syndrome risk — contraindicated for prolonged ICU sedation under 16 years',
+        '⚠️ Fix: Glucose (D10%) hypoglycaemia dose — 2 mL/kg was the neonatal dose; the standard infant/child dose is 5 mL/kg',
+        'Update: Levetiracetam status epilepticus loading dose revised to 40–60 mg/kg (previously 20–30 mg/kg), in line with post-ESETT evidence',
+        'Widened infusion ranges for Fentanyl, Morphine and Midazolam after cross-checking with the Handbook of Drugs in ICU and the Portuguese pocket notes',
+        'Adenosine: added a 3rd escalation dose (0.3 mg/kg) per the Portuguese protocol',
+        'Diazepam: IV seizure dose adjusted to 0.2–0.5 mg/kg',
+        'New drugs added: rapid-acting Insulin (DKA), Calcium Gluconate (hyperkalaemia/cardiac arrest), Mannitol 20% and 3% Hypertonic Saline (raised ICP), Dantrolene (malignant hyperthermia)',
+        'SW updated to v4.7',
+      ],
+    }
+  },
+  {
     ver: 'v4.6', date: 'Septiembre 2026', type: 'patch',
     items: {
       es: [
