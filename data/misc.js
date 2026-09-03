@@ -75,6 +75,47 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.17', date: 'Septiembre 2026', type: 'major',
+    items: {
+      es: [
+        'Revisión ficha a ficha del tab Medicamentos contra BNFc y Pediamécum AEP — quinto bloque: Antifibrinolíticos, Bloqueantes neuromusculares, GI/Antieméticos y Respiratorios (13 fichas). 7 con equivalente verificado en la calculadora; 6 investigadas de nuevo contra BNFc',
+        'Corrección real en Aminofilina: el máximo de la dosis de carga (240 mg) correspondía al tamaño de la ampolla, no a un tope clínico — corregido a 500 mg según el protocolo verificado; añadida la dosis de mantenimiento por edad que faltaba en la ficha',
+        'Corrección real en Butilescopolamina: sustituida la pauta fraccionada por peso ("0,3 mg/kg IV q6-8h, máx 100 mg/día") por el protocolo real de BNFc, escalonado por edad, con máximos diarios más bajos en menores de 12 años (15/30/80 mg/día) y repetición única a los 30 min en vez de dosis programada',
+        'Corrección real en Ondansetrón: la ficha aplicaba un único máximo de 4 mg a todas las indicaciones — diferenciado por indicación (postoperatorio: 0,1 mg/kg máx 4 mg · quimioterapia: 0,15 mg/kg máx 8 mg, hasta 32 mg/día)',
+        'Metoclopramida: añadida la contraindicación explícita &lt;1 año y el límite de tratamiento de 5 días (alerta MHRA/CHM 2013) — la dosis ya era correcta',
+        'Esomeprazol: aclarada la distinción BNFc entre DRGE con esofagitis (hasta 40 mg/día en adolescentes) y sin esofagitis (20 mg/día) — la ficha previa no diferenciaba y podía infradosificar en esofagitis confirmada',
+        'Ácido Tranexámico, Vecuronio, Succinilcolina, Salbutamol IV: dosis confirmadas coincidentes con el protocolo ya verificado — solo actualización de citación',
+        'Cisatracurio y Sulfato de Magnesio: rango de dosis ligeramente ampliado (0,1–0,2 mg/kg y 25–75 mg/kg respectivamente) para coincidir exactamente con el protocolo verificado',
+        'Ácido Aminocapróico: no incluido en BNFc (en Reino Unido se usa ácido tranexámico como antifibrinolítico de elección) — se mantiene la fuente original con nota honesta',
+        'Ranitidina: ficha histórica sin cambios — fuera de revisión activa dado el retiro del mercado ya documentado',
+      ],
+      pt: [
+        'Revisão ficha a ficha do separador Medicamentos contra BNFc e Pediamécum AEP — quinto bloco: Antifibrinolíticos, Bloqueadores neuromusculares, GI/Antieméticos e Respiratórios (13 fichas). 7 com equivalente verificado na calculadora; 6 investigadas de novo contra BNFc',
+        'Correção real em Aminofilina: o máximo da dose de carga (240 mg) correspondia ao tamanho da ampola, não a um limite clínico — corrigido para 500 mg; adicionada a dose de manutenção por idade que faltava',
+        'Correção real em Butilescopolamina: substituída a pauta fracionada por peso pelo protocolo real do BNFc, escalonado por idade, com máximos diários mais baixos em menores de 12 anos e repetição única aos 30 min',
+        'Correção real em Ondansetrona: diferenciada por indicação (pós-operatório: 0,1 mg/kg máx 4 mg · quimioterapia: 0,15 mg/kg máx 8 mg)',
+        'Metoclopramida: adicionada a contraindicação explícita &lt;1 ano e o limite de tratamento de 5 dias (alerta MHRA/CHM 2013)',
+        'Esomeprazol: esclarecida a distinção do BNFc entre DRGE com esofagite (até 40 mg/dia) e sem esofagite (20 mg/dia)',
+        'Ácido Tranexâmico, Vecurónio, Succinilcolina, Salbutamol IV: doses confirmadas coincidentes — apenas atualização de citação',
+        'Cisatracúrio e Sulfato de Magnésio: intervalo de dose ligeiramente ampliado para coincidir com o protocolo verificado',
+        'Ácido Aminocapróico: não incluído no BNFc — mantida a fonte original com nota honesta',
+        'Ranitidina: ficha histórica sem alterações',
+      ],
+      en: [
+        'Card-by-card review of the Medications tab against BNFc and Pediamécum AEP — fifth block: Antifibrinolytics, Neuromuscular blockers, GI/Antiemetics and Respiratory drugs (13 cards). 7 with a verified calculator counterpart; 6 freshly researched against BNFc',
+        'Real fix in Aminophylline: the loading-dose maximum (240 mg) corresponded to the ampoule size, not a clinical cap — corrected to 500 mg; added the missing age-based maintenance dose',
+        'Real fix in Hyoscine butylbromide (Butilescopolamina): replaced the weight-based scheduled regimen ("0.3 mg/kg IV q6-8h, max 100 mg/day") with BNFc\'s actual age-tiered protocol, with lower daily maximums under 12 years (15/30/80 mg/day) and a single repeat at 30 min rather than scheduled dosing',
+        'Real fix in Ondansetron: the card applied a single 4 mg maximum to all indications — differentiated by indication (postoperative: 0.1 mg/kg max 4 mg · chemotherapy: 0.15 mg/kg max 8 mg, up to 32 mg/day)',
+        'Metoclopramide: added the explicit under-1-year contraindication and the 5-day treatment limit (MHRA/CHM 2013 alert) — the dose itself was already correct',
+        'Esomeprazole: clarified BNFc\'s distinction between GERD with oesophagitis (up to 40 mg/day in adolescents) and without (20 mg/day) — the previous card did not differentiate and could underdose confirmed oesophagitis',
+        'IV Tranexamic acid, Vecuronium, Suxamethonium, IV Salbutamol: doses confirmed to match the already-verified protocol — citation update only',
+        'Cisatracurium and Magnesium Sulfate: dose range slightly widened to exactly match the verified protocol',
+        'Aminocaproic acid: not included in BNFc (tranexamic acid is the UK antifibrinolytic of choice) — original source kept with an honest note',
+        'Ranitidine: historical card unchanged — out of scope given the already-documented market withdrawal',
+      ],
+    },
+  },
+  {
     ver: 'v4.16', date: 'Septiembre 2026', type: 'major',
     items: {
       es: [
