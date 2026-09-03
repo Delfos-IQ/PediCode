@@ -25,7 +25,7 @@ export const DOSE_DRUGS = [
     {label:"TSV — 2ª dosis IV rápida",range:"0,2 mg/kg",note:"máx 12 mg · si no hay respuesta a 1ª dosis · repetir cada 2 min",factor:0.2,unit:"mg",maxDose:12},
     {label:"TSV — 3ª dosis IV rápida",range:"0,3 mg/kg",note:"máx 12 mg · si no hay respuesta a 2ª dosis (Notas de Bolso PT)",factor:0.3,unit:"mg",maxDose:12},
   ]},
-  {name:"Bicarbonato Na",cat:"RCP",color:"#60a5fa",source:"AEMPS Ficha Técnica + ERC PLS 2025 + Pediamécum AEP",sourceUrl:"https://cima.aemps.es/cima/dochtml/ft/47517/",rev:"2026-03",status:"verified",notes:"⚠️ NO rutinaria en PCR. Solo acidosis metabólica grave (pH<7,10) tras ventilación eficaz + MCE + adrenalina sin respuesta. CI en acidosis respiratoria. No mezclar con aminas ni calcio. Vigilar: hipocalcemia, hipopotasemia, acidosis paradójica intracelular.",doses:[
+  {name:"Bicarbonato Na",cat:"RCP",color:"#60a5fa",source:"AEMPS Ficha Técnica + Pediamécum AEP + ERC PLS 2025",sourceUrl:"https://cima.aemps.es/cima/dochtml/ft/47517/",rev:"2026-03",status:"verified",notes:"⚠️ NO rutinaria en PCR. Solo acidosis metabólica grave (pH<7,10) tras ventilación eficaz + MCE + adrenalina sin respuesta. CI en acidosis respiratoria. No mezclar con aminas ni calcio. Vigilar: hipocalcemia, hipopotasemia, acidosis paradójica intracelular.",doses:[
     {label:"PCR / Acidosis grave — IV/IO",range:"1 mEq/kg",note:"sol. 8,4% (1 mL/kg) · bolo IV lento · repetir según gasimetría · máx 50 mEq",factor:1,unit:"mEq",maxDose:50},
     {label:"Neonato — IV/IO",range:"1 mEq/kg",note:"⚠️ sol. 4,2% (diluir 8,4% al 1:1 con glucosa 5%) · máx 8 mEq/kg/día · infusión lenta (riesgo HIV)",factor:2,unit:"mL sol.4,2%",neonatal:true},
     {label:"Acidosis grave no-PCR — IV perfusión",range:"2–5 mEq/kg",note:"en 4–8h · no superar 50% déficit calculado en 1ª dosis · monitorizar pH, K⁺, Ca²⁺",factor:3,unit:"mEq"},
@@ -91,23 +91,23 @@ export const DOSE_DRUGS = [
     {label:"Dolor/fiebre — IV (perfusión lenta)",range:"10–20 mg/kg/6h",note:"máx 1–2 g/dosis · perfusión en 15–30 min · NO bolo directo",factor:15,unit:"mg",maxDose:2000},
     {label:"Dolor/fiebre — IM",range:"10–20 mg/kg/6h",note:"máx 1 g/dosis · profundo y lento",factor:15,unit:"mg",maxDose:1000},
   ]},
-  {name:"Rocuronio",cat:"BNM",color:"#60a5fa",source:"Notas de Bolso PT · BNFc 2025-26",rev:"2026-09",status:"verified",notes:"BNM no despolarizante de inicio rápido. Uso IV exclusivamente. ⚠️ Reversión con SUGAMADEX. En ISR: 1–1,2 mg/kg → inicio 60 seg. Inicio más lento en neonatos. Duración varía según temperatura, pH, fármacos concomitantes. Dosis confirmadas frente a tabla de BNM de Notas de Bolso PT (0,6–1,2 mg/kg).",doses:[
+  {name:"Rocuronio",cat:"BNM",color:"#60a5fa",source:"BNFc 2025-26 · Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"BNM no despolarizante de inicio rápido. Uso IV exclusivamente. ⚠️ Reversión con SUGAMADEX. En ISR: 1–1,2 mg/kg → inicio 60 seg. Inicio más lento en neonatos. Duración varía según temperatura, pH, fármacos concomitantes. Dosis confirmadas frente a tabla de BNM de Notas de Bolso PT (0,6–1,2 mg/kg).",doses:[
     {label:"Intubación de Secuencia Rápida (ISR)",range:"1–1,2 mg/kg",note:"bolo IV 5–10 seg · inicio clínico ~60 seg · reversión: sugamadex 16 mg/kg si emergencia",factor:1.2,unit:"mg",maxDose:200},
     {label:"Intubación rutinaria",range:"0,45–0,6 mg/kg",note:"bolo IV · inicio bloqueo máximo ~60 seg en niños",factor:0.6,unit:"mg",maxDose:120},
     {label:"Perfusión mantenimiento VM",range:"7–10 mcg/kg/min",note:"= 0,42–0,6 mg/kg/h · monitorizar con TOF cuando sea posible",factor:7,unit:"mcg/min",infusion:true},
   ]},
-  {name:"Vecuronio",cat:"BNM",color:"#38bdf8",source:"Notas de Bolso PT · BNFc 2025-26",rev:"2026-09",status:"verified",notes:"BNM no despolarizante de duración intermedia. Inicio 1–3 min · duración 35–45 min. Niños 2–10a: requieren dosis relativas mayores. Neonatos: mayor sensibilidad y duración más larga. Metabolismo hepático: ajustar en fallo hepático. ⚠️ Siempre acompañar de sedación adecuada (no altera la consciencia). Dosis de intubación (0,1 mg/kg) y perfusión confirmadas frente a Notas de Bolso PT.",doses:[
+  {name:"Vecuronio",cat:"BNM",color:"#38bdf8",source:"BNFc 2025-26 · Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"BNM no despolarizante de duración intermedia. Inicio 1–3 min · duración 35–45 min. Niños 2–10a: requieren dosis relativas mayores. Neonatos: mayor sensibilidad y duración más larga. Metabolismo hepático: ajustar en fallo hepático. ⚠️ Siempre acompañar de sedación adecuada (no altera la consciencia). Dosis de intubación (0,1 mg/kg) y perfusión confirmadas frente a Notas de Bolso PT.",doses:[
     {label:"Intubación — IV",range:"0,1 mg/kg",note:"si previo succinilcolina: reducir a 0,04–0,06 mg/kg",factor:0.1,unit:"mg",maxDose:10},
     {label:"Mantenimiento — IV (repetición)",range:"0,02–0,03 mg/kg",note:"repetir cada 1–2h según respuesta clínica",factor:0.02,unit:"mg",maxDose:4},
     {label:"Perfusión continua",range:"1,5–2,5 mcg/kg/min",note:"= 0,09–0,15 mg/kg/h · titular con TOF",factor:2,unit:"mcg/min",infusion:true},
   ]},
-  {name:"Succinilcolina",cat:"BNM",color:"#f43f5e",source:"Notas de Bolso PT · BNFc 2025-26",rev:"2026-09",status:"verified",notes:"⚠️ CONTRAINDICADO en: hiperkaliemia conocida, quemados extensos, aplastamiento, miopatías no diagnosticadas, distrofia muscular, hipertermia maligna familiar, déficit de pseudocolinesterasa. Puede causar bradicardia y taquicardia. En niños pequeños: mayor riesgo de miopatía no diagnosticada → considerar rocuronio + sugamadex si dudas. No reversión directa (aguardar metabolismo). Dosis por grupo de edad confirmadas frente a Notas de Bolso PT (1–2 mg/kg, mayor en lactantes).",doses:[
+  {name:"Succinilcolina",cat:"BNM",color:"#f43f5e",source:"BNFc 2025-26 · Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"⚠️ CONTRAINDICADO en: hiperkaliemia conocida, quemados extensos, aplastamiento, miopatías no diagnosticadas, distrofia muscular, hipertermia maligna familiar, déficit de pseudocolinesterasa. Puede causar bradicardia y taquicardia. En niños pequeños: mayor riesgo de miopatía no diagnosticada → considerar rocuronio + sugamadex si dudas. No reversión directa (aguardar metabolismo). Dosis por grupo de edad confirmadas frente a Notas de Bolso PT (1–2 mg/kg, mayor en lactantes).",doses:[
     {label:"ISR — Niños/adolescentes IV",range:"1 mg/kg",note:"bolo IV · inicio 30–60 seg · duración 3–5 min",factor:1,unit:"mg",maxDose:150},
     {label:"ISR — Lactantes IV",range:"2 mg/kg",note:"lactantes requieren dosis relativas mayores",factor:2,unit:"mg",neonatal:true,maxDose:40},
     {label:"ISR — Neonatos IV",range:"3 mg/kg",note:"neonatos: mayor dosis relativa por mayor volumen de distribución",factor:3,unit:"mg",neonatal:true,maxDose:20},
     {label:"Sin acceso IV — IM",range:"4–5 mg/kg (lactantes) · 4 mg/kg (niños)",note:"sólo si no hay acceso IV · inicio 3 min · duración 10–30 min",factor:4,unit:"mg",maxDose:200},
   ]},
-  {name:"Fenitoína",cat:"Antiepi",color:"#f59e0b",source:"Notas de Bolso PT · Handbook Drugs ICU 7ed",rev:"2026-09",status:"verified",notes:"⚠️ Velocidad máx IV: 0,5–1 mg/kg/min. Monitorización ECG y PA durante la infusión (riesgo de hipotensión y arritmias). Precipita con glucosa, aminoácidos y casi todos los fármacos. CI en bradicardia/bloqueo AV. Riesgo de Stevens-Johnson en portadores HLA-B*1502 (origen asiático). Dosis de carga (20 mg/kg, máx 1 g) confirmada frente a Notas de Bolso PT; Handbook ICU cita máx 2 g en adultos de mayor peso — se mantiene el tope pediátrico de 1 g.",doses:[
+  {name:"Fenitoína",cat:"Antiepi",color:"#f59e0b",source:"Handbook Drugs ICU 7ed · Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"⚠️ Velocidad máx IV: 0,5–1 mg/kg/min. Monitorización ECG y PA durante la infusión (riesgo de hipotensión y arritmias). Precipita con glucosa, aminoácidos y casi todos los fármacos. CI en bradicardia/bloqueo AV. Riesgo de Stevens-Johnson en portadores HLA-B*1502 (origen asiático). Dosis de carga (20 mg/kg, máx 1 g) confirmada frente a Notas de Bolso PT; Handbook ICU cita máx 2 g en adultos de mayor peso — se mantiene el tope pediátrico de 1 g.",doses:[
     {label:"Carga — Estatus epiléptico IV",range:"15–20 mg/kg",note:"máx 1.000 mg · infusión en SF a ≤1 mg/kg/min · AAP recomienda 10 mg/kg 1ª dosis",factor:18,unit:"mg",maxDose:1000},
     {label:"Mantenimiento oral/IV (inicio 12h post-carga)",range:"5 mg/kg/día",note:"repartido en 2 dosis · máx 300 mg/día · ajustar por niveles",factor:5,unit:"mg",maxDose:300},
   ]},
@@ -118,7 +118,7 @@ export const DOSE_DRUGS = [
     {label:"Mantenimiento lactante IV/VO",range:"5–8 mg/kg/día",note:"repartido en 1–2 dosis",factor:6,unit:"mg"},
     {label:"Mantenimiento niño IV/VO",range:"3–5 mg/kg/día",note:"repartido en 1–2 dosis · máx 200 mg/día",factor:4,unit:"mg",maxDose:200},
   ]},
-  {name:"Levetiracetam",cat:"Antiepi",color:"#10b981",source:"Handbook Drugs ICU 7ed · BNFc 2025-26",rev:"2026-09",status:"verified",notes:"Perfil de seguridad favorable. Mínimas interacciones farmacológicas (no altera CYP). 2ª línea en estatus epiléptico (tras benzodiazepinas), junto con fenitoína/fosfenitoína y valproato — misma eficacia según ensayo ESETT. Reacciones conductuales (agitación, agresividad) más frecuentes en niños que en adultos. ⚠️ Actualización: la dosis de carga en estatus epiléptico se ha revisado al alza (40–60 mg/kg, máx 4.500 mg) según Handbook of Drugs in ICU — dosis previa de 20–30 mg/kg quedaba por debajo del estándar actual post-ESETT.",doses:[
+  {name:"Levetiracetam",cat:"Antiepi",color:"#10b981",source:"BNFc 2025-26 · Handbook Drugs ICU 7ed",rev:"2026-09",status:"verified",notes:"Perfil de seguridad favorable. Mínimas interacciones farmacológicas (no altera CYP). 2ª línea en estatus epiléptico (tras benzodiazepinas), junto con fenitoína/fosfenitoína y valproato — misma eficacia según ensayo ESETT. Reacciones conductuales (agitación, agresividad) más frecuentes en niños que en adultos. ⚠️ Actualización: la dosis de carga en estatus epiléptico se ha revisado al alza (40–60 mg/kg, máx 4.500 mg) según Handbook of Drugs in ICU — dosis previa de 20–30 mg/kg quedaba por debajo del estándar actual post-ESETT.",doses:[
     {label:"Carga — Estatus epiléptico IV",range:"40–60 mg/kg",note:"máx 4.500 mg · infundir en 15 min · dosis previa 20–30 mg/kg quedaba corta según evidencia actual",factor:60,unit:"mg",maxDose:4500},
     {label:"Mantenimiento — <6 meses IV/VO",range:"7 mg/kg/12h",note:"puede incrementar hasta 21 mg/kg/12h según respuesta",factor:7,unit:"mg",neonatal:true},
     {label:"Mantenimiento — 6m a 11 años IV/VO",range:"10–30 mg/kg/12h",note:"inicio 10 mg/kg/12h · incrementos de 10 mg/kg c/2 semanas",factor:10,unit:"mg",maxDose:1500},
@@ -169,12 +169,12 @@ export const DOSE_DRUGS = [
     {label:"Reversión profunda — TOF 0 / posttetánica 1–2",range:"4 mg/kg",note:"bolo IV rápido · reversión en ~3 min",factor:4,unit:"mg",maxDose:400},
     {label:"Reversión emergencia inmediata — ISR con rocuronio",range:"16 mg/kg",note:"si necesidad de re-intubar urgente o imposibilidad ventilatoria tras rocuronio 1,2 mg/kg",factor:16,unit:"mg",maxDose:1200},
   ]},
-  {name:"Acetilcisteína",cat:"Antídoto",color:"#84cc16",source:"Notas de Bolso PT · BNFc 2025-26",rev:"2026-09",status:"verified",notes:"Antídoto específico para intoxicación por paracetamol. Iniciar URGENTE si <8h de la ingesta (máxima eficacia). Reacciones anafilactoides frecuentes (10–20%) con la 1ª bolsa: reducir velocidad si aparecen; generalmente autolimitadas. Indicación según nomograma de Rumack-Matthew. Protocolo de 3 bolsas confirmado exactamente frente a Notas de Bolso PT (150 / 50 / 100 mg/kg).",doses:[
+  {name:"Acetilcisteína",cat:"Antídoto",color:"#84cc16",source:"BNFc 2025-26 · Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"Antídoto específico para intoxicación por paracetamol. Iniciar URGENTE si <8h de la ingesta (máxima eficacia). Reacciones anafilactoides frecuentes (10–20%) con la 1ª bolsa: reducir velocidad si aparecen; generalmente autolimitadas. Indicación según nomograma de Rumack-Matthew. Protocolo de 3 bolsas confirmado exactamente frente a Notas de Bolso PT (150 / 50 / 100 mg/kg).",doses:[
     {label:"Intoxicación paracetamol — Bolsa 1 (primera hora)",range:"150 mg/kg",note:"en 200 mL SG5% · infundir en 60 min",factor:150,unit:"mg",maxDose:15000},
     {label:"Intoxicación paracetamol — Bolsa 2 (horas 1–4)",range:"50 mg/kg",note:"en 500 mL SG5% · infundir en 4h",factor:50,unit:"mg",maxDose:5000},
     {label:"Intoxicación paracetamol — Bolsa 3 (horas 4–20)",range:"100 mg/kg",note:"en 1000 mL SG5% · infundir en 16h · total protocolo: 300 mg/kg en 21h",factor:100,unit:"mg",maxDose:10000},
   ]},
-  {name:"Atropina (organofosf.)",cat:"Antídoto",color:"#fb923c",source:"Notas de Bolso PT · BNFc 2025-26",rev:"2026-09",status:"verified",notes:"Indicación: intoxicación por organofosforados o carbamatos (anticolinesterásicos). Objetivo: secar secreciones bronquiales (NO FC ni midriasis). En intoxicación grave: requiere dosis muy altas, repetidas cada 5–10 min hasta que cesen las secreciones. Complementar con pralidoxima si disponible (<24h de exposición). No usar pralidoxima en carbamatos.",doses:[
+  {name:"Atropina (organofosf.)",cat:"Antídoto",color:"#fb923c",source:"BNFc 2025-26 · Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"Indicación: intoxicación por organofosforados o carbamatos (anticolinesterásicos). Objetivo: secar secreciones bronquiales (NO FC ni midriasis). En intoxicación grave: requiere dosis muy altas, repetidas cada 5–10 min hasta que cesen las secreciones. Complementar con pralidoxima si disponible (<24h de exposición). No usar pralidoxima en carbamatos.",doses:[
     {label:"Intoxicación leve — IV/IM",range:"0,02–0,05 mg/kg",note:"repetir cada 15–30 min hasta secado de secreciones",factor:0.03,unit:"mg",maxDose:2},
     {label:"Intoxicación grave — IV",range:"0,05–0,1 mg/kg",note:"repetir cada 5–10 min · no hay dosis máxima en intoxicación grave",factor:0.05,unit:"mg"},
   ]},
@@ -202,7 +202,7 @@ export const DOSE_DRUGS = [
     {label:"Neonato — IV",range:"1–2 mg/kg/dosis",note:"máx 2 mg/kg/dosis · c/12–24h en pretérmino · c/8h en término",factor:1,unit:"mg",neonatal:true},
     {label:"Perfusión continua UCI",range:"0,05–0,4 mg/kg/h",note:"inicio 0,1 mg/kg/h · preferible a bolos repetidos en oliguria refractaria",factor:0.1,unit:"mg/h",infusion:true},
   ]},
-  {name:"Ácido Tranexámico",cat:"Otros",color:"#f43f5e",source:"Notas de Bolso PT · Pediamécum AEP",rev:"2026-09",status:"verified",notes:"Antifibrinolítico. Indicación principal: hemorragia traumática grave (máx eficacia si <3h del traumatismo). ⚠️ CI: IR grave, historia de trombosis arterial o venosa, CID, historia de convulsiones (puede ser proconvulsivante). Vigilar: trastornos visuales en tratamiento prolongado.",doses:[
+  {name:"Ácido Tranexámico",cat:"Otros",color:"#f43f5e",source:"Pediamécum AEP · Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"Antifibrinolítico. Indicación principal: hemorragia traumática grave (máx eficacia si <3h del traumatismo). ⚠️ CI: IR grave, historia de trombosis arterial o venosa, CID, historia de convulsiones (puede ser proconvulsivante). Vigilar: trastornos visuales en tratamiento prolongado.",doses:[
     {label:"Hemorragia traumática — Carga IV (≤3h del trauma)",range:"15–30 mg/kg",note:"máx 1 g · infundir en 10–20 min",factor:15,unit:"mg",maxDose:1000},
     {label:"Hemorragia traumática — Mantenimiento IV",range:"2 mg/kg/h",note:"máx 1 g en 8h · iniciar inmediatamente después de la carga",factor:2,unit:"mg/h",maxDose:1000,infusion:true},
     {label:"Cirugía con alto riesgo hemorrágico — IV",range:"10 mg/kg/dosis",note:"antes de la incisión · puede repetir cada 6–8h",factor:10,unit:"mg"},
@@ -210,49 +210,49 @@ export const DOSE_DRUGS = [
   ]},
 
   // ── ANTIBIÓTICOS ─────────────────────────────────────────────────────────
-  {name:"Amoxicilina-Clavulánico",cat:"ATB",color:"#10b981",source:"Pediamécum AEP · BNFc 2025-26 (revisión cruzada sin discrepancias significativas)",rev:"2026-09",status:"verified",notes:"CI: penicilinas (hipersensibilidad tipo I cruzada con cefalosporinas ~1–2%). ⚠️ Ajustar en IR. Hepatotoxicidad colestásica: más frecuente en adultos, rara en niños. Usar el componente amoxicilina como referencia de dosis; elegir presentación con proporción adecuada.",doses:[
+  {name:"Amoxicilina-Clavulánico",cat:"ATB",color:"#10b981",source:"BNFc 2025-26 (revisión cruzada sin discrepancias significativas) · Pediamécum AEP",rev:"2026-09",status:"verified",notes:"CI: penicilinas (hipersensibilidad tipo I cruzada con cefalosporinas ~1–2%). ⚠️ Ajustar en IR. Hepatotoxicidad colestásica: más frecuente en adultos, rara en niños. Usar el componente amoxicilina como referencia de dosis; elegir presentación con proporción adecuada.",doses:[
     {label:"Infección leve-moderada — IV",range:"30 mg/kg/8h (amox)",note:"máx 2 g/dosis · infusión IV en 30 min · formulación 5:1",factor:30,unit:"mg/8h",maxDose:2000},
     {label:"Infección grave / neumonía — IV",range:"40 mg/kg/8h (amox)",note:"máx 2 g/dosis · meningitis y endocarditis: 50 mg/kg/6h",factor:40,unit:"mg/8h",maxDose:2000},
   ]},
-  {name:"Ampicilina",cat:"ATB",color:"#059669",source:"Pediamécum AEP · BNFc 2025-26 (revisión cruzada sin discrepancias significativas)",rev:"2026-09",status:"verified",notes:"Aminopenicilina de amplio espectro. CI: hipersensibilidad a penicilinas. Neonatos: ajustar intervalo según EG y días de vida (ver tabla neonatal). Alta tasa de resistencia adquirida en E. coli e H. influenzae — considerar cobertura según epidemiología local.",doses:[
+  {name:"Ampicilina",cat:"ATB",color:"#059669",source:"BNFc 2025-26 (revisión cruzada sin discrepancias significativas) · Pediamécum AEP",rev:"2026-09",status:"verified",notes:"Aminopenicilina de amplio espectro. CI: hipersensibilidad a penicilinas. Neonatos: ajustar intervalo según EG y días de vida (ver tabla neonatal). Alta tasa de resistencia adquirida en E. coli e H. influenzae — considerar cobertura según epidemiología local.",doses:[
     {label:"Infección sistémica — IV",range:"50 mg/kg/6h",note:"máx 2 g/dosis · bolo IV o infusión en 30 min",factor:50,unit:"mg/6h",maxDose:2000},
     {label:"Meningitis bacteriana — IV",range:"100 mg/kg/6h",note:"máx 3 g/dosis · iniciar hasta resultado de cultivo",factor:100,unit:"mg/6h",maxDose:3000},
     {label:"Sepsis neonatal precoz — IV",range:"50 mg/kg/12h (EG ≥34s, ≤7d)",note:"EG <34s ó >7d: ajustar intervalo según protocolo neonatal",factor:50,unit:"mg/12h",neonatal:true},
   ]},
-  {name:"Cefazolina",cat:"ATB",color:"#0d9488",source:"Pediamécum AEP · BNFc 2025-26 (revisión cruzada sin discrepancias significativas)",rev:"2026-09",status:"verified",notes:"Cefalosporina 1ª generación. Primera elección en profilaxis quirúrgica y en infecciones por estafilococo sensible a meticilina (MSSA). CI: hipersensibilidad tipo I a cefalosporinas o penicilinas. No atraviesa bien la BHE — no usar en meningitis.",doses:[
+  {name:"Cefazolina",cat:"ATB",color:"#0d9488",source:"BNFc 2025-26 (revisión cruzada sin discrepancias significativas) · Pediamécum AEP",rev:"2026-09",status:"verified",notes:"Cefalosporina 1ª generación. Primera elección en profilaxis quirúrgica y en infecciones por estafilococo sensible a meticilina (MSSA). CI: hipersensibilidad tipo I a cefalosporinas o penicilinas. No atraviesa bien la BHE — no usar en meningitis.",doses:[
     {label:"Infección leve-moderada — IV/IM",range:"25 mg/kg/8h",note:"máx 1 g/dosis",factor:25,unit:"mg/8h",maxDose:1000},
     {label:"Infección grave (piel/partes blandas, ósea) — IV",range:"50 mg/kg/8h",note:"máx 2 g/dosis · infusión IV en 30 min",factor:50,unit:"mg/8h",maxDose:2000},
     {label:"Profilaxis quirúrgica — IV",range:"30 mg/kg dosis única",note:"máx 2 g · administrar 30–60 min antes de incisión",factor:30,unit:"mg",maxDose:2000},
   ]},
-  {name:"Cefotaxima",cat:"ATB",color:"#0891b2",source:"Pediamécum AEP · BNFc 2025-26 (revisión cruzada sin discrepancias significativas)",rev:"2026-09",status:"verified",notes:"Cefalosporina 3ª generación. Primera línea en meningitis bacteriana pediátrica, sepsis y neumonía grave (junto a ampicilina en <3 meses). Buena penetración en LCR. CI: hipersensibilidad a cefalosporinas. Ajustar en IR grave.",doses:[
+  {name:"Cefotaxima",cat:"ATB",color:"#0891b2",source:"BNFc 2025-26 (revisión cruzada sin discrepancias significativas) · Pediamécum AEP",rev:"2026-09",status:"verified",notes:"Cefalosporina 3ª generación. Primera línea en meningitis bacteriana pediátrica, sepsis y neumonía grave (junto a ampicilina en <3 meses). Buena penetración en LCR. CI: hipersensibilidad a cefalosporinas. Ajustar en IR grave.",doses:[
     {label:"Infección grave — IV",range:"50 mg/kg/8h",note:"máx 2 g/dosis · infusión IV en 30–60 min",factor:50,unit:"mg/8h",maxDose:2000},
     {label:"Meningitis bacteriana — IV",range:"75–100 mg/kg/8h",note:"máx 3 g/dosis · asociar ampicilina si <3 meses",factor:75,unit:"mg/8h",maxDose:3000},
     {label:"Sepsis neonatal tardía — IV",range:"50 mg/kg/12h",note:"EG ≥35s ó >7 días: 50 mg/kg/8h",factor:50,unit:"mg/12h",neonatal:true},
   ]},
-  {name:"Ceftriaxona",cat:"ATB",color:"#2563eb",source:"Pediamécum AEP · BNFc 2025-26 (revisión cruzada sin discrepancias significativas)",rev:"2026-09",status:"verified",notes:"⚠️ CONTRAINDICADO en neonatos <28 días (cualquier vía) y en pacientes con hiperbilirrubinemia, hipoalbuminemia o que reciben calcio IV. Precipita con calcio → NO mezclar en el mismo equipo. CI en hipersensibilidad a cefalosporinas. Puede causar colelitiasis reversible (pseudolitiasis biliar).",doses:[
+  {name:"Ceftriaxona",cat:"ATB",color:"#2563eb",source:"BNFc 2025-26 (revisión cruzada sin discrepancias significativas) · Pediamécum AEP",rev:"2026-09",status:"verified",notes:"⚠️ CONTRAINDICADO en neonatos <28 días (cualquier vía) y en pacientes con hiperbilirrubinemia, hipoalbuminemia o que reciben calcio IV. Precipita con calcio → NO mezclar en el mismo equipo. CI en hipersensibilidad a cefalosporinas. Puede causar colelitiasis reversible (pseudolitiasis biliar).",doses:[
     {label:"Infección grave — IV",range:"50–75 mg/kg/24h",note:"máx 4 g/día · dosis única diaria · infusión en 30–60 min",factor:50,unit:"mg/24h",maxDose:4000},
     {label:"Meningitis bacteriana — IV",range:"100 mg/kg/24h",note:"máx 4 g/día · única dosis diaria o dividida en 2",factor:100,unit:"mg/24h",maxDose:4000},
     {label:"Artritis séptica / osteomielitis — IV",range:"50 mg/kg/24h",note:"máx 2 g/día · puede completar con vía oral según evolución",factor:50,unit:"mg/24h",maxDose:2000},
   ]},
-  {name:"Meropenem",cat:"ATB",color:"#7c3aed",source:"Pediamécum AEP · BNFc 2025-26 (revisión cruzada sin discrepancias significativas)",rev:"2026-09",status:"verified",notes:"Carbapenem de amplio espectro. Indicado en infecciones graves por gérmenes multirresistentes, sepsis nosocomial y meningitis por P. aeruginosa. CI: hipersensibilidad a carbapenems. Vigilar: convulsiones (raro, más frecuente con imipenem). ⚠️ Los carbapenems reducen niveles de valproato — monitorizar.",doses:[
+  {name:"Meropenem",cat:"ATB",color:"#7c3aed",source:"BNFc 2025-26 (revisión cruzada sin discrepancias significativas) · Pediamécum AEP",rev:"2026-09",status:"verified",notes:"Carbapenem de amplio espectro. Indicado en infecciones graves por gérmenes multirresistentes, sepsis nosocomial y meningitis por P. aeruginosa. CI: hipersensibilidad a carbapenems. Vigilar: convulsiones (raro, más frecuente con imipenem). ⚠️ Los carbapenems reducen niveles de valproato — monitorizar.",doses:[
     {label:"Infección grave — IV",range:"20 mg/kg/8h",note:"máx 1 g/dosis · infusión IV en 30 min",factor:20,unit:"mg/8h",maxDose:1000},
     {label:"Meningitis / infección muy grave — IV",range:"40 mg/kg/8h",note:"máx 2 g/dosis · infusión extendida en 3h aumenta exposición",factor:40,unit:"mg/8h",maxDose:2000},
     {label:"Fibrosis quística (P. aeruginosa) — IV",range:"40 mg/kg/8h",note:"máx 2 g/dosis · ciclos de 14–21 días",factor:40,unit:"mg/8h",maxDose:2000},
   ]},
-  {name:"Piperacilina-Tazobactam",cat:"ATB",color:"#6d28d9",source:"Pediamécum AEP · BNFc 2025-26 (revisión cruzada sin discrepancias significativas)",rev:"2026-09",status:"verified",notes:"CI: hipersensibilidad a penicilinas (usar con precaución en alergia a cefalosporinas). ⚠️ Puede producir hipopotasemia en tto prolongado. Ajustar en IR. Dosis referenciadas al componente piperacilina. Alta actividad frente a Pseudomonas y anaerobios.",doses:[
+  {name:"Piperacilina-Tazobactam",cat:"ATB",color:"#6d28d9",source:"BNFc 2025-26 (revisión cruzada sin discrepancias significativas) · Pediamécum AEP",rev:"2026-09",status:"verified",notes:"CI: hipersensibilidad a penicilinas (usar con precaución en alergia a cefalosporinas). ⚠️ Puede producir hipopotasemia en tto prolongado. Ajustar en IR. Dosis referenciadas al componente piperacilina. Alta actividad frente a Pseudomonas y anaerobios.",doses:[
     {label:"Infección grave — IV",range:"100 mg/kg/8h (pip)",note:"máx 4 g/dosis · infusión IV en 30 min",factor:100,unit:"mg/8h (pip)",maxDose:4000},
     {label:"Infección muy grave / neutropenia febril — IV",range:"100 mg/kg/6h (pip)",note:"máx 4 g/dosis · considerar infusión extendida en 4h",factor:100,unit:"mg/6h (pip)",maxDose:4000},
   ]},
-  {name:"Vancomicina",cat:"ATB",color:"#be185d",source:"Pediamécum AEP · BNFc 2025-26 (revisión cruzada sin discrepancias significativas)",rev:"2026-09",status:"verified",notes:"Glucopéptido. Actividad frente a gram+ incluyendo MRSA y neumococo resistente. ⚠️ Monitorizar niveles (valle 10–20 mcg/mL; meningitis 15–20). Síndrome del hombre rojo: reacción a infusión rápida — infundir siempre en ≥60 min (1–2h). Nefrotóxico: monitorizar función renal y ajustar según niveles. CI en hipersensibilidad.",doses:[
+  {name:"Vancomicina",cat:"ATB",color:"#be185d",source:"BNFc 2025-26 (revisión cruzada sin discrepancias significativas) · Pediamécum AEP",rev:"2026-09",status:"verified",notes:"Glucopéptido. Actividad frente a gram+ incluyendo MRSA y neumococo resistente. ⚠️ Monitorizar niveles (valle 10–20 mcg/mL; meningitis 15–20). Síndrome del hombre rojo: reacción a infusión rápida — infundir siempre en ≥60 min (1–2h). Nefrotóxico: monitorizar función renal y ajustar según niveles. CI en hipersensibilidad.",doses:[
     {label:"Infección grave (MRSA) — IV",range:"15 mg/kg/6h",note:"máx 750 mg/dosis · infundir en 60 min · vigilar niveles valle",factor:15,unit:"mg/6h",maxDose:750},
     {label:"Meningitis / endocarditis — IV",range:"20 mg/kg/6h",note:"máx 750 mg/dosis · objetivo nivel valle 15–20 mcg/mL",factor:20,unit:"mg/6h",maxDose:750},
     {label:"Neonato (EG ≥35s, ≤7d) — IV",range:"15 mg/kg/12h",note:"EG <35s: 15 mg/kg/18–24h · infundir siempre en ≥60 min",factor:15,unit:"mg/12h",neonatal:true},
   ]},
-  {name:"Gentamicina",cat:"ATB",color:"#b45309",source:"Pediamécum AEP · BNFc 2025-26 (revisión cruzada sin discrepancias significativas)",rev:"2026-09",status:"verified",notes:"Aminoglucósido. Dosis única diaria (DUD): mejor eficacia y menor nefrotoxicidad. ⚠️ Monitorizar niveles: valle <1 mcg/mL (idealmente indetectable); pico 8–12 mcg/mL. Nefrotóxico y ototóxico — evitar en IR; hidratación adecuada. Potencia el bloqueo neuromuscular. En FQ y endocarditis: ver esquema específico.",doses:[
+  {name:"Gentamicina",cat:"ATB",color:"#b45309",source:"BNFc 2025-26 (revisión cruzada sin discrepancias significativas) · Pediamécum AEP",rev:"2026-09",status:"verified",notes:"Aminoglucósido. Dosis única diaria (DUD): mejor eficacia y menor nefrotoxicidad. ⚠️ Monitorizar niveles: valle <1 mcg/mL (idealmente indetectable); pico 8–12 mcg/mL. Nefrotóxico y ototóxico — evitar en IR; hidratación adecuada. Potencia el bloqueo neuromuscular. En FQ y endocarditis: ver esquema específico.",doses:[
     {label:"Infección sistémica — IV/IM (dosis única diaria)",range:"5–7 mg/kg/24h",note:"máx 500 mg/día · infundir IV en 30 min · pico 8–12 mcg/mL",factor:5,unit:"mg/24h",maxDose:500},
     {label:"Sepsis neonatal — IV (EG ≥35s, ≤7d)",range:"4 mg/kg/48h",note:"EG <35s: 4 mg/kg/48h | >7 días EG ≥35s: 4 mg/kg/36h",factor:4,unit:"mg/48h",neonatal:true},
   ]},
-  {name:"Metronidazol",cat:"ATB",color:"#78350f",source:"Pediamécum AEP · BNFc 2025-26 (revisión cruzada sin discrepancias significativas)",rev:"2026-09",status:"verified",notes:"Activo frente a anaerobios y protozoos. Indicado en infecciones abdominales, colitis por C. difficile, infecciones por Bacteroides y G. lamblia. ⚠️ Efecto antabús con alcohol. Potencia el anticoagulante de cumarinas. Ajustar en IR/IH graves. CI: 1er trimestre embarazo.",doses:[
+  {name:"Metronidazol",cat:"ATB",color:"#78350f",source:"BNFc 2025-26 (revisión cruzada sin discrepancias significativas) · Pediamécum AEP",rev:"2026-09",status:"verified",notes:"Activo frente a anaerobios y protozoos. Indicado en infecciones abdominales, colitis por C. difficile, infecciones por Bacteroides y G. lamblia. ⚠️ Efecto antabús con alcohol. Potencia el anticoagulante de cumarinas. Ajustar en IR/IH graves. CI: 1er trimestre embarazo.",doses:[
     {label:"Infección por anaerobios / abdominal — IV",range:"7,5 mg/kg/8h",note:"máx 500 mg/dosis · infusión IV en 30–60 min",factor:7.5,unit:"mg/8h",maxDose:500},
     {label:"C. difficile grave — IV (si VO no posible)",range:"10 mg/kg/8h",note:"máx 500 mg/dosis · preferir fidaxomicina/vancomicina VO si tolerancia oral",factor:10,unit:"mg/8h",maxDose:500},
     {label:"Profilaxis quirúrgica (cirugía colorrectal) — IV",range:"15 mg/kg dosis única",note:"máx 1 g · administrar 30–60 min antes de incisión",factor:15,unit:"mg",maxDose:1000},
@@ -269,7 +269,7 @@ export const DOSE_DRUGS = [
     {label:"Perfusión IV — UCI",range:"0,5–2 mcg/kg/h",note:"iniciar 0,5 mcg/kg/h · sin bolo",factor:1,unit:"mcg/h",infusion:true},
   ]},
   // ── BNM additions ─────────────────────────────────────────────────────
-  {name:"Cisatracurio",cat:"BNM",color:"#a78bfa",source:"Notas de Bolso PT · BNFc 2025-26",rev:"2026-09",status:"verified",notes:"BNM no despolarizante. No libera histamina. Eliminación de Hofmann (independiente de función renal/hepática). Primera elección en UCI para BNM prolongado. Monitorizar con TOF. Dosis de intubación y perfusión confirmadas frente a Notas de Bolso PT (0,1–0,15 mg/kg intubación · 0,1–0,2 mg/kg/h perfusión).",doses:[
+  {name:"Cisatracurio",cat:"BNM",color:"#a78bfa",source:"BNFc 2025-26 · Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"BNM no despolarizante. No libera histamina. Eliminación de Hofmann (independiente de función renal/hepática). Primera elección en UCI para BNM prolongado. Monitorizar con TOF. Dosis de intubación y perfusión confirmadas frente a Notas de Bolso PT (0,1–0,15 mg/kg intubación · 0,1–0,2 mg/kg/h perfusión).",doses:[
     {label:"Intubación / bloqueo",range:"0,1–0,2 mg/kg",note:"inicio acción 2–3 min · duración 30–60 min",factor:0.15,unit:"mg",maxDose:20},
     {label:"Mantenimiento — bolo",range:"0,03 mg/kg",note:"cada 20–40 min según monitorización TOF",factor:0.03,unit:"mg",maxDose:5},
     {label:"Perfusión continua UCI",range:"1–3 mcg/kg/min",note:"ajustar por TOF · evaluar diariamente",factor:2,unit:"mcg/min",infusion:true},
@@ -355,7 +355,7 @@ export const DOSE_DRUGS = [
   ]},
 
   // ── Nuevos Sedo ────────────────────────────────────────────────────────
-  {name:"Sufentanilo",cat:"Sedo",color:"#c084fc",source:"Pediamécum AEP · Ficha Técnica AEMPS",rev:"2026-03",status:"verified",notes:"Opiáceo sintético 5–10× más potente que fentanilo. UCI pediátrica para sedoanalgesia prolongada y procedimientos dolorosos. Provoca rigidez torácica si bolo rápido. Antagonista: naloxona. Ventana terapéutica estrecha — titular cuidadosamente.",doses:[
+  {name:"Sufentanilo",cat:"Sedo",color:"#c084fc",source:"Ficha Técnica AEMPS · Pediamécum AEP",rev:"2026-03",status:"verified",notes:"Opiáceo sintético 5–10× más potente que fentanilo. UCI pediátrica para sedoanalgesia prolongada y procedimientos dolorosos. Provoca rigidez torácica si bolo rápido. Antagonista: naloxona. Ventana terapéutica estrecha — titular cuidadosamente.",doses:[
     {label:"Analgesia procedimiento — IV",range:"0,1–0,4 mcg/kg",note:"máx 20 mcg · bolo lento ≥3 min",factor:0.2,unit:"mcg",maxDose:20},
     {label:"Analgesia intranasal",range:"0,2–0,4 mcg/kg",note:"máx 20 mcg · atomizador · 0,3 mL por fosa",factor:0.3,unit:"mcg",maxDose:20},
     {label:"Perfusión UCI — mantenimiento",range:"0,02–0,1 mcg/kg/h",note:"iniciar bajo · ajustar por escalas de sedoanalgesia (FLACC, COMFORT-B)",factor:0.05,unit:"mcg/h",infusion:true},
@@ -365,7 +365,7 @@ export const DOSE_DRUGS = [
     {label:"Dolor moderado-intenso — IV",range:"1–2 mg/kg",note:"máx 100 mg/dosis · infusión lenta 30 min · c/6–8h",factor:1.5,unit:"mg",maxDose:100},
     {label:"Infusión postoperatoria",range:"0,1–0,2 mg/kg/h",note:"máx 400 mg/día · ajustar con analgesia de rescate",factor:0.15,unit:"mg/h",infusion:true},
   ]},
-  {name:"Haloperidol",cat:"Sedo",color:"#e879f9",source:"Pediamécum AEP · Ficha Técnica",rev:"2026-03",status:"verified",notes:"Antipsicótico típico. Delirium y agitación en UCI pediátrica. ⚠️ Prolonga QT → ECG basal · no con otros QT-prolongantes. CI: <3 años. Riesgo reacción extrapiramidal y síndrome neuroléptico maligno (raro). Tener disponible biperideno.",doses:[
+  {name:"Haloperidol",cat:"Sedo",color:"#e879f9",source:"Ficha Técnica · Pediamécum AEP",rev:"2026-03",status:"verified",notes:"Antipsicótico típico. Delirium y agitación en UCI pediátrica. ⚠️ Prolonga QT → ECG basal · no con otros QT-prolongantes. CI: <3 años. Riesgo reacción extrapiramidal y síndrome neuroléptico maligno (raro). Tener disponible biperideno.",doses:[
     {label:"Agitación/delirium UCI — IV/IM",range:"0,025–0,075 mg/kg/dosis",note:"máx 5 mg · c/8–12h · monitorización ECG",factor:0.05,unit:"mg",maxDose:5},
     {label:"Agitación aguda — VO",range:"0,05–0,15 mg/kg/día",note:"máx 5 mg/día · en 2–3 dosis",factor:0.1,unit:"mg/día",maxDose:5},
   ]},
@@ -391,7 +391,7 @@ export const DOSE_DRUGS = [
     {label:"Estatus epiléptico — IV/IO (2ª/3ª línea)",range:"20 mg EP/kg",note:"máx 1.500 mg EP · infundir ≤3 mg EP/kg/min · ECG continuo",factor:20,unit:"mg EP",maxDose:1500},
     {label:"Mantenimiento — IV",range:"4–8 mg EP/kg/día",note:"en 2 dosis · infundir en 15–30 min · nivelar fenitoína libre",factor:6,unit:"mg EP/día",maxDose:300},
   ]},
-  {name:"Lacosamida IV",cat:"Antiepi",color:"#818cf8",source:"EAN Guidelines SE 2022 · Ficha Técnica",rev:"2026-03",status:"verified",notes:"Antiepiléptico de 3ª generación. Bloquea canales Na⁺ dependientes de voltaje. 3ª línea en estatus epiléptico refractario. Prolonga PR — ECG previo. Segura en fallo renal moderado. Disponible IV 200 mg/20 mL.",doses:[
+  {name:"Lacosamida IV",cat:"Antiepi",color:"#818cf8",source:"Ficha Técnica · EAN Guidelines SE 2022",rev:"2026-03",status:"verified",notes:"Antiepiléptico de 3ª generación. Bloquea canales Na⁺ dependientes de voltaje. 3ª línea en estatus epiléptico refractario. Prolonga PR — ECG previo. Segura en fallo renal moderado. Disponible IV 200 mg/20 mL.",doses:[
     {label:"Estatus refractario — IV (3ª línea)",range:"5–10 mg/kg",note:"máx 400 mg · infundir en 15–60 min · monitorizar ECG",factor:5,unit:"mg",maxDose:400},
     {label:"Mantenimiento — IV/VO",range:"3–6 mg/kg/12h",note:"máx 300 mg/12h · conversión IV:VO 1:1",factor:4,unit:"mg/12h",maxDose:300},
   ]},
@@ -409,7 +409,7 @@ export const DOSE_DRUGS = [
     {label:"Urgencia HTA — VO (cápsula)",range:"0,1–0,25 mg/kg/dosis",note:"máx 10 mg · cápsula masticada · inicio 15–30 min · repetir c/4–6h si precisa",factor:0.2,unit:"mg",maxDose:10},
     {label:"HTA crónica — VO (liberación prolongada)",range:"0,25–0,5 mg/kg/12h",note:"máx 120 mg/día · comprimidos LP no triturar",factor:0.3,unit:"mg",maxDose:60},
   ]},
-  {name:"Fentolamina",cat:"Cardio",color:"#f87171",source:"Pediamécum AEP · Ficha Técnica",rev:"2026-03",status:"verified",notes:"Bloqueante α adrenérgico. Crisis hipertensiva por feocromocitoma/paraganglioma, extravasación catecolaminas. Para extravasación: inyección local subcutánea en los primeros 12h. IV solo en crisis HTA severa con exceso catecolaminas.",doses:[
+  {name:"Fentolamina",cat:"Cardio",color:"#f87171",source:"Ficha Técnica · Pediamécum AEP",rev:"2026-03",status:"verified",notes:"Bloqueante α adrenérgico. Crisis hipertensiva por feocromocitoma/paraganglioma, extravasación catecolaminas. Para extravasación: inyección local subcutánea en los primeros 12h. IV solo en crisis HTA severa con exceso catecolaminas.",doses:[
     {label:"Crisis HTA catecolamínica — IV bolo",range:"0,05–0,1 mg/kg",note:"máx 5 mg · bolo IV · puede repetir c/5–10 min",factor:0.1,unit:"mg",maxDose:5},
     {label:"Extravasación catecolaminas — SC local",range:"0,1 mg/kg",note:"máx 5 mg · diluir en 10 mL SF · inyectar SC en zona de extravasación · dentro de 12h",factor:0.1,unit:"mg",maxDose:5},
   ]},
@@ -430,7 +430,7 @@ export const DOSE_DRUGS = [
     {label:"Dosis única — VO/SNG",range:"1 g/kg",note:"máx 50 g · 1.ª h post-ingesta · suspensión 1 g/5 mL o diluir en agua",factor:1,unit:"g",maxDose:50},
     {label:"Dosis múltiples (intox. grave lenta absorción)",range:"0,25–0,5 g/kg/4h",note:"máx 25 g/dosis · fármacos circulación enterohepática: carbamazepina, digital, fenobarbital, quinina, teofilina",factor:0.5,unit:"g",maxDose:25},
   ]},
-  {name:"Hidroxocobalamina",cat:"Antídoto",color:"#f87171",source:"Pediamécum AEP · Ficha Técnica Cyanokit",rev:"2026-03",status:"verified",notes:"Antídoto intoxicación por cianuro (incendios, amígdalas, nitroprusiato). Diagnóstico clínico (no esperar resultado laboratorio). Tiñe orina y piel de rojo-marrón (no confundir). Compatible con RL/SF/SG5% — no mezclar con otros fármacos en la misma vía. Atropina y adrenalina se pueden administrar simultáneamente.",doses:[
+  {name:"Hidroxocobalamina",cat:"Antídoto",color:"#f87171",source:"Ficha Técnica Cyanokit · Pediamécum AEP",rev:"2026-03",status:"verified",notes:"Antídoto intoxicación por cianuro (incendios, amígdalas, nitroprusiato). Diagnóstico clínico (no esperar resultado laboratorio). Tiñe orina y piel de rojo-marrón (no confundir). Compatible con RL/SF/SG5% — no mezclar con otros fármacos en la misma vía. Atropina y adrenalina se pueden administrar simultáneamente.",doses:[
     {label:"Intoxicación cianuro — IV",range:"70 mg/kg",note:"máx 5 g (=1 vial) · infundir en 15 min · puede repetir hasta 3 dosis",factor:70,unit:"mg",maxDose:5000},
     {label:"Neonato / lactante — IV",range:"70 mg/kg",note:"máx 5 g · infundir en 15 min · suspender nitroprusiato si causa toxicidad CN",factor:70,unit:"mg",neonatal:true,maxDose:5000},
   ]},
@@ -493,7 +493,7 @@ export const DOSE_DRUGS = [
     {label:"Neonato <7 días — IV",range:"75 mg/kg/día",note:"en 2–3 dosis · infundir en 30 min",factor:75,unit:"mg/día",neonatal:true},
   ]},
 
-  {name:"Aciclovir IV",cat:"ATB",color:"#34d399",source:"Pediamécum AEP · BNF for Children 2024",rev:"2026-03",status:"verified",
+  {name:"Aciclovir IV",cat:"ATB",color:"#34d399",source:"BNF for Children 2024 · Pediamécum AEP",rev:"2026-03",status:"verified",
   notes:"Antivírico. Primera elección en encefalitis herpética (HSV) y varicela grave en inmunodeprimidos. Nefrotóxico: hidratación IV adecuada antes y durante. ⚠️ Infundir en ≥ 60 min — cristaluria/nefrotoxicidad con infusión rápida. Ajuste en insuficiencia renal. Reconstituir en SF o RL (no SG).",
   doses:[
     {label:"Encefalitis herpética (HSV) — IV (neonato ≤ 3 meses)",range:"20 mg/kg/dosis",note:"c/8h · infundir 60 min · 14–21 días · hidratación IV obligatoria",factor:20,unit:"mg",maxDose:500,neonatal:true},
@@ -502,21 +502,21 @@ export const DOSE_DRUGS = [
     {label:"Varicela/VZV grave — IV (inmunocompetente)",range:"10 mg/kg/dosis",note:"c/8h · infundir 60 min · 5–7 días",factor:10,unit:"mg",maxDose:500},
     {label:"Varicela/VZV grave — IV (inmunodeprimido)",range:"15 mg/kg/dosis",note:"c/8h · infundir 60 min · 7–10 días",factor:15,unit:"mg",maxDose:800},
   ]},
-  {name:"Eritromicina IV",cat:"ATB",color:"#f472b6",source:"Pediamécum AEP · BNF for Children 2024",rev:"2026-03",status:"verified",
+  {name:"Eritromicina IV",cat:"ATB",color:"#f472b6",source:"BNF for Children 2024 · Pediamécum AEP",rev:"2026-03",status:"verified",
   notes:"Macrólido. Vía IV reservada cuando VO no es posible. Uso procinético en gastroparesia/vaciamiento retardado. ⚠️ Prolongación QT — monitorizar ECG, evitar con otros fármacos que prolongan QT (haloperidol, amiodarona, ondansetrón). Extravasación: flebitis intensa. Diluir bien: [1–5 mg/mL], infundir en 60 min.",
   doses:[
     {label:"Infección respiratoria/sistémica — IV (< 12 años)",range:"12,5 mg/kg/dosis",note:"c/6h · infundir en 60 min · máx 7 días IV · pasar a VO en cuanto sea posible",factor:12.5,unit:"mg",maxDose:500},
     {label:"Infección respiratoria/sistémica — IV (≥ 12 años)",range:"250–500 mg/dosis",note:"c/6h · infundir en 60 min",factor:0,unit:"mg",fixedDose:"250–500 mg"},
     {label:"Procinético (gastroparesia) — IV",range:"3 mg/kg/dosis",note:"c/6–8h · infundir 30–60 min · dosis baja reduce riesgo QT · valorar beneficio/riesgo",factor:3,unit:"mg",maxDose:125},
   ]},
-  {name:"Desmopresina IV/SC",cat:"Antifib",color:"#a78bfa",source:"Pediamécum AEP · BNF for Children 2024",rev:"2026-03",status:"verified",
+  {name:"Desmopresina IV/SC",cat:"Antifib",color:"#a78bfa",source:"BNF for Children 2024 · Pediamécum AEP",rev:"2026-03",status:"verified",
   notes:"Análogo sintético de vasopresina (ADH). ⚠️ Hiponatremia dilucional — monitorizar sodio, peso y diuresis. Mayor riesgo en < 1 año y tras dosis repetidas. No administrar con soluciones hipotónicas. En hemofilia A/vWD: respuesta disminuye con dosis repetidas (taquifilaxia). Contraindicado en vWD tipo 2B.",
   doses:[
     {label:"Hemostasia — Hemofilia A / vWD tipo 1 — IV lento",range:"0,3 mcg/kg/dosis",note:"en 10–20 min · máx 20 mcg/dosis · puede repetir c/12–24h (taquifilaxia)",factor:0.3,unit:"mcg",maxDose:20},
     {label:"Diabetes insípida central — IV/SC/IM",range:"0,01–0,04 mcg/kg/dosis",note:"c/12–24h · máx 0,4 mcg/dosis · titular según respuesta y sodio",factor:0.02,unit:"mcg",maxDose:0.4},
     {label:"Poliuria/polidipsia — neonato IV/SC",range:"0,01 mcg/kg/dosis",note:"c/8–12h · vigilar hiponatremia estrechamente · ajustar individualmente",factor:0.01,unit:"mcg",maxDose:0.2,neonatal:true},
   ]},
-  {name:"Insulina rápida (Actrapid)",cat:"Otros",color:"#eab308",source:"Notas de Bolso PT · Handbook Drugs ICU 7ed",rev:"2026-09",status:"verified",notes:"Añadido en revisión 2026 — fármaco de uso muy frecuente en urgencias/UCIP portuguesas, no incluido previamente. Cetoacidosis diabética (CAD): NO administrar en bolo. Objetivo: descenso de glucemia 50–100 mg/dL/h y ascenso del pH ≥0,03/h. Vigilar hipopotasemia (la insulina desplaza K+ al espacio intracelular).",doses:[
+  {name:"Insulina rápida (Actrapid)",cat:"Otros",color:"#eab308",source:"Handbook Drugs ICU 7ed · Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"Añadido en revisión 2026 — fármaco de uso muy frecuente en urgencias/UCIP portuguesas, no incluido previamente. Cetoacidosis diabética (CAD): NO administrar en bolo. Objetivo: descenso de glucemia 50–100 mg/dL/h y ascenso del pH ≥0,03/h. Vigilar hipopotasemia (la insulina desplaza K+ al espacio intracelular).",doses:[
     {label:"CAD — Perfusión IV",range:"0,1 U/kg/h",note:"diluir 50 U en 50 mL SF (1 U/mL) · 0,1 mL/kg/h = 0,1 U/kg/h",factor:0.1,unit:"U/h",infusion:true},
     {label:"CAD — Perfusión IV (<5 años o glucemia inicial >1000 mg/dL)",range:"0,05 U/kg/h",note:"iniciar a dosis reducida por mayor riesgo de edema cerebral",factor:0.05,unit:"U/h",infusion:true},
   ]},
@@ -532,6 +532,32 @@ export const DOSE_DRUGS = [
   ]},
   {name:"Dantroleno",cat:"Antídoto",color:"#fca5a5",source:"Handbook Drugs ICU 7ed",rev:"2026-09",status:"verified",notes:"Añadido en revisión 2026 — antídoto específico de la hipertermia maligna (asociada a succinilcolina y anestésicos inhalados halogenados). Junto al dantroleno: retirar agente desencadenante, hiperventilar con O₂ 100%, enfriamiento activo, corregir acidosis e hiperpotasemia. Vida media ~5h — puede requerir dosis repetidas por recurrencia.",doses:[
     {label:"Hipertermia maligna — IV",range:"1 mg/kg",note:"repetir cada 5 min hasta máx 10 mg/kg total · respuesta esperada en minutos (↓tono muscular, FC, temperatura)",factor:1,unit:"mg"},
+  ]},
+  {name:"Cafeína citrato",cat:"Resp",color:"#38bdf8",source:"BNFc 2020-21",rev:"2026-09",status:"verified",notes:"Añadido en revisión 2026-09 (v4.12) — fármaco de 1ª línea para apnea del prematuro en UCIN, muy utilizado en Portugal. Estimula el centro respiratorio (xantina). Monitorizar cafeinemia si se requieren dosis de mantenimiento >20 mg/kg/día. Buena tolerancia — margen terapéutico amplio.",doses:[
+    {label:"Apnea del prematuro — Carga IV/VO",range:"20 mg/kg",note:"dosis única · IV en 10–30 min o VO",factor:20,unit:"mg"},
+    {label:"Apnea del prematuro — Mantenimiento IV/VO",range:"5 mg/kg/día",note:"iniciar 24h tras la carga · dosis única diaria · aumentar hasta 20 mg/kg/día si respuesta insuficiente, monitorizando cafeinemia",factor:5,unit:"mg"},
+  ]},
+  {name:"Poractant alfa",cat:"Resp",color:"#7dd3fc",source:"BNFc 2020-21",rev:"2026-09",status:"verified",notes:"Añadido en revisión 2026-09 (v4.12) — surfactante pulmonar porcino, uso estándar en síndrome de distrés respiratorio (SDR) neonatal en UCIN, muy utilizado en Portugal. RN >700 g de peso al nacer.",doses:[
+    {label:"Tratamiento SDR — Endotraqueal",range:"100–200 mg/kg",note:"dosis inicial · repetir 100 mg/kg c/12h si preciso · máx 300–400 mg/kg por ciclo",factor:150,unit:"mg"},
+    {label:"Profilaxis SDR (RNPT 24–31 sem) — Endotraqueal",range:"100–200 mg/kg",note:"administrar lo antes posible, preferiblemente <15 min de vida · repetir a las 6–12h y 12h si preciso",factor:150,unit:"mg"},
+  ]},
+  {name:"Beractant",cat:"Resp",color:"#93c5fd",source:"BNFc 2020-21",rev:"2026-09",status:"verified",notes:"Añadido en revisión 2026-09 (v4.12) — surfactante pulmonar bovino, alternativa a poractant alfa para SDR neonatal.",doses:[
+    {label:"Profilaxis SDR (RNPT ≤32 sem) — Endotraqueal",range:"100 mg/kg",note:"preferiblemente <15 min de vida · puede repetirse dentro de 48h a intervalos ≥6h hasta 4 dosis",factor:100,unit:"mg"},
+  ]},
+  {name:"Alprostadil (PGE1)",cat:"Cardio",color:"#fb7185",source:"BNFc 2020-21 · Formulário de Pediatria PT",rev:"2026-09",status:"verified",notes:"Añadido en revisión 2026-09 (v4.12) — mantiene la permeabilidad del ductus arterioso en cardiopatías congénitas ductus-dependientes a la espera de cirugía/cateterismo. ⚠️ Riesgo de apnea (más frecuente en RN <2 kg) — tener disponible soporte ventilatorio. Reducir dosis tras respuesta clínica, usar la mínima eficaz. Dosis de inicio corroborada de forma independiente por dos fuentes (BNFc y Formulário de Pediatria PT).",doses:[
+    {label:"RN estable — Perfusión IV continua",range:"5–10 ng/kg/min",note:"dosis de inicio habitual · reducir a la mínima eficaz tras respuesta",factor:7,unit:"ng/min",infusion:true},
+    {label:"RN muy hipoxémico — Perfusión IV continua",range:"20–50 ng/kg/min",note:"máx 100 ng/kg/min · titular en escalones de 5 ng/kg/min según respuesta",factor:35,unit:"ng/min",infusion:true},
+  ]},
+  {name:"Sildenafil",cat:"Cardio",color:"#a78bfa",source:"BNFc 2020-21",rev:"2026-09",status:"verified",notes:"Añadido en revisión 2026-09 (v4.12) — hipertensión pulmonar persistente del recién nacido (HPPRN) e hipertensión arterial pulmonar pediátrica, cada vez más usado en UCIN/UCIP en Portugal. Iniciar con dosis y frecuencia más bajas, especialmente si se asocia a otros vasodilatadores.",doses:[
+    {label:"Hipertensión pulmonar — VO",range:"0,25–0,5 mg/kg/dosis c/4–8h",note:"ajustar según respuesta · máx 30 mg/día",factor:0.375,unit:"mg"},
+  ]},
+  {name:"Indometacina IV",cat:"Cardio",color:"#fdba74",source:"BNFc 2020-21",rev:"2026-09",status:"verified",notes:"Añadido en revisión 2026-09 (v4.12) — cierre farmacológico del ductus arterioso persistente sintomático en el prematuro. ⚠️ Reduce el flujo cerebral y causa descenso transitorio del flujo renal y gastrointestinal — contraindicada en hemorragia activa (especialmente HIV), trombocitopenia, enterocolitis necrotizante o infección no tratada.",doses:[
+    {label:"Cierre farmacológico ductus — IV (1ª dosis)",range:"0,1–0,2 mg/kg",note:"infundir en 20–30 min",factor:0.15,unit:"mg"},
+    {label:"Cierre farmacológico ductus — IV (2ª–3ª dosis)",range:"0,1 mg/kg",note:"cada 24h tras la 1ª dosis · si persiste el ductus permeable puede valorarse una tanda adicional de 3 dosis cada 24h",factor:0.1,unit:"mg"},
+  ]},
+  {name:"Ibuprofeno IV",cat:"Cardio",color:"#fde68a",source:"BNFc 2020-21",rev:"2026-09",status:"verified",notes:"Añadido en revisión 2026-09 (v4.12) — alternativa a indometacina para el cierre farmacológico del ductus arterioso persistente; menor efecto sobre el flujo renal, molestias gastrointestinales poco frecuentes.",doses:[
+    {label:"Cierre farmacológico ductus — IV lenta (1ª dosis)",range:"10 mg/kg",note:"inyección IV lenta",factor:10,unit:"mg"},
+    {label:"Cierre farmacológico ductus — IV lenta (2ª–3ª dosis)",range:"5 mg/kg",note:"cada 24h · el ciclo puede repetirse a las 48h si es necesario",factor:5,unit:"mg"},
   ]},
 ];
 

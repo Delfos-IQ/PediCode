@@ -75,6 +75,26 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.12', date: 'Septiembre 2026', type: 'major',
+    items: {
+      es: [
+        'Jerarquía de fuentes reordenada en toda la app: donde una ficha cita más de una fuente, ahora aparecen siempre en el mismo orden de fiabilidad/actualidad — BNFc/BNF → Ficha Técnica/AEMPS → Pediamécum AEP → Handbook of Drugs in ICU → otras guías específicas → Notas de Bolso PT 2015. Aplicado en las 29 fichas de drugs.js que tenían más de una fuente en el orden antiguo, y en las 7 fichas del tab Medicamentos con el mismo problema. Revisado infusions.js: sus fichas multi-fuente ya seguían este orden, sin cambios necesarios',
+        '7 fármacos nuevos de cuidados intensivos neonatales/pediátricos de uso frecuente en Portugal, con fuente e indicación explícitas: Cafeína citrato y los surfactantes Poractant alfa/Beractant (apnea del prematuro y SDR neonatal), Alprostadil/PGE1 (mantener el ductus permeable en cardiopatía ductus-dependiente — dosis de inicio corroborada de forma independiente por dos fuentes: BNFc y Formulário de Pediatria PT), Sildenafil (hipertensión pulmonar), e Indometacina/Ibuprofeno IV (cierre farmacológico del ductus). Añadidos tanto a la calculadora de dosis como al tab Medicamentos — de 130 a 137 fichas, de 104 a 111 fármacos en la calculadora',
+        'Nota de transparencia: la mayoría de las ~91 fichas del tab MED que citaban únicamente Notas de Bolso PT (2015) siguen citando solo esa fuente — reordenar no crea una segunda fuente donde no la investigamos todavía. Añadir BNFc/Pediamécum como fuente adicional a esas ~91 fichas, una por una y con la misma verificación rigurosa aplicada a las 7 nuevas, es un bloque de trabajo considerable que no entraba en esta pasada y queda como siguiente paso natural si se desea',
+      ],
+      pt: [
+        'Hierarquia de fontes reordenada em toda a app: onde uma ficha cita mais de uma fonte, agora aparecem sempre na mesma ordem de fiabilidade/atualidade — BNFc/BNF → Ficha Técnica/AEMPS → Pediamécum AEP → Handbook of Drugs in ICU → outras diretrizes específicas → Notas de Bolso PT 2015. Aplicado nas 29 fichas de drugs.js que tinham mais de uma fonte na ordem antiga, e nas 7 fichas do separador Medicamentos com o mesmo problema. Revisado infusions.js: as suas fichas multi-fonte já seguiam esta ordem, sem alterações necessárias',
+        '7 fármacos novos de cuidados intensivos neonatais/pediátricos de uso frequente em Portugal, com fonte e indicação explícitas: Cafeína citrato e os surfactantes Poractant alfa/Beractant (apneia do prematuro e SDR neonatal), Alprostadil/PGE1 (manter o ductus permeável em cardiopatia ductus-dependente — dose inicial corroborada de forma independente por duas fontes: BNFc e Formulário de Pediatria PT), Sildenafil (hipertensão pulmonar), e Indometacina/Ibuprofeno IV (encerramento farmacológico do ductus). Adicionados tanto à calculadora de doses como ao separador Medicamentos — de 130 para 137 fichas, de 104 para 111 fármacos na calculadora',
+        'Nota de transparência: a maioria das ~91 fichas do separador MED que citavam apenas Notas de Bolso PT (2015) continuam a citar só essa fonte — reordenar não cria uma segunda fonte onde ainda não a investigámos. Adicionar BNFc/Pediamécum como fonte adicional a essas ~91 fichas, uma a uma e com a mesma verificação rigorosa aplicada às 7 novas, é um bloco de trabalho considerável que não coube nesta passagem e fica como próximo passo natural caso se deseje',
+      ],
+      en: [
+        'Source hierarchy reordered app-wide: wherever a drug card cites more than one source, they now always appear in the same reliability/recency order — BNFc/BNF → Ficha Técnica/AEMPS → Pediamécum AEP → Handbook of Drugs in ICU → other disease-specific guidelines → Notas de Bolso PT 2015. Applied to the 29 drugs.js entries that had more than one source out of order, and to the 7 MED-tab cards with the same issue. Reviewed infusions.js: its multi-source entries already followed this order, no changes needed',
+        '7 new drugs commonly used in Portuguese neonatal/pediatric intensive care, each with explicit source and indication: Caffeine citrate and the surfactants Poractant alfa/Beractant (apnea of prematurity and neonatal RDS), Alprostadil/PGE1 (maintaining ductal patency in duct-dependent congenital heart disease — starting dose independently corroborated by two sources: BNFc and Formulário de Pediatria PT), Sildenafil (pulmonary hypertension), and IV Indomethacin/Ibuprofen (pharmacological ductus closure). Added to both the dose calculator and the Medications tab — from 130 to 137 cards, from 104 to 111 drugs in the calculator',
+        'Transparency note: most of the ~91 MED-tab cards that cited only Notas de Bolso PT (2015) still cite only that source — reordering does not create a second source where none has been researched yet. Adding BNFc/Pediamécum as an additional source to those ~91 cards, one by one with the same rigorous verification applied to the 7 new ones, is a substantial body of work that was out of scope for this pass and remains a natural next step if wanted',
+      ],
+    },
+  },
+  {
     ver: 'v4.11', date: 'Septiembre 2026', type: 'minor',
     items: {
       es: [

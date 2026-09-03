@@ -1,6 +1,6 @@
-/* PediCode Service Worker — v4.11 · modular build · auto-update */
+/* PediCode Service Worker — v4.12 · modular build · auto-update */
 
-const CACHE = 'pedicode-v4.11';
+const CACHE = 'pedicode-v4.12';
 
 const HTML_FILES = [
   './index.html',
