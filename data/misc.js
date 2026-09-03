@@ -75,6 +75,32 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.14', date: 'Septiembre 2026', type: 'major',
+    items: {
+      es: [
+        'Revisión ficha a ficha del tab Medicamentos contra BNFc y Pediamécum AEP — segundo bloque: Antibióticos/Antifúngicos (29 fichas). 21 con equivalente verificado en la calculadora (cotejadas contra esos datos); 8 investigadas de nuevo contra BNFc: Anfotericina B convencional, Cefuroxima, Cefoxitina, Claritromicina, Doxiciclina, Rifampicina, Teicoplanina y Flucloxacilina',
+        'Claritromicina, Teicoplanina y Flucloxacilina: dosis IV confirmadas como coincidentes exactamente con BNFc 2020-21',
+        'Doxiciclina: confirmado que la dosis <8 años (2,2 mg/kg/12h) que ya figuraba en la ficha corresponde a la pauta de excepción de BNFc para fiebre exantemática de Montañas Rocosas bajo indicación experta vital — aclarado en el texto de advertencia, que antes sugería una contraindicación absoluta sin matices',
+        'Cefoxitina: BNFc solo cubre la indicación en ≥12 años, sin datos para corroborar la dosis pediátrica general del protocolo — se mantiene la fuente original y se indica honestamente la cobertura parcial de BNFc en vez de afirmar una corroboración que no existe',
+        'Rifampicina: BNFc permite hasta 1200 mg/día en infecciones graves (600 mg/12h), por encima del máximo de 600 mg/día que figura en la ficha para profilaxis de contactos — anotado sin modificar la dosis, ya que corresponde a indicaciones distintas',
+      ],
+      pt: [
+        'Revisão ficha a ficha do separador Medicamentos contra BNFc e Pediamécum AEP — segundo bloco: Antibióticos/Antifúngicos (29 fichas). 21 com equivalente verificado na calculadora; 8 investigadas de novo contra BNFc: Anfotericina B convencional, Cefuroxima, Cefoxitina, Claritromicina, Doxiciclina, Rifampicina, Teicoplanina e Flucloxacilina',
+        'Claritromicina, Teicoplanina e Flucloxacilina: doses IV confirmadas como coincidentes exatamente com BNFc 2020-21',
+        'Doxiciclina: confirmado que a dose <8 anos (2,2 mg/kg/12h) já presente na ficha corresponde à exceção do BNFc para febre escaro-nodular sob indicação especializada vital — esclarecido no texto de aviso',
+        'Cefoxitina: o BNFc só cobre a indicação em ≥12 anos, sem dados para corroborar a dose pediátrica geral — mantida a fonte original com nota honesta sobre a cobertura parcial',
+        'Rifampicina: o BNFc permite até 1200 mg/dia em infeções graves, acima do máximo de 600 mg/dia da ficha para profilaxia de contactos — anotado sem alterar a dose, por corresponder a indicações distintas',
+      ],
+      en: [
+        'Card-by-card review of the Medications tab against BNFc and Pediamécum AEP — second block: Antibiotics/Antifungals (29 cards). 21 with a verified calculator counterpart; 8 freshly researched against BNFc: conventional Amphotericin B, Cefuroxime, Cefoxitin, Clarithromycin, Doxycycline, Rifampicin, Teicoplanin and Flucloxacillin',
+        'Clarithromycin, Teicoplanin and Flucloxacillin: IV doses confirmed to match BNFc 2020-21 exactly',
+        'Doxycycline: confirmed the existing <8-year dose (2.2 mg/kg/12h) matches BNFc\'s expert-advice exception for Rocky Mountain spotted fever under vital indication — clarified in the warning text, which previously implied an unqualified absolute contraindication',
+        'Cefoxitin: BNFc only covers the ≥12-year indication, with no data to corroborate the card\'s general pediatric dose — original source kept, with an honest note on BNFc\'s partial coverage rather than claiming corroboration that doesn\'t exist',
+        'Rifampicin: BNFc allows up to 1200 mg/day in serious infections (600 mg/12h), above the 600 mg/day max on the card for contact prophylaxis — noted without changing the dose, since these are different indications',
+      ],
+    },
+  },
+  {
     ver: 'v4.13', date: 'Septiembre 2026', type: 'major',
     items: {
       es: [
