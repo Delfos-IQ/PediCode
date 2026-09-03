@@ -75,6 +75,53 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.18', date: 'Septiembre 2026', type: 'major',
+    items: {
+      es: [
+        'Revisión ficha a ficha del tab Medicamentos contra BNFc y Pediamécum AEP — sexto y último bloque de esta ronda: Cardiovasculares y Otros IV (16 fichas). 12 con equivalente verificado en la calculadora; 4 investigadas de nuevo contra BNFc',
+        'Corrección real en Hidrocortisona: la dosis de carga en crisis adrenal (5 mg/kg) sobreestimaba 2,5–5× la dosis verificada (1–2 mg/kg) — corregida; añadidas las dosis de mantenimiento, shock séptico y anafilaxia ya verificadas',
+        'Corrección real en Dexametasona: la ficha ofrecía una pauta de "carga 1–2 mg/kg + mantenimiento" para edema cerebral que no coincidía con el protocolo verificado (0,15–0,25 mg/kg/6h) — corregida. Añadida advertencia explícita: NO indicada en edema cerebral por TCE (los corticoides aumentan mortalidad en TCE según el ensayo CRASH), omitida por completo en la ficha anterior',
+        'Corrección real en Clorpromazina: BNFc especifica vía IM (no IV) para el uso parenteral en niños, con máximos diarios por edad (40 mg &lt;6a, 75 mg 6–11a) que la ficha no recogía — corregida y añadida advertencia sobre mayor riesgo de hipotensión por vía IV',
+        'Corrección real en Efedrina: la dosis (0,15–0,3 mg/kg) estaba notablemente por debajo del rango de BNFc (0,5–0,75 mg/kg/dosis en 1–11 años) — corregida',
+        'Furosemida: añadido el límite de velocidad de infusión (máx 4 mg/min) que faltaba — su omisión aumenta el riesgo de ototoxicidad',
+        'Metilprednisolona: añadida la dosis de anafilaxia, ausente pese a figurar como indicación en el título de la ficha',
+        'Desmopresina: añadida la dosis de diabetes insípida central, que la ficha remitía sin datos a "protocolo nefrología"',
+        'Labetalol y Manitol: rango de dosis y tiempos de administración ajustados para coincidir exactamente con BNFc',
+        'Digoxina, Lidocaína, Propranolol, Heparina, Fitomenadiona (Vit K): dosis confirmadas coincidentes — solo actualización de citación',
+        'Clemastina y Suero Salino Hipertónico 3%: sin ficha propia en BNFc — se mantiene la fuente original con nota honesta',
+        'Con este bloque se completa la revisión ficha a ficha de las 96 fichas del tab MED frente a BNFc/Pediamécum AEP solicitada — 137 fichas totales en el tab, incluyendo las añadidas en versiones previas',
+      ],
+      pt: [
+        'Revisão ficha a ficha do separador Medicamentos contra BNFc e Pediamécum AEP — sexto e último bloco desta ronda: Cardiovasculares e Outros IV (16 fichas). 12 com equivalente verificado na calculadora; 4 investigadas de novo contra BNFc',
+        'Correção real em Hidrocortisona: a dose de carga em crise adrenal (5 mg/kg) sobrestimava 2,5–5× a dose verificada (1–2 mg/kg) — corrigida',
+        'Correção real em Dexametasona: a ficha oferecia uma pauta de "carga + manutenção" para edema cerebral que não coincidia com o protocolo verificado — corrigida. Adicionado aviso explícito: NÃO indicada em edema cerebral por TCE (os corticoides aumentam a mortalidade no TCE segundo o ensaio CRASH)',
+        'Correção real em Clorpromazina: o BNFc especifica via IM (não IV) para uso parentérico em crianças, com máximos diários por idade — corrigida',
+        'Correção real em Efedrina: a dose estava notavelmente abaixo do intervalo do BNFc — corrigida',
+        'Furosemida: adicionado o limite de velocidade de infusão (máx 4 mg/min) que faltava',
+        'Metilprednisolona: adicionada a dose de anafilaxia, ausente apesar de figurar no título da ficha',
+        'Desmopresina: adicionada a dose de diabetes insípida central',
+        'Labetalol e Manitol: intervalo de dose e tempos de administração ajustados para coincidir com o BNFc',
+        'Digoxina, Lidocaína, Propranolol, Heparina, Fitomenadiona: doses confirmadas coincidentes — apenas atualização de citação',
+        'Clemastina e Soro Salino Hipertónico 3%: sem ficha própria no BNFc — mantida a fonte original com nota honesta',
+        'Com este bloco conclui-se a revisão ficha a ficha das 96 fichas do separador MED solicitada',
+      ],
+      en: [
+        'Card-by-card review of the Medications tab against BNFc and Pediamécum AEP — sixth and final block of this round: Cardiovascular and Other IV drugs (16 cards). 12 with a verified calculator counterpart; 4 freshly researched against BNFc',
+        'Real fix in Hydrocortisone: the adrenal-crisis loading dose (5 mg/kg) overestimated the verified dose (1-2 mg/kg) by 2.5-5x — corrected; added the already-verified maintenance, septic shock, and anaphylaxis doses',
+        'Real fix in Dexamethasone: the card offered a "loading + maintenance" regimen for cerebral oedema that did not match the verified protocol (0.15-0.25 mg/kg/6h) — corrected. Added an explicit warning: NOT indicated for TBI-related cerebral oedema (steroids increase TBI mortality per the CRASH trial), entirely absent from the previous card',
+        'Real fix in Chlorpromazine: BNFc specifies the IM route (not IV) for paediatric parenteral use, with age-based daily maximums the card did not carry — corrected, with a note on the higher hypotension risk of the IV route',
+        'Real fix in Ephedrine: the dose (0.15-0.3 mg/kg) was notably below BNFc\'s range (0.5-0.75 mg/kg/dose in 1-11 year-olds) — corrected',
+        'Furosemide: added the missing infusion rate limit (max 4 mg/min) — omitting it raises ototoxicity risk',
+        'Methylprednisolone: added the anaphylaxis dose, missing despite being listed as an indication in the card title',
+        'Desmopressin: added the central diabetes insipidus dose, which the card previously deferred to an undocumented "nephrology protocol"',
+        'Labetalol and Mannitol: dose range and administration timing adjusted to exactly match BNFc',
+        'Digoxin, Lidocaine, Propranolol, Heparin, Phytomenadione (Vit K): doses confirmed to match — citation update only',
+        'Clemastine and 3% Hypertonic Saline: no dedicated BNFc entry — original source kept with an honest note',
+        'This block completes the requested card-by-card review of all 96 Medications tab cards against BNFc/Pediamécum AEP',
+      ],
+    },
+  },
+  {
     ver: 'v4.17', date: 'Septiembre 2026', type: 'major',
     items: {
       es: [
