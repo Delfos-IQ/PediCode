@@ -75,6 +75,32 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.11', date: 'Septiembre 2026', type: 'minor',
+    items: {
+      es: [
+        'Compatibilidades IV: auditoría de calidad de las 7 fuentes bibliográficas que respaldan la matriz — verificadas una por una contra su publicación original (DOI/enlace). Ninguna resultó inventada; se encontraron y corrigieron 2 imprecisiones: la guía KEMH tenía una fecha de revisión incorrecta (decía 2024; el documento oficial indica revisión 2021, próxima revisión 2026) y su enlace apuntaba a la portada del hospital en vez de al PDF de la guía',
+        'La fuente H. La Paz (Servicio de Farmacia) ahora enlaza a su publicación original y se marca explícitamente como tabla difundida en redes sociales, no revisada por pares — para que quede claro su menor nivel de evidencia frente a las revisiones sistemáticas',
+        'Corregida una cita de Trissel\'s Handbook con un número de edición que no se pudo verificar — se cita ahora sin número de edición en vez de arriesgar una cifra incorrecta',
+        'Retirados de la lista de fuentes "principales" tres referencias (Santos MT 2013, King Guide, Micromedex) que nunca se citaban realmente en ningún par de la matriz — quedaban ahí de una versión anterior y sugerían una cobertura de fuentes que no era real',
+        'Evaluada una revisión sistemática de acceso abierto de 2024 sobre compatibilidad con Nutrición Parenteral (Gostyńska et al., Pharmaceutics) — no se incorporó porque esta matriz es fármaco-fármaco, no fármaco-NPT, pero queda documentada como fuente candidata para una futura expansión',
+      ],
+      pt: [
+        'Compatibilidades IV: auditoria de qualidade das 7 fontes bibliográficas que sustentam a matriz — verificadas uma a uma contra a publicação original (DOI/link). Nenhuma era inventada; 2 imprecisões encontradas e corrigidas: a diretriz KEMH tinha uma data de revisão incorreta (dizia 2024; o documento oficial indica revisão 2021, próxima revisão 2026) e seu link apontava para a página inicial do hospital em vez do PDF da diretriz',
+        'A fonte H. La Paz (Serviço de Farmácia) agora tem link para a publicação original e é marcada explicitamente como tabela divulgada em redes sociais, não revisada por pares',
+        'Corrigida uma citação do Trissel\'s Handbook com um número de edição que não pôde ser verificado — citada agora sem número de edição',
+        'Removidas da lista de fontes "principais" três referências (Santos MT 2013, King Guide, Micromedex) que nunca eram realmente citadas em nenhum par da matriz',
+        'Avaliada uma revisão sistemática de acesso aberto de 2024 sobre compatibilidade com Nutrição Parenteral (Gostyńska et al., Pharmaceutics) — não incorporada por ser fora do escopo fármaco-fármaco desta matriz, mas documentada como fonte candidata',
+      ],
+      en: [
+        'IV Compatibility: quality audit of the 7 references backing the matrix — each verified one by one against its original publication (DOI/link). None were fabricated; 2 inaccuracies found and fixed: the KEMH guideline had an incorrect review date (said 2024; the official document shows last reviewed 2021, next review 2026) and its link pointed to the hospital homepage instead of the guideline PDF',
+        'The H. La Paz (Pharmacy Department) source now links to its original publication and is explicitly labeled as a table shared on social media, not peer-reviewed',
+        'Fixed a Trissel\'s Handbook citation with an edition number that could not be verified — now cited without an edition number rather than risk an incorrect figure',
+        'Removed three references (Santos MT 2013, King Guide, Micromedex) from the "main sources" list that were never actually cited on any pair in the matrix — leftover from an earlier version, suggesting source coverage that wasn\'t real',
+        'Evaluated a 2024 open-access systematic review on Parenteral Nutrition Y-site compatibility (Gostyńska et al., Pharmaceutics) — not incorporated since this matrix is drug-drug, not drug-PN, but documented as a candidate source for a future expansion',
+      ],
+    },
+  },
+  {
     ver: 'v4.10', date: 'Septiembre 2026', type: 'major',
     items: {
       es: [

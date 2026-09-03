@@ -2,12 +2,15 @@
 // data/compatibilities.js — Compatibilidad en Y de fármacos IV
 // PediCode v1.0 — módulo de compatibilidades
 // ───────────────────────────────────────────────────────────────────
-// Fuentes principales:
-//   • Stabilis 4.0 (stabilis.org)
-//   • Trissel's Handbook on Injectable Drugs (15ª ed.)
-//   • Santos MT et al. Rev Bras Farm Hosp Serv Saúde 2013;4(3):34-37
-//   • King Guide to Parenteral Admixtures
-//   • Micromedex 2.0 (Truven Health Analytics)
+// Las 7 fuentes que efectivamente respaldan cada par de esta matriz
+// están listadas más abajo, en el bloque "FUENTES" (con código, cita
+// completa y enlace verificable cada una — ver auditoría v4.10 al
+// final de este comentario). Santos MT et al. 2013, King Guide y
+// Micromedex NO se citan directamente en ningún par de este fichero
+// — Micromedex y Trissel's son parte de la metodología interna de
+// [CL2020] (ver su ficha abajo), no fuentes consultadas por PediCode
+// de forma independiente; se retiran de este listado para no sugerir
+// una cobertura de fuentes que no es real.
 //
 // ⚠ Verificar siempre con farmacéutico clínico o fuente primaria.
 //    Los datos de compatibilidad pueden variar según concentración,
@@ -27,6 +30,33 @@
 // compatibilidad por pares, así que esos pares (y los de los 3 fármacos
 // nuevos) siguen sin dato — no se ha inventado ningún valor.
 // ═══════════════════════════════════════════════════════════════════
+//
+// Nota (2026-09, v4.10): auditoría de calidad de las 7 fuentes citadas
+// — verificadas una por una contra su publicación original (DOI/URL):
+// las 7 son reales y están correctamente citadas, ninguna es inventada.
+// Se corrigieron 2 imprecisiones encontradas:
+//  • [KEMH]: la guía dice "v5.1 2024" pero el PDF oficial indica
+//    "First Issued 30/04/2018 · Last Reviewed 05/07/2021 · Next Review
+//    05/07/2026" — corregido a "v5.1 (rev. 2021, próxima rev. 2026)" y
+//    enlazado directamente al PDF (antes enlazaba solo a la portada del
+//    hospital).
+//  • [LPaz]: era una fuente sin enlace ni forma de verificarla — es una
+//    tabla real del Servicio de Farmacia del H. La Paz, pero publicada
+//    en redes sociales (no revisada por pares). Se añadió el enlace a
+//    la publicación original para que cualquiera pueda verificarla, y
+//    se marca explícitamente como fuente de menor nivel de evidencia
+//    en su ficha (no es un estudio revisado por pares).
+// Se evaluó además una revisión sistemática más reciente y de acceso
+// abierto — Gostyńska A, Przybylski T, Ogrodowczyk M. "Y-Site
+// Compatibility Studies of Parenteral Nutrition and Other Intravenous
+// Medications in Neonatal and Pediatric Patients: A Review of the
+// Literature Evidence." Pharmaceutics 2024;16(2):264. DOI:
+// 10.3390/pharmaceutics16020264 — pero es específica de compatibilidad
+// con Nutrición Parenteral (no incluida en esta matriz de pares
+// fármaco-fármaco), por lo que no se ha incorporado a los 456 pares
+// existentes; queda documentada aquí como candidata si en el futuro se
+// añade Nutrición Parenteral como entidad de esta matriz.
+// ═══════════════════════════════════════════════════════════════════
 
 // ─── LISTA DE FÁRMACOS ─────────────────────────────────────────────
 // id: clave interna (lowercase, sin acentos)
@@ -41,11 +71,18 @@
 //           Hospital Clínic Barcelona — 44 fármacos, revisión sistemática
 //           Fuente: Medline + Stabilis 4.0 + Trissel's + Micromedex
 //  [LPaz]   H. La Paz 2020 — Servicio de Farmacia, tabla práctica UCI
-//  [Tri]    Trissel's Handbook on Injectable Drugs (15ª ed.)
+//           (difundida en redes sociales, no revisada por pares —
+//           https://x.com/Farmacia_LaPaz/status/1252836515509501959)
+//  [Tri]    Trissel's Handbook on Injectable Drugs / ASHP Injectable
+//           Drug Information (sin número de edición confirmado — ver nota arriba)
 //  [Sta]    Stabilis 4.0 (stabilis.org)
 //  [Fl17]   Flamein F et al. Pharm Technol Hosp Pharm 2017;2(2):71-78 (NICU)
-//  [KEMH]   KEMH NICU Y-Site Compatibility Guideline v5.1 2024 (Australia)
-//  [ATM]    Antimicrobianos en Neonatología, Soc. Chilena Infectología 2021
+//  [KEMH]   KEMH (King Edward Memorial Hospital) NICU Y-Site
+//           Compatibility Guideline v5.1 — rev. 05/07/2021,
+//           próxima revisión 05/07/2026 (Australia)
+//  [ATM]    Comité Consultivo Infecciones Neonatales, Soc. Chilena
+//           Infectología. Antimicrobianos en neonatología. Parte II:
+//           dilución y administración. Rev Chilena Infectol 2021
 // ═══════════════════════════════════════════════════════════════════
 
 export const COMPAT_DRUGS = [

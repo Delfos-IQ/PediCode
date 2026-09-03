@@ -3289,13 +3289,13 @@ function compatRenderResults() {
 
   // Mapa de fuentes → etiqueta + URL
   const SRC_META = {
-    'CL2020': { label: 'Castells Lao · Med Intensiva 2020', url: 'https://doi.org/10.1016/j.medin.2018.08.004' },
-    'LPaz':   { label: 'H. La Paz · Servicio Farmacia 2020', url: null },
-    'Tri':    { label: "Trissel's Handbook on Injectable Drugs", url: 'https://www.ashp.org/pharmacy-practice/policy-positions-and-guidelines/browse-by-document-type/books/trissel' },
+    'CL2020': { label: 'Castells Lao et al. · Med Intensiva 2020;44(2):80-87', url: 'https://doi.org/10.1016/j.medin.2018.08.004' },
+    'LPaz':   { label: 'H. La Paz · Servicio Farmacia 2020 (tabla no revisada por pares)', url: 'https://x.com/Farmacia_LaPaz/status/1252836515509501959' },
+    'Tri':    { label: "Trissel's Handbook on Injectable Drugs / ASHP Injectable Drug Information", url: 'https://www.ashp.org/pharmacy-practice/policy-positions-and-guidelines/browse-by-document-type/books/trissel' },
     'Sta':    { label: 'Stabilis 4.0', url: 'https://www.stabilis.org/' },
-    'Fl17':   { label: 'Flamein et al. · NICU PHTP 2017', url: 'https://doi.org/10.1515/pthp-2017-0009' },
-    'KEMH':   { label: 'KEMH NICU Y-Site Guideline v5.1 · 2024', url: 'https://www.kemh.health.wa.gov.au' },
-    'ATM':    { label: 'Soc. Chilena Infectología · Antimicrobianos Neonatología 2021', url: 'https://doi.org/10.4067/S0716-10182021000400471' },
+    'Fl17':   { label: 'Flamein et al. · Pharm Technol Hosp Pharm 2017;2(2):71-78', url: 'https://doi.org/10.1515/pthp-2017-0009' },
+    'KEMH':   { label: 'KEMH NICU Y-Site Guideline v5.1 (rev. 2021, próx. rev. 2026)', url: 'https://www.kemh.health.wa.gov.au/~/media/HSPs/NMHS/Hospitals/WNHS/Documents/Clinical-guidelines/Neonatal-MPs/Y-Site-IV-Compatibility-in-Neonates.pdf' },
+    'ATM':    { label: 'Soc. Chilena Infectología · Rev Chilena Infectol 2021 (Parte II)', url: 'https://doi.org/10.4067/S0716-10182021000400471' },
   };
 
   function renderSrcBadges(srcStr) {
