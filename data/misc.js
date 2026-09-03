@@ -75,6 +75,32 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.16', date: 'Septiembre 2026', type: 'major',
+    items: {
+      es: [
+        'Revisión ficha a ficha del tab Medicamentos contra BNFc y Pediamécum AEP — cuarto bloque: Antídotos y Antagonistas (7 fichas). 4 con equivalente verificado en la calculadora; Protamina y Neostigmina investigadas de nuevo contra BNFc; Biperideno sin cobertura en BNFc (no comercializado en Reino Unido)',
+        'Corrección real en Neostigmina: la dosis de reversión (0,04 mg/kg) estaba por debajo de la confirmada en BNFc (0,05 mg/kg = 50 mcg/kg, máx 2,5 mg/dosis, administrada junto con o tras atropina/glicopirrolato) — corregida',
+        'Protamina: dosis (1 mg neutraliza 100 U heparina &lt;30 min, máx 50 mg, velocidad ≤5 mg/min) confirmada exacta frente a BNFc 2020-21',
+        'Acetilcisteína IV, Naloxona, Flumazenil y Sugamadex: dosis confirmadas coincidentes con el protocolo ya verificado en la calculadora — solo actualización de citación',
+        'Biperideno IV: BNFc no incluye este fármaco (no comercializado en Reino Unido; el equivalente usado allí es procyclidina) — se mantiene la fuente original con nota honesta sobre la ausencia de corroboración adicional',
+      ],
+      pt: [
+        'Revisão ficha a ficha do separador Medicamentos contra BNFc e Pediamécum AEP — quarto bloco: Antídotos e Antagonistas (7 fichas). 4 com equivalente verificado na calculadora; Protamina e Neostigmina investigadas de novo contra BNFc; Biperideno sem cobertura no BNFc (não comercializado no Reino Unido)',
+        'Correção real em Neostigmina: a dose de reversão (0,04 mg/kg) estava abaixo da confirmada no BNFc (0,05 mg/kg = 50 mcg/kg, máx 2,5 mg/dose, administrada junto com ou após atropina/glicopirrolato) — corrigida',
+        'Protamina: dose (1 mg neutraliza 100 U heparina &lt;30 min, máx 50 mg, velocidade ≤5 mg/min) confirmada exata face ao BNFc 2020-21',
+        'Acetilcisteína IV, Naloxona, Flumazenil e Sugamadex: doses confirmadas coincidentes com o protocolo já verificado na calculadora — apenas atualização de citação',
+        'Biperideno IV: o BNFc não inclui este fármaco (não comercializado no Reino Unido) — mantida a fonte original com nota honesta sobre a ausência de corroboração adicional',
+      ],
+      en: [
+        'Card-by-card review of the Medications tab against BNFc and Pediamécum AEP — fourth block: Antidotes and Antagonists (7 cards). 4 with a verified calculator counterpart; Protamine and Neostigmine freshly researched against BNFc; Biperiden has no BNFc coverage (not marketed in the UK)',
+        'Real fix in Neostigmine: the reversal dose (0.04 mg/kg) was below BNFc\'s confirmed dose (0.05 mg/kg = 50 mcg/kg, max 2.5 mg/dose, given with or after atropine/glycopyrronium) — corrected',
+        'Protamine: dose (1 mg neutralises 100 units of heparin under 30 min, max 50 mg, rate ≤5 mg/min) confirmed exact against BNFc 2020-21',
+        'IV Acetylcysteine, Naloxone, Flumazenil and Sugammadex: doses confirmed to match the already-verified calculator protocol — citation update only',
+        'IV Biperiden: not included in BNFc (not marketed in the UK) — original source kept with an honest note on the lack of additional corroboration',
+      ],
+    },
+  },
+  {
     ver: 'v4.15', date: 'Septiembre 2026', type: 'major',
     items: {
       es: [
