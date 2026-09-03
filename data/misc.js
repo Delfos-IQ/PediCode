@@ -75,6 +75,38 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.15', date: 'Septiembre 2026', type: 'major',
+    items: {
+      es: [
+        'Revisión ficha a ficha del tab Medicamentos contra BNFc y Pediamécum AEP — tercer bloque: Antiepilépticos IV (9 fichas). 8 con equivalente verificado en la calculadora; Tiamina investigada de nuevo contra BNFc',
+        'Corrección real en Levetiracetam: la dosis de carga en la ficha ("20–60 mg/kg") incluía el límite inferior desactualizado (20–30 mg/kg) que la propia calculadora ya identificaba como insuficiente tras el ensayo ESETT — corregida a 40–60 mg/kg',
+        'Corrección real en Valproato de Sodio: la dosis de carga (15–20 mg/kg en 60 min) y mantenimiento (15–30 mg/kg/día) estaban por debajo del rango verificado en la calculadora (20–40 mg/kg en 15–30 min; mantenimiento 20–40 mg/kg/día) — corregidas',
+        'Corrección real en Clonazepam: la ficha describía "0,05 mg/kg/día IV q8h", una pauta fraccionada que no corresponde al uso real en estatus epiléptico — corregida a bolo único de 0,01–0,05 mg/kg (repetible 1 vez a los 10 min), según Pediamécum/EAN Guidelines',
+        'Corrección real en Piridoxina: la administración indicaba "directo IV" — corregida a IV lento en 10 min con monitorización de apnea, según el protocolo ya verificado',
+        'Corrección real en Tiamina: la ficha indicaba "IV lento" sin más — BNFc y la alerta MHRA/CHM exigen infusión IV en 30 min (nunca bolo) por riesgo de reacción anafiláctica con la vía parenteral; corregida y añadida la advertencia',
+        'Midazolam, Diazepam, Fenitoína y Fenobarbital (antiepilépticos): dosis confirmadas coincidentes con el protocolo ya verificado — solo actualización de citación',
+      ],
+      pt: [
+        'Revisão ficha a ficha do separador Medicamentos contra BNFc e Pediamécum AEP — terceiro bloco: Antiepiléticos IV (9 fichas). 8 com equivalente verificado na calculadora; Tiamina investigada de novo contra BNFc',
+        'Correção real em Levetiracetam: a dose de carga na ficha ("20–60 mg/kg") incluía o limite inferior desatualizado (20–30 mg/kg) já identificado como insuficiente pelo ensaio ESETT — corrigida para 40–60 mg/kg',
+        'Correção real em Valproato de Sódio: a dose de carga (15–20 mg/kg em 60 min) e manutenção (15–30 mg/kg/dia) estavam abaixo do intervalo verificado na calculadora (20–40 mg/kg em 15–30 min; manutenção 20–40 mg/kg/dia) — corrigidas',
+        'Correção real em Clonazepam: a ficha descrevia "0,05 mg/kg/dia IV q8h" — corrigida para bolus único de 0,01–0,05 mg/kg (repetível 1 vez aos 10 min), conforme Pediamécum/EAN Guidelines',
+        'Correção real em Piridoxina: a administração indicava "direto IV" — corrigida para IV lento em 10 min com monitorização de apneia',
+        'Correção real em Tiamina: a ficha indicava apenas "IV lento" — o BNFc e o alerta MHRA/CHM exigem infusão IV em 30 min (nunca bolus) pelo risco de reação anafilática pela via parentérica; corrigida',
+        'Midazolam, Diazepam, Fenitoína e Fenobarbital: doses confirmadas coincidentes com o protocolo já verificado — apenas atualização de citação',
+      ],
+      en: [
+        'Card-by-card review of the Medications tab against BNFc and Pediamécum AEP — third block: IV Antiepileptics (9 cards). 8 with a verified calculator counterpart; Thiamine freshly researched against BNFc',
+        'Real fix in Levetiracetam: the card\'s loading dose ("20–60 mg/kg") still included the outdated lower bound (20–30 mg/kg) that the calculator itself already flags as insufficient post-ESETT — corrected to 40–60 mg/kg',
+        'Real fix in Sodium Valproate: the loading dose (15–20 mg/kg over 60 min) and maintenance (15–30 mg/kg/day) were below the calculator\'s verified range (20–40 mg/kg over 15–30 min; maintenance 20–40 mg/kg/day) — corrected',
+        'Real fix in Clonazepam: the card described "0.05 mg/kg/day IV q8h" — corrected to a single 0.01–0.05 mg/kg bolus (repeatable once at 10 min), per Pediamécum/EAN Guidelines',
+        'Real fix in Pyridoxine: administration said "direct IV" — corrected to slow IV over 10 min with apnea monitoring',
+        'Real fix in Thiamine: the card said only "slow IV" — BNFc and the MHRA/CHM alert require IV infusion over 30 minutes (never a bolus) due to anaphylaxis risk with the parenteral route; corrected',
+        'Midazolam, Diazepam, Phenytoin and Phenobarbital: doses confirmed to match the already-verified protocol — citation update only',
+      ],
+    },
+  },
+  {
     ver: 'v4.14', date: 'Septiembre 2026', type: 'major',
     items: {
       es: [
