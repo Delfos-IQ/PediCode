@@ -75,6 +75,41 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.13', date: 'Septiembre 2026', type: 'major',
+    items: {
+      es: [
+        'Revisión ficha a ficha del tab Medicamentos contra BNFc y Pediamécum AEP (en curso, por categorías) — primer bloque: RCP/Emergencia (9) y Sedoanalgesia (13). Donde la ficha ya tenía equivalente verificado en la calculadora de dosis, se cotejó contra esos datos; donde no, se investigó de nuevo contra BNFc/SEUP',
+        'Corrección real de seguridad en Atropina: la ficha indicaba "dosis mínima 0,1 mg obligatoria" — esa recomendación clásica ya no se sostiene (puede causar bradicardia paradójica, Barrington 2011) y no aparece en BNFc ni en el algoritmo de bradicardia ya verificado en la calculadora. Corregida',
+        'Corrección real en Morfina: la ficha mezclaba la dosis IV (0,05–0,1 mg/kg) con la dosis IM/SC, más alta (0,1–0,2 mg/kg), en un único rango "0,05–0,2 mg/kg IV" — separadas por vía para evitar una sobredosis IV',
+        'Corrección real en Ketorolac: el máximo de tratamiento parenteral se ha ajustado a 2 días según el protocolo SEUP 2024 (Sociedad Española de Urgencias de Pediatría) — más restrictivo que los hasta 5 días que figuraban antes',
+        'Corrección real en Tramadol IV: BNFc no incluye pauta de dosificación por debajo de 12 años (más restrictivo que el CI "<1 año" que figuraba solo en Pediamécum) — ficha y calculadora alineadas a esta edad de corte, ya reflejada en la ficha del tab MED desde antes',
+        'Propofol: endurecido el texto de contraindicación absoluta para que coincida exactamente con la ya corregida en la calculadora — sedación continua en UCI en <16 años, no solo "sepsis/trauma"',
+        'Metamizol: añadida la advertencia de "nunca en bolo directo" (solo perfusión lenta) que faltaba en la ficha',
+        'Paracetamol IV: dosis separada explícitamente por peso (>10 kg vs <10 kg neonatal/lactante) en vez de un rango único ambiguo',
+      ],
+      pt: [
+        'Revisão ficha a ficha do separador Medicamentos contra BNFc e Pediamécum AEP (em curso, por categorias) — primeiro bloco: RCP/Emergência (9) e Sedoanalgesia (13). Onde a ficha já tinha equivalente verificado na calculadora de doses, foi cotejada com esses dados; onde não, foi investigada de novo contra BNFc/SEUP',
+        'Correção real de segurança em Atropina: a ficha indicava "dose mínima 0,1 mg obrigatória" — essa recomendação clássica já não se sustenta (pode causar bradicardia paradoxal, Barrington 2011) e não consta no BNFc nem no algoritmo de bradicardia já verificado na calculadora. Corrigida',
+        'Correção real em Morfina: a ficha misturava a dose IV (0,05–0,1 mg/kg) com a dose IM/SC, mais alta (0,1–0,2 mg/kg), num único intervalo "0,05–0,2 mg/kg IV" — separadas por via para evitar uma sobredosagem IV',
+        'Correção real em Ketorolac: o máximo de tratamento parentérico foi ajustado para 2 dias segundo o protocolo SEUP 2024 — mais restritivo que os até 5 dias anteriores',
+        'Correção real em Tramadol IV: o BNFc não inclui posologia abaixo dos 12 anos (mais restritivo que a CI "<1 ano" que constava só no Pediamécum) — ficha e calculadora alinhadas a essa idade de corte',
+        'Propofol: endurecido o texto de contraindicação absoluta para coincidir exatamente com o já corrigido na calculadora',
+        'Metamizol: adicionado o aviso de "nunca em bolus direto" que faltava na ficha',
+        'Paracetamol IV: dose separada explicitamente por peso (>10 kg vs <10 kg neonatal/lactente)',
+      ],
+      en: [
+        'Card-by-card review of the Medications tab against BNFc and Pediamécum AEP (in progress, by category) — first block: RCP/Emergency (9) and Sedation/analgesia (13). Where a card already had a verified counterpart in the dose calculator, it was checked against that data; where not, freshly researched against BNFc/SEUP',
+        'Real safety fix in Atropine: the card stated a "mandatory minimum dose of 0.1 mg" — that classic recommendation is no longer supported (can cause paradoxical bradycardia, Barrington 2011) and appears in neither BNFc nor the already-verified bradycardia algorithm in the calculator. Fixed',
+        'Real fix in Morphine: the card blended the IV dose (0.05–0.1 mg/kg) with the higher IM/SC dose (0.1–0.2 mg/kg) into a single "0.05–0.2 mg/kg IV" range — separated by route to avoid an IV overdose',
+        'Real fix in Ketorolac: maximum parenteral treatment duration adjusted to 2 days per the SEUP 2024 protocol (Spanish Pediatric Emergency Society) — more restrictive than the up-to-5-days previously listed',
+        'Real fix in IV Tramadol: BNFc includes no dosing regimen below age 12 (more restrictive than the "<1 year" contraindication that came only from Pediamécum) — card and calculator aligned to this age cutoff',
+        'Propofol: tightened the absolute-contraindication wording to exactly match the already-corrected calculator entry — continuous ICU sedation under 16, not just "sepsis/trauma"',
+        'Metamizole: added the missing "never as a direct bolus" warning',
+        'IV Paracetamol: dose now split explicitly by weight (>10 kg vs <10 kg neonate/infant) instead of one ambiguous range',
+      ],
+    },
+  },
+  {
     ver: 'v4.12', date: 'Septiembre 2026', type: 'major',
     items: {
       es: [

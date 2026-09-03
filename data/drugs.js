@@ -82,7 +82,7 @@ export const DOSE_DRUGS = [
     {label:"Dolor/fiebre — IV (niños >10kg)",range:"15 mg/kg/6h",note:"máx 60 mg/kg/día · perfusión en 15 min",factor:15,unit:"mg",maxDose:1000},
     {label:"Neonato/lactante <10kg — IV",range:"7,5 mg/kg/6h",note:"máx 30 mg/kg/día en neonatos pretérmino",factor:7.5,unit:"mg",neonatal:true},
   ]},
-  {name:"Ketorolac",cat:"Sedo",color:"#f87171",source:"Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"AINE. Off-label en <18 años. ⚠️ Máximo 2–5 días por vía IV/IM. CI: IR moderada-grave, sangrado activo, coagulopatía, cirugía cardíaca. Mayor riesgo de sangrado en neonatos <21 días. Administrar bolo IV en 1–5 min.",doses:[
+  {name:"Ketorolac",cat:"Sedo",color:"#f87171",source:"SEUP 2024 · Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"Revisado 2026-09 (v4.13) — AINE off-label en pediatría (sin monografía específica en BNFc). ⚠️ Máximo 2 días de tratamiento parenteral (SEUP 2024, más restrictivo que indicaciones previas de hasta 5 días). CI: IR moderada-grave, sangrado activo, coagulopatía, cirugía cardíaca. Mayor riesgo de sangrado en neonatos <21 días. Administrar bolo IV en 1–5 min.",doses:[
     {label:"Dolor agudo — IV (bolo)",range:"0,5 mg/kg",note:"máx 15 mg · administrar en 1–5 min",factor:0.5,unit:"mg",maxDose:15},
     {label:"Dolor agudo — IM",range:"1 mg/kg",note:"máx 30 mg · dosis única",factor:1,unit:"mg",maxDose:30},
     {label:"Mantenimiento — IV/IM",range:"0,5 mg/kg/6h",note:"máx 48–72h IV / 5 días IM · vigilar función renal",factor:0.5,unit:"mg",maxDose:15},
@@ -361,7 +361,7 @@ export const DOSE_DRUGS = [
     {label:"Perfusión UCI — mantenimiento",range:"0,02–0,1 mcg/kg/h",note:"iniciar bajo · ajustar por escalas de sedoanalgesia (FLACC, COMFORT-B)",factor:0.05,unit:"mcg/h",infusion:true},
     {label:"Perfusión neonatal",range:"0,01–0,05 mcg/kg/h",note:"inicio 0,01 mcg/kg/h · monitorización cardiorrespiratoria continua",factor:0.02,unit:"mcg/h",neonatal:true,infusion:true},
   ]},
-  {name:"Tramadol IV",cat:"Sedo",color:"#94a3b8",source:"Pediamécum AEP",rev:"2026-03",status:"verified",notes:"Opioide débil + inhibición recaptación NA/5-HT. Analgesia moderada-intensa, 2ª línea. ⚠️ CI: <1 año, metabolizadores ultrarrápidos CYP2D6 (riesgo depresión resp.), epilepsia no controlada, ISRS (sínd. serotoninérgico). No usar posoperatorio amigdalectomía.",doses:[
+  {name:"Tramadol IV",cat:"Sedo",color:"#94a3b8",source:"BNFc 2025-26 · Pediamécum AEP",rev:"2026-09",status:"verified",notes:"Revisado 2026-09 (v4.13) — BNFc no incluye pauta de dosificación por debajo de 12 años; uso pediátrico restringido en la práctica a adolescentes ≥12 años, más allá del CI <1 año de la ficha técnica. ⚠️ CI: metabolizadores ultrarrápidos CYP2D6 (riesgo depresión resp.), epilepsia no controlada, ISRS (sínd. serotoninérgico). Extrema precaución/evitar posoperatorio de amigdalectomía/adenoidectomía (casos de depresión respiratoria grave descritos).",doses:[
     {label:"Dolor moderado-intenso — IV",range:"1–2 mg/kg",note:"máx 100 mg/dosis · infusión lenta 30 min · c/6–8h",factor:1.5,unit:"mg",maxDose:100},
     {label:"Infusión postoperatoria",range:"0,1–0,2 mg/kg/h",note:"máx 400 mg/día · ajustar con analgesia de rescate",factor:0.15,unit:"mg/h",infusion:true},
   ]},
@@ -520,7 +520,7 @@ export const DOSE_DRUGS = [
     {label:"CAD — Perfusión IV",range:"0,1 U/kg/h",note:"diluir 50 U en 50 mL SF (1 U/mL) · 0,1 mL/kg/h = 0,1 U/kg/h",factor:0.1,unit:"U/h",infusion:true},
     {label:"CAD — Perfusión IV (<5 años o glucemia inicial >1000 mg/dL)",range:"0,05 U/kg/h",note:"iniciar a dosis reducida por mayor riesgo de edema cerebral",factor:0.05,unit:"U/h",infusion:true},
   ]},
-  {name:"Gluconato de Calcio 10%",cat:"RCP",color:"#fbbf24",source:"Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"Añadido en revisión 2026 — H's y T's de la PCR (hiperpotasemia), hipocalcemia sintomática, antídoto de intoxicación por sulfato de magnesio o bloqueadores de canales de calcio. En PCR por hiperpotasemia: administrar lo más rápido posible. Vía central preferible (1:1 en G5%); si periférica, diluir más (1:5).",doses:[
+  {name:"Gluconato de Calcio 10%",cat:"RCP",color:"#fbbf24",source:"BNFc 2020-21 · Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"Revisado 2026-09 (v4.13) — dosis corroborada por BNFc (0,11 mmol/kg IV lento en hipocalcemia aguda/hiperpotasemia, máx 4,5 mmol ≈ 20 mL sol. 10%; equivalente aprox. a 0,5 mL/kg), consistente con el rango ya usado. H's y T's de la PCR (hiperpotasemia), hipocalcemia sintomática, antídoto de intoxicación por sulfato de magnesio o bloqueadores de canales de calcio. En PCR por hiperpotasemia: administrar lo más rápido posible. Vía central preferible (1:1 en G5%); si periférica, diluir más (1:5).",doses:[
     {label:"Hiperpotasemia / PCR — IV",range:"0,5–1 mL/kg (sol. 10%)",note:"máx 10 mL/dosis · en 5–10 min (bolo rápido si PCR) · diluido en SG5%",factor:0.75,unit:"mL",maxDose:10},
   ]},
   {name:"Manitol 20%",cat:"Otros",color:"#93c5fd",source:"Notas de Bolso PT",rev:"2026-09",status:"verified",notes:"Añadido en revisión 2026 — diurético osmótico de 1ª línea en hipertensión intracraneal (TCE, ACV, tumor, hidrocefalia). ⚠️ Evitar en hipovolemia/hipotensión no corregida e insuficiencia renal grave. Monitorizar osmolaridad sérica (objetivo <320 mOsm/L) y diuresis.",doses:[
