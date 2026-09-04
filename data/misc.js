@@ -75,6 +75,23 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.19.1', date: 'Septiembre 2026', type: 'fix',
+    items: {
+      es: [
+        'CRÍTICO: el modelo llama-3.3-70b-versatile usado por el motor de IA fue descontinuado por Groq (16 agosto 2026, solo Enterprise) — el Asistente IA estaba devolviendo error HTTP 502 en producción',
+        'Motor de IA migrado a openai/gpt-oss-120b (Groq) — verificado en producción tras el cambio',
+      ],
+      pt: [
+        'CRÍTICO: o modelo llama-3.3-70b-versatile usado pelo motor de IA foi descontinuado pela Groq (16 agosto 2026, apenas Enterprise) — o Assistente IA estava a devolver erro HTTP 502 em produção',
+        'Motor de IA migrado para openai/gpt-oss-120b (Groq) — verificado em produção após a alteração',
+      ],
+      en: [
+        'CRITICAL: the llama-3.3-70b-versatile model used by the AI engine was discontinued by Groq (16 August 2026, Enterprise-only) — the AI Assistant was returning an HTTP 502 error in production',
+        'AI engine migrated to openai/gpt-oss-120b (Groq) — verified live in production after the change',
+      ],
+    },
+  },
+  {
     ver: 'v4.19', date: 'Septiembre 2026', type: 'major',
     items: {
       es: [

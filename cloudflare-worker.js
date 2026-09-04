@@ -3,7 +3,7 @@
 // Despliega en: https://dash.cloudflare.com → Workers & Pages → Create Worker
 
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const MODEL = 'llama-3.3-70b-versatile';
+const MODEL = 'openai/gpt-oss-120b'; // llama-3.3-70b-versatile descontinuado por Groq (16 ago 2026)
 
 // System prompt clínico
 const SYSTEM_PROMPT = `És um assistente clínico de apoio para profissionais de urgência pediátrica.
