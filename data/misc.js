@@ -75,6 +75,29 @@ export const BROW_ITEM_KEYS = [
 
 export const CHANGELOG = [
   {
+    ver: 'v4.19', date: 'Septiembre 2026', type: 'major',
+    items: {
+      es: [
+        'Motor de IA (Asistente clínico): rediseño del enfoque de análisis manteniendo el flujo actual (caso puntual, sin series temporales)',
+        'Añadida la escala Bedside PEWS al análisis: el motor calcula ahora tres subescalas (comportamiento, cardiovascular, respiratorio) y una puntuación total, con alerta visual cuando la puntuación total es ≥4 o cualquier subescala llega a 3 — sugiere valorar aviso médico inmediato',
+        'Eliminado el cruce de los fármacos sugeridos por la IA con la base de fármacos verificada (ya no se marcan como "✅ verificado" ni enlazan a la ficha de dosis) — se muestran como sugerencia directa de la IA',
+        'Eliminada la referencia a Pediamécum/Neofax/INFARMED como fuente farmacológica obligatoria en el prompt del motor — las reglas de seguridad farmacológica (p. ej. no ranitidina, manejo conservador por defecto) se mantienen',
+      ],
+      pt: [
+        'Motor de IA (Assistente clínico): reformulação da abordagem de análise mantendo o fluxo atual (caso pontual, sem séries temporais)',
+        'Adicionada a escala Bedside PEWS à análise: o motor calcula agora três subescalas (comportamento, cardiovascular, respiratório) e uma pontuação total, com alerta visual quando o total é ≥4 ou qualquer subescala atinge 3 — sugere considerar aviso médico imediato',
+        'Removido o cruzamento dos fármacos sugeridos pela IA com a base de fármacos verificada (deixam de aparecer marcados como "✅ verificado" ou ligados à ficha de dose) — mostrados como sugestão direta da IA',
+        'Removida a referência a Pediamécum/Neofax/INFARMED como fonte farmacológica obrigatória no prompt do motor — as regras de segurança farmacológica (p. ex. não ranitidina, gestão conservadora por defeito) mantêm-se',
+      ],
+      en: [
+        'AI engine (Clinical Assistant): redesigned analysis approach, keeping the current flow (single-case, no time series)',
+        'Added the Bedside PEWS scale to the analysis: the engine now computes three subscores (behaviour, cardiovascular, respiratory) and a total, with a visual alert when the total is ≥4 or any subscore reaches 3 — suggesting immediate physician review',
+        'Removed the cross-check of AI-suggested drugs against the verified drug database (no longer marked "✅ verified" or linked to the dose card) — shown as a plain AI suggestion instead',
+        'Removed the mandatory Pediamécum/Neofax/INFARMED pharmacology-source reference from the engine prompt — pharmacological safety rules (e.g. no ranitidine, conservative management by default) remain in place',
+      ],
+    },
+  },
+  {
     ver: 'v4.18', date: 'Septiembre 2026', type: 'major',
     items: {
       es: [

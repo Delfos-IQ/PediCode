@@ -1,31 +1,9 @@
-// PediCode — data/ai.js  v2.0
+// PediCode — data/ai.js  v2.1
 // Módulo IA: asistente clínico pediátrico mejorado
-// Mejoras: calidad clínica · aprendizaje por feedback · integración OpenEvidence
+// Mejoras: calidad clínica · aprendizaje por feedback · integración OpenEvidence · Bedside PEWS
 
 // ── CONFIGURACIÓN ──────────────────────────────────────────────────────
 export const AI_WORKER_URL = 'https://pedicodeapp.pedicode-app.workers.dev';
-
-// ── GROUNDING: cruce con la base de fármacos verificada ────────────────
-import { DOSE_DRUGS } from './drugs.js';
-
-function _normalizeDrugText(s) {
-  return (s || '').toString().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-}
-
-// Busca si alguna ficha verificada de DOSE_DRUGS corresponde al texto libre
-// que ha devuelto la IA (p. ej. "Adrenalina 0,01 mg/kg IV"). Devuelve el
-// fármaco verificado más largo que coincide, o null si no hay match.
-function findVerifiedDrug(freeText) {
-  const norm = _normalizeDrugText(freeText);
-  let best = null;
-  for (const d of DOSE_DRUGS) {
-    const dn = _normalizeDrugText(d.name);
-    if (dn.length >= 3 && norm.includes(dn)) {
-      if (!best || dn.length > _normalizeDrugText(best.name).length) best = d;
-    }
-  }
-  return best;
-}
 
 // ── INDEXEDDB: APRENDIZAJE CLÍNICO ─────────────────────────────────────
 const DB_NAME = 'pedicode_ai';
@@ -198,6 +176,8 @@ const LABELS = {
     reasoningLabel: 'Razonamiento clínico',
     tepA: 'Apariencia', tepB: 'Respiración', tepC: 'Circulación',
     normal: 'Normal', altered: 'Alterada',
+    pewsLabel: 'Bedside PEWS', pewsBehavior: 'Comportamiento', pewsCardio: 'Cardiovascular', pewsResp: 'Respiratorio',
+    pewsTotal: 'Puntuación total', pewsCallDoctor: '⚠️ PEWS ≥4 o subescala en 3 — valorar aviso médico inmediato',
     errorMsg: 'Error al conectar con el asistente. Verifica tu conexión.',
     charCount: 'caracteres',
     feedbackLabel: '¿Fue útil este análisis?',
@@ -247,6 +227,8 @@ const LABELS = {
     reasoningLabel: 'Raciocínio clínico',
     tepA: 'Aparência', tepB: 'Respiração', tepC: 'Circulação',
     normal: 'Normal', altered: 'Alterada',
+    pewsLabel: 'Bedside PEWS', pewsBehavior: 'Comportamento', pewsCardio: 'Cardiovascular', pewsResp: 'Respiratório',
+    pewsTotal: 'Pontuação total', pewsCallDoctor: '⚠️ PEWS ≥4 ou subescala em 3 — considerar aviso médico imediato',
     errorMsg: 'Erro ao ligar ao assistente. Verifica a tua ligação.',
     charCount: 'caracteres',
     feedbackLabel: 'Esta análise foi útil?',
@@ -296,6 +278,8 @@ const LABELS = {
     reasoningLabel: 'Clinical reasoning',
     tepA: 'Appearance', tepB: 'Breathing', tepC: 'Circulation',
     normal: 'Normal', altered: 'Altered',
+    pewsLabel: 'Bedside PEWS', pewsBehavior: 'Behaviour', pewsCardio: 'Cardiovascular', pewsResp: 'Respiratory',
+    pewsTotal: 'Total score', pewsCallDoctor: '⚠️ PEWS ≥4 or any subscore of 3 — consider immediate physician review',
     errorMsg: 'Error connecting to assistant. Check your connection.',
     charCount: 'characters',
     feedbackLabel: 'Was this analysis helpful?',
@@ -634,6 +618,30 @@ export async function aiAnalyze() {
     const tepCls  = v => v === 'NORMAL' ? 'ai-tep-ok' : 'ai-tep-warn';
     const tepVal  = v => v === 'NORMAL' ? L.normal : L.altered;
 
+    // Bedside PEWS — subescalas 0-3 (comportamiento, cardiovascular, respiratorio)
+    // calculadas por el modelo a partir del texto clínico introducido.
+    const pews = data.pews || null;
+    const pewsSubCls = n => n >= 3 ? 'ai-tep-warn' : (n === 2 ? 'ai-pews-mid' : 'ai-tep-ok');
+    const pewsHTML = pews
+      ? `<div class="ai-pews-row">
+           <div class="ai-section-title">🩺 ${L.pewsLabel}</div>
+           <div class="ai-tep-grid ai-pews-grid">
+             <div class="ai-tep-item ${pewsSubCls(pews.comportamiento)}">
+               ${L.pewsBehavior}<br><span class="ai-tep-val">${pews.comportamiento ?? '—'}</span>
+             </div>
+             <div class="ai-tep-item ${pewsSubCls(pews.cardiovascular)}">
+               ${L.pewsCardio}<br><span class="ai-tep-val">${pews.cardiovascular ?? '—'}</span>
+             </div>
+             <div class="ai-tep-item ${pewsSubCls(pews.respiratorio)}">
+               ${L.pewsResp}<br><span class="ai-tep-val">${pews.respiratorio ?? '—'}</span>
+             </div>
+           </div>
+           <div class="ai-pews-total">${L.pewsTotal}: <strong>${pews.total ?? '—'}</strong></div>
+           ${(pews.total >= 4 || pews.comportamiento >= 3 || pews.cardiovascular >= 3 || pews.respiratorio >= 3)
+              ? `<div class="ai-pews-alert">${L.pewsCallDoctor}</div>` : ''}
+         </div>`
+      : '';
+
     // Confianza (si el Worker la devuelve, si no se omite)
     const confidenceHTML = data.confianza
       ? `<div class="ai-confidence">
@@ -655,19 +663,12 @@ export async function aiAnalyze() {
          </div>`
       : '';
 
-    // Fármacos — cuando el texto libre de la IA coincide con una ficha
-    // verificada en DOSE_DRUGS, la píldora enlaza a esa ficha (grounding);
-    // si no hay coincidencia, se muestra igual pero marcada como sugerencia de IA sin verificar.
+    // Fármacos — sugerencia directa de la IA, sin cruce con la base de fármacos verificada.
     const drugsHTML = data.farmacos?.length
       ? `<div class="ai-section-title">💊 ${L.drugsLabel}</div>
          <div class="ai-pills">${data.farmacos.map(f => {
-            const verified = findVerifiedDrug(f);
             const safeText = String(f).replace(/</g,'&lt;');
-            if (verified) {
-              const safeName = verified.name.replace(/'/g,"\\'");
-              return `<span class="ai-pill ai-pill-verified" onclick="if(typeof goToDoseDrug==='function') goToDoseDrug('${safeName}')" title="Ver ficha verificada de ${verified.name}" style="cursor:pointer">✅ ${safeText}</span>`;
-            }
-            return `<span class="ai-pill" title="Sugerencia de IA — sin ficha verificada en la base de fármacos">${safeText}</span>`;
+            return `<span class="ai-pill" title="Sugerencia de IA">${safeText}</span>`;
           }).join('')}</div>`
       : '';
 
@@ -724,6 +725,8 @@ export async function aiAnalyze() {
       </div>
     </div>
   </div>
+
+  ${pewsHTML}
 
   <div class="ai-section-title">💡 ${L.sugLabel}</div>
   <ul class="ai-suggestions">
